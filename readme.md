@@ -1,7 +1,8 @@
 # Javascript Challenges
 ## Installation:
+```
 npm install
-
+```
 ## Running tests
 ### All tests:
 ```
