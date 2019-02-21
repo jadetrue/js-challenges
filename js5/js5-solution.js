@@ -47,11 +47,18 @@ exports.addRandomMobileNumbers = function(people){
   return people;
 };
 
+function addSpaceToString(string, position) {
+  return string.slice(0, position) + " " + string.slice(position);
+}
+
+function addLeading0(integer, totalSize) {
+  return ("0".repeat(totalSize) + integer).slice(-totalSize);
+}
+
 function generateRandomMobileNumber() {
-  var prefix="07";
-  var firstBit=getRandomInteger(100, 1000);
-  var secondBit=getRandomInteger(100000, 1000000);
-  return prefix + firstBit + " " + secondBit;
+  var nineDigitNumber = getRandomInteger(0, 1000000000);
+  var paddedNumber = addLeading0(nineDigitNumber, 9);
+  return "07" + addSpaceToString(paddedNumber, 3);
 }
 
 function getRandomInteger(min, max) {
