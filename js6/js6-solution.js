@@ -25,27 +25,19 @@ export function getActiveUsersWithInvalidEmail(people) {
     
 };
 
+let addSpaceToString = (string, position) => string.slice(0, position) + " " + string.slice(position);
+let addLeading0 = (integer, length) => ("0".repeat(length) + integer).slice(-length);
+let getRandomInteger = (digits) => Math.floor(Math.random() * Math.pow(10, digits));
+
+function generateRandomMobileNumber() {
+  let nineDigitNumber = getRandomInteger(9);
+  let paddedNumber = addLeading0(nineDigitNumber, 9);
+  return "07" + addSpaceToString(paddedNumber, 3);
+}
+
 export function addRandomMobileNumbers(people){
   return people.map((person) => {
     person.mobileNumber = generateRandomMobileNumber();
     return person;
   });
-}
-
-function addSpaceToString(string, position) {
-  return string.slice(0, position) + " " + string.slice(position);
-}
-
-function addLeading0(integer, totalSize) {
-  return ("0".repeat(totalSize) + integer).slice(-totalSize);
-}
-
-function generateRandomMobileNumber() {
-  var nineDigitNumber = getRandomInteger(0, 1000000000);
-  var paddedNumber = addLeading0(nineDigitNumber, 9);
-  return "07" + addSpaceToString(paddedNumber, 3);
-}
-
-function getRandomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min) ) + min;
 }
