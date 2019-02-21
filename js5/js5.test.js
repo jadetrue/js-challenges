@@ -2,6 +2,8 @@ var data = require('./js5-data');
 var solution = require('./js5-solution');
 var people = data.people;
 
+
+
 test('getActiveUsers', () => {
   var result = solution.getActiveUsers(people);
   expect(result.length).toBe(3);
@@ -38,3 +40,32 @@ test('addRandomMobileNumbers', () => {
     expect(regex.test(mobile)).toBeTruthy();
   }
 });
+
+
+
+test('addRandomMobileNumbers - random number', () => {
+  const mockMath = Object.create(global.Math);
+  mockMath.random = () => 0.123456789;
+  global.Math = mockMath;
+  var result = solution.addRandomMobileNumbers(people);
+  expect(result[0].mobileNumber).toBe('07123 456789');
+});
+
+test('addRandomMobileNumbers - random number', () => {
+  const mockMath = Object.create(global.Math);
+  mockMath.random = () => 0.012345678;
+  global.Math = mockMath;
+  var result = solution.addRandomMobileNumbers(people);
+  expect(result[0].mobileNumber).toBe('07012 345678');
+
+  mockMath.random = () => 0.002345678;
+  global.Math = mockMath;
+  var result = solution.addRandomMobileNumbers(people);
+  expect(result[0].mobileNumber).toBe('07002 345678');
+
+  mockMath.random = () => 0.000045678;
+  global.Math = mockMath;
+  var result = solution.addRandomMobileNumbers(people);
+  expect(result[0].mobileNumber).toBe('07000 045678');
+});
+
