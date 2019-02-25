@@ -1,50 +1,49 @@
-function filter(array, func) {
-  var filteredArray = [];
-  for(var index = 0; index < array.length; index++){
-    if (func(array[index])) filteredArray.push(array[index]);
-  }
-  return filteredArray;
+function getActiveUsers(people) {
+  return people.filter(isActive);
+};
+
+function isActive(person) {
+  return person.isActive;
 }
 
-exports.getActiveUsers = function(people) {
-  return filter(people, function(person) {
-    return person.isActive;
-  });
-};
+function findMatchingEyeColours(people, sourcePerson) {
+  if(sourcePerson != undefined && ('eyeColor' in sourcePerson)) {
+    return people.filter(filter_matchesEyeColour(sourcePerson));
+    }
+  return [];
+  };
 
-exports.findMatchingEyeColours = function(people, sourcePerson){ // takes person object
- var matches = [];
- if(sourcePerson != undefined && sourcePerson.hasOwnProperty('eyeColor')){
-   matches = filter(people, function(person) {
-    return (person.eyeColor == sourcePerson.eyeColor && person.id != sourcePerson.id);
-   });
+function filter_matchesEyeColour(person2) {
+  return function(person1) {
+    return (person1.eyeColor == person2.eyeColor) && (person1.id != person2.id);
   }
-return matches;
-};
+}
 
-exports.getEmailAddress = function(people, id){
-  for(var personIndex = 0; personIndex < people.length; personIndex++){
+
+function getEmailAddress(people, id){
+  for(var personIndex = 0; personIndex < people.length; personIndex++) {
       var person = people[personIndex];
-      if(person.id==id){
+      if(person.id==id) {
           return person.email;
       }
     }
 };
 
-exports.getActiveUsersWithInvalidEmail = function(people) {
-    var activeUsers = exports.getActiveUsers(people);
-    return filter(activeUsers, function(person) {
-      if (person.hasOwnProperty('email')) return (!person.email.includes('@'));
-      return true;
-    });
-    
+function getActiveUsersWithInvalidEmail(people) {
+    var activeUsers = getActiveUsers(people);
+    return activeUsers.filter(filter_hasInvalidEmail);
 };
 
-exports.addRandomMobileNumbers = function(people){
-  for(var index = 0; index < people.length; index++){
-    people[index].mobileNumber = generateRandomMobileNumber();
-  }
-  return people;
+function filter_hasInvalidEmail(person) {
+  if ('email' in person) return (!person.email.includes('@'));
+      return true;
+}
+
+function addRandomMobileNumbers(people){
+  return people.map((person) => {
+    person.mobileNumber = generateRandomMobileNumber();
+    return person;
+  });
 };
 
 function addSpaceToString(string, position) {
@@ -63,4 +62,12 @@ function generateRandomMobileNumber() {
 
 function getRandomInteger(digits) {
   return Math.floor(Math.random() * Math.pow(10, digits));
+}
+
+module.exports = {
+  getActiveUsers: getActiveUsers,
+  findMatchingEyeColours: findMatchingEyeColours,
+  getEmailAddress: getEmailAddress,
+  getActiveUsersWithInvalidEmail: getActiveUsersWithInvalidEmail,
+  addRandomMobileNumbers: addRandomMobileNumbers
 }

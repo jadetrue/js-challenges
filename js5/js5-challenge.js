@@ -9,8 +9,6 @@ Takes an ID and returns an email address
 Finds all active users with an invalid email address. Returns an array of objects.
 Programatically add a random mobile phone number to each record (formatted '07XXX XXXXXX'). Returns the whole people array after modification
 
-Do not use ES6 syntax including map, filter, foreach and spread operators
-
 Run your tests by running jest. They will all break at first.
 
 */
