@@ -1,46 +1,54 @@
 var data = require("./js4-data");
-people=data.people;
+var people = data.people;
 
-exports.isVegetarian = function(personID) {
+function isVegetarian(personID) {
   return people[personID][3];
 };
 
-exports.canFitOnANameCard = function(personID) {
+function canFitOnANameCard(personID) {
   var name = people[personID][0];
   return (name.length <= 6);
 };
 
-exports.getLifeExpectancy = function(personID) {
+function getLifeExpectancy(personID) {
   return isVegetarian(personID) ? 90:95;
 };
 
-exports.yearsRemaining = function(personID) {
+function yearsRemaining(personID) {
   var lifeExpectancy = getLifeExpectancy(personID);
   var age = people[personID][1];
   return lifeExpectancy - age;
 };
 
-exports.canRideOnARollercoaster = function(personID) {
+function canRideOnARollercoaster(personID) {
   var height = people[personID][2];
   return (height >= 120);
 };
 
-exports.canBuyBeer = function(personID) {
+function canBuyBeer(personID) {
   var age=people[personID][1];
   return (age >= 18);
 };
 
-exports.getSummary = function(personID) {
+function getSummary(personID) {
   var name = people[personID][0];
   var height = people[personID][2];
-
+  var deadMessage = "should be dead";
   var vegetarianMessage = isVegetarian(personID) ? "is a vegetarian" : "likes meat"; 
   
-  if(yearsRemaining(personID)<0){
-    deadMessage = "should be dead";
-  } else {
+  if(yearsRemaining(personID) >= 0) {
     deadMessage = "has " + yearsRemaining(personID) + " years to live";
   }
   
   return name + " " + vegetarianMessage + ", is " + height + "cm tall and " + deadMessage;
 };
+
+module.exports = {
+  isVegetarian: isVegetarian,
+  canFitOnANameCard: canFitOnANameCard,
+  getLifeExpectancy: getLifeExpectancy,
+  yearsRemaining: yearsRemaining,
+  canRideOnARollercoaster: canRideOnARollercoaster,
+  canBuyBeer: canBuyBeer,
+  getSummary: getSummary
+}

@@ -35,9 +35,9 @@ test("Years remaining", () => {
 });
 
 test("Can ride on a rollercoaster", () => {
-  expect(solution.yearsRemaining(1)).toBeTruthy();
-  expect(solution.yearsRemaining(2)).toBeTruthy();
-  expect(solution.yearsRemaining(3)).toBeFalsy();
+  expect(solution.canRideOnARollercoaster(1)).toBeTruthy();
+  expect(solution.canRideOnARollercoaster(2)).toBeTruthy();
+  expect(solution.canRideOnARollercoaster(3)).toBeFalsy();
 });
 
 test("Can ride on a rollercoaster", () => {
