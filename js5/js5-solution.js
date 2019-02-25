@@ -19,14 +19,13 @@ function filter_matchesEyeColour(person2) {
   }
 }
 
-
 function getEmailAddress(people, id){
-  for(var personIndex = 0; personIndex < people.length; personIndex++) {
-      var person = people[personIndex];
-      if(person.id==id) {
-          return person.email;
-      }
-    }
+  var result = people.find(function(person) {
+    return person.id==id
+  });
+
+  return (result) ? result.email : undefined;
+  
 };
 
 function getActiveUsersWithInvalidEmail(people) {
