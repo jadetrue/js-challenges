@@ -1,3 +1,4 @@
+
 function isPrimary(color) {
     return (color == "red") || (color == "yellow") || (color == "blue");
 }

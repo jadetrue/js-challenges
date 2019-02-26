@@ -1,34 +1,35 @@
+
 var data = require("./js4-data");
 var people = data.people;
 
 function isVegetarian(personID) {
   return people[personID][3];
-};
+}
 
 function canFitOnANameCard(personID) {
   var name = people[personID][0];
   return (name.length <= 6);
-};
+}
 
 function getLifeExpectancy(personID) {
   return isVegetarian(personID) ? 90:95;
-};
+}
 
 function yearsRemaining(personID) {
   var lifeExpectancy = getLifeExpectancy(personID);
   var age = people[personID][1];
   return lifeExpectancy - age;
-};
+}
 
 function canRideOnARollercoaster(personID) {
   var height = people[personID][2];
   return (height >= 120);
-};
+}
 
 function canBuyBeer(personID) {
   var age=people[personID][1];
   return (age >= 18);
-};
+}
 
 function getSummary(personID) {
   var name = people[personID][0];
@@ -41,7 +42,7 @@ function getSummary(personID) {
   }
   
   return name + " " + vegetarianMessage + ", is " + height + "cm tall and " + deadMessage;
-};
+}
 
 module.exports = {
   isVegetarian: isVegetarian,
@@ -51,4 +52,4 @@ module.exports = {
   canRideOnARollercoaster: canRideOnARollercoaster,
   canBuyBeer: canBuyBeer,
   getSummary: getSummary
-}
+};

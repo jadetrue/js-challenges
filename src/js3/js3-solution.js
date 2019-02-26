@@ -1,3 +1,4 @@
+
 /*
 Create exports. that = function return the following:
 
@@ -31,7 +32,7 @@ exports.couldDate = function(age1, age2) {
 
 function floor(number, amount) {
   return (number - amount < 0) ? 0 : number - amount;
-};
+}
 
 exports.colorDarken = function(rgbArray, darkenAmount) {
   var red = floor(rgbArray[0], darkenAmount);

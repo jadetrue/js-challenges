@@ -1,3 +1,4 @@
+
 exports.people = [ //name, age, height, isVegetarian
   ['Bob', 12, 110, true],
   ['Harigon', 63, 150, true],

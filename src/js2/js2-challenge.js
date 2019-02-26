@@ -1,3 +1,4 @@
+
 /*
 
 Arrays, Functions and Conditions
@@ -13,5 +14,5 @@ Run your tests by running jest. They will all break at first.
 
 exports.fixColors = function(colorArray, index) {
     // change this line and add others if needed
-}
+};
 

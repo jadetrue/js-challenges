@@ -1,3 +1,4 @@
+
 /*
 The data file contains information for 7 people
 

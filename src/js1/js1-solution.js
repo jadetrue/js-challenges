@@ -1,3 +1,4 @@
+
 var firstName = "Bob";
 var lastName = "Smith";
 var myAge = 22;
