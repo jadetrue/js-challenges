@@ -34,8 +34,12 @@ function getActiveUsersWithInvalidEmail(people) {
     return activeUsers.filter(filter_hasInvalidEmail);
 }
 
+function isValidEmail(text) {
+  return (text.indexOf('@') != -1)
+}
+
 function filter_hasInvalidEmail(person) {
-  if ('email' in person) return (!person.email.includes('@'));
+  if ('email' in person) return (!isValidEmail(person.email));
       return true;
 }
 
