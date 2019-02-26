@@ -33,7 +33,7 @@ function getActiveUsersWithInvalidEmail(people) {
 }
 
 function isValidEmail(text) {
-  return (text.indexOf('@') != -1)
+  return (text.indexOf('@') != -1);
 }
 
 function filter_hasInvalidEmail(person) {
