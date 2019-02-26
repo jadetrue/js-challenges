@@ -12,7 +12,7 @@ test('getActiveUsers', () => {
 });
 
 test('findMatchingEyeColours', () => {
-  expect(solution.findMatchingEyeColours(people, people[0]).length).toBe (1);
+  expect(solution.findMatchingEyeColours(people, people[0]).length).toBe (0);
   expect(solution.findMatchingEyeColours(people, people[0])[0].name).toBe('Laverne Andrews');
   expect(solution.findMatchingEyeColours(people, people[5]).length).toBe(0);
   expect(solution.findMatchingEyeColours(people, people[4])[0].name).toBe('Hull Woodward');
