@@ -24,9 +24,7 @@ function getEmailAddress(people, id){
   var result = people.find(function(person) {
     return person.id==id;
   });
-
   return (result) ? result.email : undefined;
-  
 }
 
 function getActiveUsersWithInvalidEmail(people) {
@@ -54,8 +52,17 @@ function addSpaceToString(string, position) {
   return string.slice(0, position) + " " + string.slice(position);
 }
 
+function repeat0(times) {
+  var repeatedString = "";
+  while (times > 0) {
+    repeatedString += "0";
+    times--;
+  }
+  return repeatedString;
+}
+
 function addLeading0(integer, length) {
-  return ("0".repeat(length) + integer).slice(-length);
+  return (repeat0(length) + integer).slice(-length);
 }
 
 function generateRandomMobileNumber() {
