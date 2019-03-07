@@ -1,6 +1,7 @@
 var data = require('./js5-data');
-//var solution = require('./js5-solution');
-var solution = require('../../../js5-challenge');
+var solution = require('./js5-solution');
+if (typeof __CHALLENGE__ !== 'undefined' && __CHALLENGE__)
+  solution = require('../../../js5-challenge');
 var people = data.people;
 
 test('getActiveUsers', function() {

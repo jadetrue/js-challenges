@@ -1,5 +1,6 @@
-//var solution = require('./js1-solution');
-var solution = require('../../../js1-challenge');
+var solution = require('./js1-solution');
+if (typeof __CHALLENGE__ !== 'undefined' && __CHALLENGE__)
+  solution = require('../../../js1-challenge');
 
 var firstName = "Bob";
 var lastName = "Smith";

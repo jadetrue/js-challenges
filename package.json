@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "jest",
-    "lint": "jshint ./src/"
+    "lint": "jshint ./src/",
+    "test-challenge": "jest --config jest-challenge.config.js"
   },
   "author": "",
   "license": "ISC"
