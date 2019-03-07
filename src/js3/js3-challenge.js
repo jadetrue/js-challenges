@@ -30,6 +30,6 @@ exports.couldDate = function() {
 };
 
 exports.colorDarken = function() {
-  return [0,0,0]; // change this line and add others if needed
+  return [1,1,1]; // change this line and add others if needed
 
 };
