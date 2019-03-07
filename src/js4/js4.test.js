@@ -1,5 +1,5 @@
-
-var solution = require('./js4-solution');
+//var solution = require('./js4-solution');
+var solution = require('../../../js4-challenge');
 
 var people = [ //name, age, height, isVegetarian
   ['Bob', 12, 110, true],

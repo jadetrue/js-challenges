@@ -1,5 +1,5 @@
-
-var solution = require('./js3-solution');
+//var solution = require('./js3-solution');
+var solution = require('../../../js3-challenge');
 
 test('Minimum dateable age', function() {
   expect(solution.minDateableAge(22)).toBe(18);

@@ -1,5 +1,5 @@
-
-var solution = require('./js1-solution');
+//var solution = require('./js1-solution');
+var solution = require('../../../js1-challenge');
 
 var firstName = "Bob";
 var lastName = "Smith";

@@ -1,6 +1,5 @@
-
-
-var solution = require('./js2-solution');
+//var solution = require('./js2-solution');
+var solution = require('../../../js2-challenge');
 
 var colors = ['violet', 'green', 'blue', 'yellow'];
 
