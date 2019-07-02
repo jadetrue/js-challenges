@@ -1,25 +1,77 @@
-# Javascript Challenges
-## Installation:
+# \_nology JS challenges
+
+This is the repository for \_nology JavaScript challenges.
+
+## Getting started
+
+### Create a Fork
+
+Students should complete the challenges in their own forked version of the challenges repository.
+
+1. To fork this repository click the fork button in the top right of the repository page on github.
+
+2. If asked, select your own github account as the place to host the forked version.
+
+### Completing a challenge
+
+We follow github flow for each challenge. This means creating a new branch, completing the challenge and submitting a pull request.
+
+1. Create a branch from master. The branch name should be that of the challenge being done, e.g. js1
+
+```bash
+git checkout -b <challenge-name>
 ```
-npm install
+
+2. Complete the challenge by writing your code in the challenge.js file.
+3. Commit your work as you complete the challenge and push up the branch to github.
+4. When ready, create a pull request and assign a trainer as a reviwer.
+5. If approved you can close the pull request and merge the code. If there are comments then continue commiting your work on the existing branch and push to github, this will appear in the pull request.
+
+### Updating your Fork
+
+You will need to do this if we update the main challenges repo and want you to have the changes in your forked repository.
+
+1. Navigate into you repository folder in your machines command line
+
+2. Run the following command
+
+```bash
+git pull https://github.com/nology-tech/js-challenges.git master
 ```
+
+## Installation
+
+```bash
+yarn install
+```
+
 ## Running tests
-### All tests:
+
+### All tests
+
+```bash
+yarn run test
 ```
-npm run test
-```
-### Individual tests:
-```
+
+### Individual tests
+
+```bash
 cd js1
-npm run test js1
+yarn run test js1
 ```
+
 ### Solution / Challenge files
+
 Each test file by default requires the solution file which will pass. To run the challenge file change the require line as follows
+
 #### Run solution file
+
+```javascript
+var solution = require("./js1-solution");
 ```
-var solution = require('./js1-solution');
-```
+
 #### Run challenge file
-```
-var solution = require('./js1-challenge');
+
+```javascript
+var solution = require("./js1-challenge");
 ```

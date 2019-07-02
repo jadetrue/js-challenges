@@ -1,35 +1,51 @@
-
-/*
-
-JS5: Conditions, data manipulation
-
-Create functions that:
-Returns an object that has an array of active users
-Take a person object and will return the names of all people who have matching eye colors
-Takes an ID and returns an email address
-Finds all active users with an invalid email address. Returns an array of objects.
-Programatically add a random mobile phone number to each record (formatted '07XXX XXXXXX'). Returns the whole people array after modification
-
-Run your tests by running jest. They will all break at first.
-
-*/
-
-exports.getActiveUsers = function(people) {
-  //change this line (and add others if needed)
+/**
+ * Returns an array of all the active users
+ *
+ * @param {array} people - Array of people objects
+ * @return {array}
+ */
+export const getActiveUsers = people => {
+  // your code here
 };
 
-exports.findMatchingEyeColours = function(people, sourcePerson) { // takes person object
- //change this line (and add others if needed)
+/**
+ * Take a person object and will return all people who have matching eye colors
+ *
+ * @param {array} people - Array of people objects
+ * @param {object} sourcePerson - person object
+ * @return {array}
+ */
+export const findMatchingEyeColours = (people, sourcePerson) => {
+  // your code here
 };
 
-exports.getEmailAddress = function(people, id) {
-  //change this line (and add others if needed)
+/**
+ * Takes an ID and returns an email address
+ *
+ * @param {array} people - Array of people objects
+ * @param {number} id - id of the person
+ * @return {string} - Email address
+ */
+export const getEmailAddress = (people, id) => {
+  // your code here
 };
 
-exports.getActiveUsersWithInvalidEmail = function(people) {
-  //change this line (and add others if needed)
+/**
+ * Finds all active users with an invalid email address. Returns as an array of objects.
+ *
+ * @param {array} people - Array of people objects
+ * @return {array}
+ */
+export const getActiveUsersWithInvalidEmail = people => {
+  // your code here
 };
 
-exports.addRandomMobileNumbers = function(people) {
-  //change this line (and add others if needed)
+/**
+ * Programatically add a random mobile phone number to each record (formatted '07XXX XXXXXX'). Returns the whole people array after modification
+ *
+ * @param {array} people - Array of people objects
+ * @return {array}
+ */
+export const addRandomMobileNumbers = people => {
+  // your code here
 };

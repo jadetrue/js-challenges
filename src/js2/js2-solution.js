@@ -1,12 +1,8 @@
+const isPrimary = color =>
+  color == "red" || color == "yellow" || color == "blue";
 
-function isPrimary(color) {
-    return (color == "red") || (color == "yellow") || (color == "blue");
-}
-
-exports.fixColors = function(colorArray, index) {
-    var clonedArray = colorArray.slice(0);
-    if(!isPrimary(clonedArray[index])) {
-      clonedArray[index] = "red";
-    }
-    return clonedArray;
+export const fixColors = (colorArray, index) => {
+  let clonedArray = [...colorArray];
+  !isPrimary(clonedArray[index]) ? (clonedArray[index] = "red") : null;
+  return clonedArray;
 };

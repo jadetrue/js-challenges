@@ -1,55 +1,59 @@
+import { people } from "./js4-data";
 
-var data = require("./js4-data");
-var people = data.people;
+const isVegetarian = personID => people[personID][3];
 
-function isVegetarian(personID) {
-  return people[personID][3];
-}
+const canFitOnANameCard = personID => {
+  let name = people[personID][0];
+  return name.length <= 6;
+};
 
-function canFitOnANameCard(personID) {
-  var name = people[personID][0];
-  return (name.length <= 6);
-}
+const getLifeExpectancy = personID => (isVegetarian(personID) ? 90 : 95);
 
-function getLifeExpectancy(personID) {
-  return isVegetarian(personID) ? 90:95;
-}
-
-function yearsRemaining(personID) {
-  var lifeExpectancy = getLifeExpectancy(personID);
-  var age = people[personID][1];
+const yearsRemaining = personID => {
+  let lifeExpectancy = getLifeExpectancy(personID);
+  let age = people[personID][1];
   return lifeExpectancy - age;
-}
+};
 
-function canRideOnARollercoaster(personID) {
-  var height = people[personID][2];
-  return (height >= 120);
-}
+const canRideOnARollercoaster = personID => {
+  let height = people[personID][2];
+  return height >= 120;
+};
 
-function canBuyBeer(personID) {
-  var age=people[personID][1];
-  return (age >= 18);
-}
+const canBuyBeer = personID => {
+  let age = people[personID][1];
+  return age >= 18;
+};
 
-function getSummary(personID) {
-  var name = people[personID][0];
-  var height = people[personID][2];
-  var deadMessage = "should be dead";
-  var vegetarianMessage = isVegetarian(personID) ? "is a vegetarian" : "likes meat"; 
-  
-  if(yearsRemaining(personID) >= 0) {
+const getSummary = personID => {
+  let name = people[personID][0];
+  let height = people[personID][2];
+  let deadMessage = "should be dead";
+  let vegetarianMessage = isVegetarian(personID)
+    ? "is a vegetarian"
+    : "likes meat";
+
+  if (yearsRemaining(personID) >= 0) {
     deadMessage = "has " + yearsRemaining(personID) + " years to live";
   }
-  
-  return name + " " + vegetarianMessage + ", is " + height + "cm tall and " + deadMessage;
-}
 
-module.exports = {
-  isVegetarian: isVegetarian,
-  canFitOnANameCard: canFitOnANameCard,
-  getLifeExpectancy: getLifeExpectancy,
-  yearsRemaining: yearsRemaining,
-  canRideOnARollercoaster: canRideOnARollercoaster,
-  canBuyBeer: canBuyBeer,
-  getSummary: getSummary
+  return (
+    name +
+    " " +
+    vegetarianMessage +
+    ", is " +
+    height +
+    "cm tall and " +
+    deadMessage
+  );
+};
+
+export {
+  isVegetarian,
+  canFitOnANameCard,
+  getLifeExpectancy,
+  yearsRemaining,
+  canRideOnARollercoaster,
+  canBuyBeer,
+  getSummary
 };

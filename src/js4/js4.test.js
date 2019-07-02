@@ -1,15 +1,16 @@
-var solution = require('./js4-solution');
-if (typeof __CHALLENGE__ !== 'undefined' && __CHALLENGE__)
-  solution = require('../../../js4-challenge');
+var solution = require("./js4-solution");
+if (typeof __CHALLENGE__ !== "undefined" && __CHALLENGE__)
+  solution = require("./js4-challenge");
 
-var people = [ //name, age, height, isVegetarian
-  ['Bob', 12, 110, true],
-  ['Harigon', 63, 150, true],
-  ['Thomas', 18, 121, false],
-  ['Sarah', 17, 119, false],
-  ['Lucy', 78, 140, true],
-  ['Dave', 93, 210, false],
-  ['Doris', 94, 80, true],
+var people = [
+  //name, age, height, isVegetarian
+  ["Bob", 12, 110, true],
+  ["Harigon", 63, 150, true],
+  ["Thomas", 18, 121, false],
+  ["Sarah", 17, 119, false],
+  ["Lucy", 78, 140, true],
+  ["Dave", 93, 210, false],
+  ["Doris", 94, 80, true]
 ];
 
 test("is Vegetarian", function() {
@@ -49,7 +50,13 @@ test("Can ride on a rollercoaster", function() {
 });
 
 test("Summary", function() {
-  expect(solution.getSummary(0)).toBe("Bob is a vegetarian, is 110cm tall and has 78 years to live");
-  expect(solution.getSummary(2)).toBe("Thomas likes meat, is 121cm tall and has 77 years to live");
-  expect(solution.getSummary(6)).toBe("Doris is a vegetarian, is 80cm tall and should be dead");
+  expect(solution.getSummary(0)).toBe(
+    "Bob is a vegetarian, is 110cm tall and has 78 years to live"
+  );
+  expect(solution.getSummary(2)).toBe(
+    "Thomas likes meat, is 121cm tall and has 77 years to live"
+  );
+  expect(solution.getSummary(6)).toBe(
+    "Doris is a vegetarian, is 80cm tall and should be dead"
+  );
 });
