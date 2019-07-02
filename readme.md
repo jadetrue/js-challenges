@@ -55,23 +55,18 @@ yarn run test
 
 ### Individual tests
 
+You can run the tests individually. Do this by specifying the folder as an argument, example below.
+
 ```bash
-cd js1
 yarn run test js1
 ```
 
-### Solution / Challenge files
+### Solution files
 
-Each test file by default requires the solution file which will pass. To run the challenge file change the require line as follows
+Example solution files are included for each challenge
 
 #### Run solution file
 
-```javascript
-var solution = require("./js1-solution");
-```
-
-#### Run challenge file
-
-```javascript
-var solution = require("./js1-challenge");
+```bash
+yarn run test-solution
 ```
