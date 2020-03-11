@@ -1,41 +1,36 @@
-/*
-Fill in the three functions below. Each function should return a string that uses the variables declared to programitcally create the outputed string.
+/* JS1 challenges your use of variables as well as number and string manipulation */
 
-Outputs should be:
---------
-Hello, My name is Bob Smith
-Mary is 11 years older than me
-The total length of both names is 8 characters
-*/
-
-let firstName = "Bob";
-let lastName = "Smith";
-let myAge = 22;
-let maryAge = 33;
+const person1FirstName = "John";
+const person1LastName = "Smith";
+const person1Age = 22;
+const person2FirstName = "Mary";
+const person2LastName = "O'Brian";
+const person2Age = 33;
 
 /**
- * A function that uses the variables to output "Hello, My name is Bob Smith"
+ * A function that uses the variables to output "Hello, my name is John Smith"
  *
- * @return {string} Hello, My name is Bob Smith
+ * @return {string} Hello, my name is John Smith
  */
 export const greet = () => {
   // your code here
 };
 
 /**
- * A function that uses the variables to output "Mary is 11 years older than me"
+ * A function that uses the variables to calculate the age differences and outputs 
+ * "Mary is 11 years older than John"
  *
- * @return {string} Mary is 11 years older than me
+ * @return {string} Mary is 11 years older than John
  */
-export const maryAgeDifference = () => {
+export const calculateAgeDifference = () => {
   // your code here
 };
 
 /**
- * A function that uses the variables to output "The total length of both names is 8 characters"
+ * A function that uses the variables to output "The total length of both names is 20 characters"
  *
- * @return {string} The total length of both names is 8 characters
+ * @return {string} The total length of both names is 20 characters
  */
-export const nameLength = () => {
+export const totalNameLength = () => {
   // your code here
 };
