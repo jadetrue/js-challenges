@@ -1,44 +1,33 @@
+/* JS3 builds on the previous challenges and adds the use of Arrays */
 
-/*
-Create exports. that = function return the following:
-
-minDateableAge(){} // half your age + 7
-hasFever(){} //fever or not in celsius
-calcTVHeight() {} Given a width on a 16:9 tv, calculate the height
-couldDate(){} // two people, could they date (deal with ages either way round)
-colorDarken(){} // [red, green, blue] (0-255), darkenAmount - don't let the amount drop below 0
-
-*/
-
-exports.minDateableAge = function(age){
-  return (age / 2) + 7;
+/**
+ * A function that will take two array arguments.
+ * The function will combine both arrays together into a single array and return it.
+ * 
+ * @param {array} list1 - An array e.g. ["red", "blue"]
+ * @param {array} list2 - An array e.g ["hello", "goodbye"]
+ * @return {array} A merged array
+ */
+export const mergeArrays = (list1, list2) => {
+  let mergedLists = list1.concat(list2);
+  return mergedLists;
 };
 
-exports.hasFever = function(tempInCelsius){
-  return tempInCelsius >= 37.5;
+/**
+ * A function that will take two arguments: an array of colors and an index.
+ * The function will test whether the item at index is not a pre-approved colour (red, green, blue).
+ * If the colour at the index is not pre-approved, the colour will be deleted.
+ * This should not mutate the provided array.
+ * 
+ * @param {array} colours - An array of colours e.g. ["red", "blue"]
+ * @param {number} index - Index of the array item to test
+ * @return {array} A list of updated colours
+ */
+export const checkColour = (colours, index) => {
+  const selectedColour = colours[index];
+  if( selectedColour === "red" || selectedColour == "green" || selectedColour == "blue")
+    return colours;
+  let newColours = [...colours];
+  newColours.splice(index, 1);
+  return newColours;
 };
-
-exports.calcTVHeight = function(width) {
-  return (width / 16) * 9;
-};
-
-exports.couldDate = function(age1, age2) {
-  if(age1 == age2) return true;
-  var orderedAges = [age1,age2].sort();
-  var lowerAge = orderedAges[0];
-  var minAge = exports.minDateableAge(orderedAges[1]);
-  return lowerAge >= minAge;
-};
-
-function floor(number, amount) {
-  return (number - amount < 0) ? 0 : number - amount;
-}
-
-exports.colorDarken = function(rgbArray, darkenAmount) {
-  var red = floor(rgbArray[0], darkenAmount);
-  var green = floor(rgbArray[1], darkenAmount);
-  var blue = floor(rgbArray[2], darkenAmount);
-  
-  return [red, green, blue];
-};
-

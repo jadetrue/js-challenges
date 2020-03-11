@@ -1,8 +1,8 @@
 // This file allows us to dynamically export either the solution or challenge file
 // depending on the arguments used to run the test from the command line
 
-import * as challenge from './js2-challenge';
-import * as solution from './js2-solution';
+import * as challenge from './js3-challenge';
+import * as solution from './js3-solution';
 
 let exportedModule = solution;
 
