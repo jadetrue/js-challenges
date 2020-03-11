@@ -8,7 +8,7 @@ const person2LastName = "O'Brian";
 const person2Age = 33;
 
 /**
- * A function that uses the variables to output "Hello, My name is John Smith"
+ * A function that uses the variables to return "Hello, My name is John Smith"
  *
  * @return {string} Hello, my name is John Smith
  */
@@ -17,7 +17,7 @@ export const greet = () => {
 };
 
 /**
- * A function that uses the variables to calculate the age differences and outputs 
+ * A function that uses the variables to calculate the age differences and return 
  * "Mary is 11 years older than John"
  *
  * @return {string} Mary is 11 years older than John
@@ -28,7 +28,7 @@ export const calculateAgeDifference = () => {
 };
 
 /**
- * A function that uses the variables to output "The total length of both names is 20 characters"
+ * A function that uses the variables to return "The total length of both names is 20 characters"
  *
  * @return {string} The total length of both names is 20 characters
  */
