@@ -1,4 +1,4 @@
-/* JS3 builds on the previous challenges and adds the use of Arrays */
+/* JS5 is all about for loops */
 
 /**
  * A function that will take two array arguments.
