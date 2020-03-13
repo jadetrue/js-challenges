@@ -7,7 +7,7 @@
  * This should not mutate the provided array.
  * 
  * @param {array} colours - An array of colours e.g. ["red", "yellow"]
- * @return {array} updatedColours - A list of updated colours e.g. ["red", "red"]
+ * @return {array} A list of updated colours e.g. ["red", "red"]
  */
 export const replaceColours = (colours) => {
   let newColours = [...colours];
@@ -19,13 +19,31 @@ export const replaceColours = (colours) => {
   return newColours;
 };
 
+/**
+* A function that takes a string and checks to see if it is a palindrome (noon, anna, madam are all palindromes)
+* returns true or false
+*
+* @param {string} word - the word to be checked
+* @returns {boolean} true if the word is a palindrome, false otherwise
+*/
 export const palindromeChecker = (word) => {
-  
-
+  const reverseWord = word.split("").reverse().join("");
+  return reverseWord === word
 }
 
-export const reverseStringsInArray = (names) => {
-  for (let i = 0; i < names.length; i++){
-
+/**
+* A function that takes in an array of words, checks if each word is a palindrome and returns
+* a new array containing only the words that are palindromes
+*
+* @param {array} words - the words to be checked
+* @returns {array} List of all the words that are palindromes
+*/
+export const getAllPalindromes = (words) => {
+  let palindromes = [];
+  for (let i = 0; i < words.length; i++){
+    if (palindromeChecker(words[i])){
+      palindromes.push(words[i]);
+    }
   }
+  return palindromes;
 }
