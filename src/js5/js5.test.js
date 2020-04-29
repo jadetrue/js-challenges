@@ -12,7 +12,11 @@ test("Check colour array for any non pre-approved colours", () => {
 
 test("Check pallindromes can be detected", () => {
   expect(challenge.palindromeChecker("noon")).toBe(true);
+  expect(challenge.palindromeChecker("racecar")).toBe(true);
+  expect(challenge.palindromeChecker("civic")).toBe(true);
   expect(challenge.palindromeChecker("town")).toBe(false);
+  expect(challenge.palindromeChecker("grasp")).toBe(false);
+  expect(challenge.palindromeChecker("terrible")).toBe(false);
   expect(challenge.palindromeChecker("")).toBe(true);
 })
 
