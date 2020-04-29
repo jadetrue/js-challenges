@@ -11,6 +11,8 @@ test("Merge two arrays together", () => {
 test("Check various indices", () => {
   expect(challenge.checkColour(colours, 0)).toMatchObject(["green", "blue", "yellow", "red"]);
   expect(challenge.checkColour(colours, 1)).toMatchObject(["violet", "green", "blue", "yellow", "red"]);
+  expect(challenge.checkColour(colours, 2)).toMatchObject(["violet", "green", "blue", "yellow", "red"]);
+  expect(challenge.checkColour(colours, 3)).toMatchObject(["violet", "green", "blue", "red"]);
   expect(challenge.checkColour(colours, 4)).toMatchObject(["violet", "green", "blue", "yellow", "red"]);
 });
 
