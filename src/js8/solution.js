@@ -1,12 +1,22 @@
 /* Objects - See the data.js file for the objects used in the tests */
 
 /**
+ * A function that takes in a person object and returns a summary of that person
+ *
+ * @param {object} person - A person object e.g. {name: "Elizabeth Bennet"}
+ * @return {string} Elizabeth Bennet is 20 years old, has a fortune of £150, and lives in Longbourn, near Meryton, Hertfordshire
+ */
+export const getSummary = (person) => {
+  return `${person.name} is ${person.age} years old, has a fortune of £${person.currentFortune}, and lives in ${person.address}`;
+};
+
+/**
  * A function that takes in a person object and will work out if they are rich ( > 1000 per annum)
  *
  * @param {object} person - A person object e.g. {name: "Elizabeth Bennet"}
  * @return {boolean} true if they are rich, false otherwise
  */
-export const isRich = person => {
+export const isRich = (person) => {
   return person.incomePerAnnum > 1000;
 };
 
@@ -27,7 +37,7 @@ export const matchingEyeColour = (person1, person2) => {
  * @param {object} person - A person object e.g. {name: "Elizabeth Bennet"}
  * @return {object} the updated person
  */
-export const yearPassed = person => {
+export const yearPassed = (person) => {
   person.age++;
   person.calculateFinancesYearEnd();
   return person;
