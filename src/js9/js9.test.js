@@ -20,14 +20,15 @@ test("Should return person object with highest fortune", () => {
 });
 
 test("Should return an array of person objects after running the calculateFinancesYearEnd method and incrementing the age", () => {
-  expect(challenge.getEndOfYearFinances(people).length).toBe(3);
-  expect(challenge.getEndOfYearFinances(people)[0].id).toBe("001");
-  expect(challenge.getEndOfYearFinances(people)[0].age).toBe(21);
-  expect(challenge.getEndOfYearFinances(people)[0].currentFortune).toBe(200);
-  expect(challenge.getEndOfYearFinances(people)[1].id).toBe("002");
-  expect(challenge.getEndOfYearFinances(people)[1].age).toBe(28);
-  expect(challenge.getEndOfYearFinances(people)[1].currentFortune).toBe(35000);
-  expect(challenge.getEndOfYearFinances(people)[2].id).toBe("003");
-  expect(challenge.getEndOfYearFinances(people)[2].age).toBe(23);
-  expect(challenge.getEndOfYearFinances(people)[2].currentFortune).toBe(200);
+  const result = challenge.getEndOfYearFinances(people)
+  expect(result.length).toBe(3);
+  expect(result[0].id).toBe("001");
+  expect(result[0].age).toBe(21);
+  expect(result[0].currentFortune).toBe(200);
+  expect(result[1].id).toBe("002");
+  expect(result[1].age).toBe(28);
+  expect(result[1].currentFortune).toBe(35000);
+  expect(result[2].id).toBe("003");
+  expect(result[2].age).toBe(23);
+  expect(result[2].currentFortune).toBe(200);
 });
