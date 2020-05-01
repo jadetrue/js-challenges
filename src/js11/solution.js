@@ -1,6 +1,6 @@
 // Extending classes - In this challenge you will extend the class from the previous challenge and add extra properties and methods.
 // All tests will run against these extended classes
-import { Shape } from "../js10/challenge";
+import { Shape } from "../js10/solution";
 
 /**
  * Class representing a Rectangle

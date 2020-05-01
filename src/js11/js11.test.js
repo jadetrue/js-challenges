@@ -1,8 +1,8 @@
-import { Rectangle, Circle } from "./challenge";
+import challenge from "./index";
 describe("Rectangle tests", () => {
   let rectangle;
   beforeEach(() => {
-    rectangle = new Rectangle(2, 5, "green", 10, 15);
+    rectangle = new challenge.Rectangle(2, 5, "green", 10, 15);
   });
 
   test("Should contruct object correctly", () => {
@@ -33,7 +33,7 @@ describe("Rectangle tests", () => {
 describe("Circle tests", () => {
   let circle;
   beforeEach(() => {
-    circle = new Circle(4, 10, "yellow", 3);
+    circle = new challenge.Circle(4, 10, "yellow", 3);
   });
 
   test("Should construct object correctly", () => {

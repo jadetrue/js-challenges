@@ -1,9 +1,9 @@
-import { Shape } from "./challenge";
+import challenge from "./index";
 
 let square;
 
 beforeEach(() => {
-  square = new Shape(5, 10);
+  square = new challenge.Shape(5, 10);
 });
 
 test("Should return a string od coordinates when the coordinates getter is called", () => {
@@ -16,13 +16,13 @@ test("Should return a string if drawShape() method is called", () => {
 
 test("Should set the coordinates of the shape when the method is called", () => {
   square.changePosition(10, 20);
-  expect(square.xCoord).toBe(10)
-  expect(square.yCoord).toBe(20)
-})
+  expect(square.xCoord).toBe(10);
+  expect(square.yCoord).toBe(20);
+});
 
 test("Should initialize with colour and colour should change when method is called", () => {
-  square = new Shape(5, 10, "brown");
-  expect(square.colour).toBe("brown")
-  expect(square.changeColour("green")).toBe("The old colour was brown, the new colour is green")
-  expect(square.colour).toBe("green")
-})
+  square = new challenge.Shape(5, 10, "brown");
+  expect(square.colour).toBe("brown");
+  expect(square.changeColour("green")).toBe("The old colour was brown, the new colour is green");
+  expect(square.colour).toBe("green");
+});
