@@ -1,4 +1,5 @@
 // Asynchronous - This challenge will involve using promises to deal with asynchronous functions
+// THIS SOLUTION FILE CONTAINS TWO VARIATIONS ON SOLUTION WHICH ACHIEVES THE CHALLENGE THROUGH TWO SEPERATE WAYS, FETCH API AND ASYNCHRONOUS FUNCTIONS
 
 /**
  * A function that uses the fetch API to read people from a static, local people file written in JSON format.
@@ -66,3 +67,27 @@ export const filterByInterest = (interest) => {
       return people.filter((person) => person.interests.includes(interest));
     });
 };
+
+/******************************/
+/**** VARIATIONS ARE BELOW ****/
+/******************************/
+
+// export const getNames = async () => {
+//   const people = await getData();
+//   return people.map((person) => person.name);
+// };
+
+// export const getPerson = async (id) => {
+//   const people = await getData();
+//   return people.find((person) => person.id === id);
+// };
+
+// export const getEmployedPeople = async () => {
+//   const people = await getData();
+//   return people.filter((person) => person.employed);
+// };
+
+// export const filterByInterest = async (interest) => {
+//   const people = await getData();
+//   return people.filter((person) => person.interests.includes(interest));
+// };
