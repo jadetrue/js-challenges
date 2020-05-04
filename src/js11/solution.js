@@ -99,17 +99,17 @@ export class Circle extends Shape {
 
   /**
    * Method that returns the area of the circle
-   * @returns {number} to 2 decimal places
+   * @returns {number}
    */
   calcArea() {
-    return parseFloat((Math.PI * this.radius ** 2).toFixed(2));
+    return (Math.PI * this.radius ** 2);
   }
 
   /**
    * Method that returns the circumference of the circle
-   * @returns {number} to 2 decimal places
+   * @returns {number} 
    */
   calcCircumference() {
-    return parseFloat((2 * Math.PI * this.radius).toFixed(2));
+    return (2 * Math.PI * this.radius);
   }
 }

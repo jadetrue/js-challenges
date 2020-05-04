@@ -47,7 +47,7 @@ describe("Circle tests", () => {
   });
 
   test("Should calculate area", () => {
-    expect(circle.calcArea()).toBe(28.27);
+    expect(circle.calcArea()).toBeCloseTo(28.27, 2);
   });
 
   test("Should give diameter", () => {
@@ -55,7 +55,7 @@ describe("Circle tests", () => {
   });
 
   test("Should give circumference", () => {
-    expect(circle.calcCircumference()).toBe(18.85);
+    expect(circle.calcCircumference()).toBeCloseTo(18.85, 2);
   });
 
   test("Should give a different string to previous challenge when drawShape method is called", () => {
