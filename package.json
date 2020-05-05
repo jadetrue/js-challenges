@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test-solution": "jest",
-    "test-coverage": "jest js13 --watch --coverage",
+    "test-coverage": "jest ./src/js13/challenge.test.js --watch --coverage",
     "lint": "jshint ./src/",
     "test": "jest --config jest-challenge.config.js"
   },
