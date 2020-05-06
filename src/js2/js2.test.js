@@ -1,37 +1,21 @@
-var solution = require("./js2-solution");
-if (typeof __CHALLENGE__ !== "undefined" && __CHALLENGE__)
-  solution = require("./js2-challenge");
+import challenge from './index';
 
-var colors = ["violet", "green", "blue", "yellow"];
-
-test("Fix index 0", function() {
-  var result = solution.fixColors(colors, 0);
-  expect(result[0]).toBe("red");
-  expect(result[1]).toBe("green");
-  expect(result[2]).toBe("blue");
-  expect(result[3]).toBe("yellow");
+test("Greet various people", () => {
+  expect(challenge.greet("John")).toBe("Hi John, you are great!");
+  expect(challenge.greet("Mary")).toBe("Hi Mary, you are great!");
 });
 
-test("Fix index 1", function() {
-  var result = solution.fixColors(colors, 1);
-  expect(result[0]).toBe("violet");
-  expect(result[1]).toBe("red");
-  expect(result[2]).toBe("blue");
-  expect(result[3]).toBe("yellow");
+test("Calculate age difference between two people", () => {
+  expect(challenge.calculateAgeDifference(20, 10)).toBe("The age difference between person 1 and person 2 is 10 years");
+  expect(challenge.calculateAgeDifference(22, 10)).toBe("The age difference between person 1 and person 2 is 12 years");
+  expect(challenge.calculateAgeDifference(10, 22)).toBe("The age difference between person 1 and person 2 is 12 years");
 });
 
-test("Fix index 2", function() {
-  var result = solution.fixColors(colors, 2);
-  expect(result[0]).toBe("violet");
-  expect(result[1]).toBe("green");
-  expect(result[2]).toBe("blue");
-  expect(result[3]).toBe("yellow");
-});
-
-test("Fix index 3", function() {
-  var result = solution.fixColors(colors, 3);
-  expect(result[0]).toBe("violet");
-  expect(result[1]).toBe("green");
-  expect(result[2]).toBe("blue");
-  expect(result[3]).toBe("yellow");
+test("Dynamically calculate name length", () => {
+  expect(challenge.totalNameLength("John", "Smith")).toBe(
+    "The total length of the names provided is 9 characters"
+  );
+  expect(challenge.totalNameLength("Mary", "O'Brian")).toBe(
+    "The total length of the names provided is 11 characters"
+  );
 });

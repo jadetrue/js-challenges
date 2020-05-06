@@ -1,55 +1,34 @@
-var solution = require("./js3-solution");
-if (typeof __CHALLENGE__ !== "undefined" && __CHALLENGE__)
-  solution = require("./js3-challenge");
+import challenge from "./index";
 
-test("Minimum dateable age", function() {
-  expect(solution.minDateableAge(22)).toBe(18);
-  expect(solution.minDateableAge(56)).toBe(35);
+test("Find the largest  of two numbers", () => {
+  expect(challenge.findLargerOfTwoNumbers(1, 2)).toBe(2);
+  expect(challenge.findLargerOfTwoNumbers(-1, 2)).toBe(2);
+  expect(challenge.findLargerOfTwoNumbers(3, 3)).toBe(3);
+  expect(challenge.findLargerOfTwoNumbers(10, 9)).toBe(10);
 });
 
-test("Has fever", function() {
-  expect(solution.hasFever(37.4)).toBeFalsy();
-  expect(solution.hasFever(37.5)).toBeTruthy();
-  expect(solution.hasFever(37.6)).toBeTruthy();
+test("Find the smallest  of three numbers", () => {
+  expect(challenge.findSmallestOfThreeNumbers(1, 2, 3)).toBe(1);
+  expect(challenge.findSmallestOfThreeNumbers(1, 2, -3)).toBe(-3);
+  expect(challenge.findSmallestOfThreeNumbers(10, 100000, 239823489)).toBe(10);
 });
 
-test("TV height", function() {
-  expect(solution.calcTVHeight(16)).toBe(9);
-  expect(solution.calcTVHeight(32)).toBe(18);
+test("calculate grade based on score out of 100", () => {
+  expect(challenge.calculateGrade(30)).toBe("D");
+  expect(challenge.calculateGrade(70)).toBe("C");
+  expect(challenge.calculateGrade(80)).toBe("B");
+  expect(challenge.calculateGrade(90)).toBe("A");
+  expect(challenge.calculateGrade(100)).toBe("A");
+  expect(challenge.calculateGrade(-100)).toBe("Not a valid score!");
+  expect(challenge.calculateGrade("Hello")).toBe("Not a valid score!");
+  expect(challenge.calculateGrade("100")).toBe("Not a valid score!");
 });
 
-test("Could date", function() {
-  expect(solution.couldDate(18, 22)).toBeTruthy();
-  expect(solution.couldDate(22, 18)).toBeTruthy();
-  expect(solution.couldDate(22, 22)).toBeTruthy();
-  expect(solution.couldDate(34, 56)).toBeFalsy();
-  expect(solution.couldDate(56, 34)).toBeFalsy();
-});
-
-test("Color darken: Basic Reduction", function() {
-  var result = solution.colorDarken([60, 60, 60], 10);
-  expect(result[0]).toBe(50);
-  expect(result[1]).toBe(50);
-  expect(result[2]).toBe(50);
-});
-
-test("Color darken: Never go below 0", function() {
-  var result = solution.colorDarken([9, 1, 9], 10);
-  expect(result[0]).toBe(0);
-  expect(result[1]).toBe(0);
-  expect(result[2]).toBe(0);
-});
-
-test("Reduce by a number that is not 10", function() {
-  var result = solution.colorDarken([9, 11, 10], 8);
-  expect(result[0]).toBe(1);
-  expect(result[1]).toBe(3);
-  expect(result[2]).toBe(2);
-});
-
-test("Middle index does not reduce below 0 when low number", function() {
-  var result = solution.colorDarken([60, 5, 60], 6);
-  expect(result[0]).toBe(54);
-  expect(result[1]).toBe(0);
-  expect(result[2]).toBe(54);
+test("Generate the report card greeting statement", () => {
+  expect(challenge.generateReportCardGreeting("Liam", 100)).toBe("Well done Liam! you received the highest grade of A");
+  expect(challenge.generateReportCardGreeting("Shea", "Hello")).toBe(
+    "Sorry Shea, we were unable to process your score results"
+  );
+  expect(challenge.generateReportCardGreeting("Matt", 50)).toBe("Sorry Matt, you received a failing grade of D");
+  expect(challenge.generateReportCardGreeting("John", 80)).toBe("Well done John, you received a grade of B");
 });

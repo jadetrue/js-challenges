@@ -1,58 +1,32 @@
-import { people } from "./js6-data";
-import { Person } from "./js6-solution";
+import challenge from './index';
 
-const bob = new Person(people[0]);
-const harigon = new Person(people[1]);
-const thomas = new Person(people[2]);
-const sarah = new Person(people[3]);
-const dave = new Person(people[5]);
-const doris = new Person(people[6]);
+const words = ["madam", "sir", "mam", 111, "anna"];
 
-test("is Vegetarian", () => {
-  expect(bob.isVegetarian).toBeTruthy();
-  expect(harigon.isVegetarian).toBeTruthy();
-  expect(thomas.isVegetarian).toBeFalsy();
+test("Check pallindromes can be detected", () => {
+  expect(challenge.palindromeChecker("noon")).toBe(true);
+  expect(challenge.palindromeChecker("town")).toBe(false);
+  expect(challenge.palindromeChecker("")).toBe(true);
 });
 
-test("Can fit on name card", () => {
-  expect(bob.canFitOnANameCard).toBeTruthy();
-  expect(harigon.canFitOnANameCard).toBeFalsy();
-  expect(thomas.canFitOnANameCard).toBeTruthy();
+test("See if words contain vowels", () => {
+  expect(challenge.vowelChecker("noon")).toBe(true);
+  expect(challenge.vowelChecker("town")).toBe(true);
+  expect(challenge.vowelChecker("")).toBe(false);
+  expect(challenge.vowelChecker("sky")).toBe(false);
 });
 
-test("Life expectancy", () => {
-  expect(bob.lifeExpectancy).toBe(90);
-  expect(harigon.lifeExpectancy).toBe(90);
-  expect(thomas.lifeExpectancy).toBe(95);
+test("Test various words to see if they are palindromes or contain vowels", () => {
+  expect(challenge.useWordCheckCallback("noon", challenge.palindromeChecker)).toBe(true);
+  expect(challenge.useWordCheckCallback("town", challenge.palindromeChecker)).toBe(false);
+  expect(challenge.useWordCheckCallback("noon", challenge.vowelChecker)).toBe(true);
+  expect(challenge.useWordCheckCallback("town", challenge.vowelChecker)).toBe(true);
+  expect(challenge.useWordCheckCallback("sky", challenge.vowelChecker)).toBe(false);
+  expect(challenge.useWordCheckCallback("", challenge.vowelChecker)).toBe("Input must be a valid single word");
+  expect(challenge.useWordCheckCallback("two words", challenge.vowelChecker)).toBe("Input must be a valid single word");
+  expect(challenge.useWordCheckCallback(123, challenge.vowelChecker)).toBe("Input must be a valid single word");
 });
 
-test("Years remaining", () => {
-  expect(bob.yearsRemaining).toBe(78);
-  expect(sarah.yearsRemaining).toBe(78);
-  expect(dave.yearsRemaining).toBe(2);
-  expect(doris.yearsRemaining).toBe(-4);
-});
-
-test("Can ride on a rollercoaster", () => {
-  expect(harigon.canRideOnARollercoaster).toBeTruthy();
-  expect(thomas.canRideOnARollercoaster).toBeTruthy();
-  expect(sarah.canRideOnARollercoaster).toBeFalsy();
-});
-
-test("Can buy beer", () => {
-  expect(thomas.canBuyBeer).toBeTruthy();
-  expect(sarah.canBuyBeer).toBeFalsy();
-  expect(dave.canBuyBeer).toBeTruthy();
-});
-
-test("Summary", () => {
-  expect(bob.getSummary()).toBe(
-    "Bob is a vegetarian, is 110cm tall and has 78 years to live"
-  );
-  expect(thomas.getSummary()).toBe(
-    "Thomas likes meat, is 121cm tall and has 77 years to live"
-  );
-  expect(doris.getSummary()).toBe(
-    "Doris is a vegetarian, is 80cm tall and should be dead"
-  );
+test("", () => {
+  expect(challenge.checkWords(words, challenge.vowelChecker)).toMatchObject(["madam", "sir", "mam", "anna"]);
+  expect(challenge.checkWords(words, challenge.palindromeChecker)).toMatchObject(["madam", "mam", "anna"]);
 });
