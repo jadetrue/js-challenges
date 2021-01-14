@@ -4,7 +4,7 @@
 import * as challenge from './challenge';
 import * as solution from './solution';
 
-let exportedModule = solution;
+let exportedModule = challenge;
 
 if (typeof __CHALLENGE__ !== "undefined" && __CHALLENGE__){
     exportedModule = challenge;
