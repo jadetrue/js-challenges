@@ -18,7 +18,7 @@ const string2 = "World!";
  *
  * @returns {string} Hello World!
  */
-const concatenateStrings = () => {
+export const concatenateStrings = () => {
   const returnString = string1 + " " + string2;
 
   return returnString;
@@ -33,11 +33,11 @@ const largeNumber2 = 200;
  *
  * @returns {number} the largest number
  */
-const findLargestNumber = () => {
-  if (number1 > number2) {
-    return number1;
+export const findLargestNumber = () => {
+  if (largeNumber1 > largeNumber2) {
+    return largeNumber1;
   } else {
-    return number2;
+    return largeNumber2;
   }
 };
 
@@ -50,7 +50,7 @@ const addNumber2 = 24;
  *
  * @returns {number} the sum of both numbers
  */
-const addNumbers = () => {
+export const addNumbers = () => {
   const sum = addNumber1 + addNumber2;
 
   return sum;
@@ -66,7 +66,7 @@ const longString = "I am a very very very very very long string";
  *
  * @returns {number} the length of the string
  */
-const findLengthOfString = () => {
+export const findLengthOfString = () => {
   const lengthOfString = longString.length;
 
   return lengthOfString;
@@ -84,8 +84,9 @@ const thing = "I am a thing";
  *
  * @returns {string} This is a string
  */
-const findType = () => {
+export const findType = () => {
   const thingType = typeof thing;
+
   if (thingType === "string") {
     return "This is a string";
   } else if (thingType === "number") {
@@ -95,6 +96,22 @@ const findType = () => {
   } else {
     return "I don't know what this thing is";
   }
+};
+
+const nameTagOption = "Timothy";
+
+/**
+ * A function to programmatically decide if a name is suitable for a name tag.
+ * This means it must still work even if the name is different and return something if name provided is incorrect.
+ * Name tag rules are: The name must be less than or equal to 8 characters and begin with a capital letter.
+ *
+ * @returns {boolean} true || false
+ */
+export const getIsValidOnNameTag = () => {
+  const firstLetterOfName = nameTagOption.substring(0, 1);
+  const isValidName = nameTagOption.length <= 8 && firstLetterOfName === firstLetterOfName.toUpperCase();
+
+  return isValidName;
 };
 
 /* Advanced Challenges */
@@ -107,29 +124,11 @@ const stringToConvert = "14.45";
  *
  * @returns {number} The number converted from the string "32.87" -> 32.87
  */
-const convertStringToNumber = () => {
+export const convertStringToNumber = () => {
   const convertedString = parseFloat(stringToConvert);
 
   return convertedString;
 };
-
-const nameTagOption = "Timothy";
-
-/**
- * A function to programmatically decide if a name is suitable for a name tag.
- * This means it must still work even if the name is different and return something if name provided is incorrect.
- * Name tag rules are: The name must be less than or equal to 8 characters and begin with a capital letter.
- *
- * @returns {boolean} true || false
- */
-const getIsValidOnNameTag = () => {
-  const firstLetterOfName = nameTagOption.substring(0, 1);
-  const isValidName = nameTagOption.length <= 8 && firstLetterOfName === firstLetterOfName.toUpperCase();
-
-  return isValidName;
-};
-
-/* Expert Challenge */
 
 const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
 
@@ -139,11 +138,21 @@ const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
  *
  * @returns {boolean} true || false
  */
-const getHasUppercaseLetters = () => {
+export const getHasUppercaseLetters = () => {
   const regex = /([A-Z])/g;
-
   const hasUpperCaseLetters = regex.test(stringWithUppercaseLetters);
+
   return hasUpperCaseLetters;
 };
 
-console.log(fitsOnNameTag());
+/* Expert Challenge */
+
+const pascalCaseVariableName = "IWantToBeSnakeCase";
+
+export const convertPascalCaseToSnakeCase = () => {
+  const splitWords = pascalCaseVariableName.split(/(?=[A-Z])/);
+  const joinedWordsWithUnderscores = splitWords.join("_");
+  const snakeCase = joinedWordsWithUnderscores.toLowerCase();
+
+  return snakeCase;
+};
