@@ -1,36 +1,79 @@
-/* JS1 challenges your use of variables as well as number and string manipulation */
+/* This challenge is designed to test you knowledge of Types and Control Flow (If and Switch Statements) */
 
-const person1FirstName = "John";
-const person1LastName = "Smith";
-const person1Age = 22;
-const person2FirstName = "Mary";
-const person2LastName = "O'Brian";
-const person2Age = 33;
+/* 
+  All challenges in this repository are seperated into four levels: Foundation, Intermediate, Advanced and Expert.
+  The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
+  and may require you to google things in order to solve them. If you find an answer online somewhere, be kind and
+  share it with the group!
+*/
+
+/* Foundation Challenges */
+
+const string1 = "Hello";
+const string2 = "World!";
 
 /**
- * A function that uses the provided variables to return "Hello, my name is John Smith"
+ * A Function that programmatically concatenates two strings together.
+ * This means if the string were different it would still add them together.
  *
- * @return {string} Hello, my name is John Smith
+ * @returns {string} Hello World!
  */
-export const greet = () => {
-  // your code here
+const concatenateStrings = () => {
+  const returnString = string1 + " " + string2;
+
+  return returnString;
 };
 
-/**
- * A function that uses the variables to calculate the age differences and return 
- * "Mary is 11 years older than John"
- *
- * @return {string} Mary is 11 years older than John
- */
-export const calculateAgeDifference = () => {
-  // your code here
-};
+const largeNumber1 = 100;
+const largeNumber2 = 200;
 
 /**
- * A function that uses the variables to return "The total length of both names is 20 characters"
+ * A Function that programmatically returns the largest number.
+ * This means if the numbers were different it would still return the largest one.
  *
- * @return {string} The total length of both names is 20 characters
+ * @returns {number} the largest number
  */
-export const totalNameLength = () => {
-  // your code here
+const findLargestNumber = () => {
+  if (number1 > number2) {
+    return number1;
+  } else {
+    return number2;
+  }
+};
+
+const addNumber1 = 12;
+const addNumber2 = 24;
+
+/**
+ * A Function that programmatically adds two numbers together.
+ * This means if the numbers were different it would still add them together.
+ *
+ * @returns {number} the sum of both numbers
+ */
+const addNumbers = () => {
+  const sum = addNumber1 + addNumber2;
+
+  return sum;
+};
+
+/* Intermediate Challenges */
+
+const longString = "I am a very very very very very long string";
+
+/**
+ * A function to programmatically find the length of a string.
+ * This means if the string was different it would still find the length.
+ *
+ * @returns {number} the length of the string
+ */
+const findLengthOfString = () => {
+  const lengthOfString = longString.length;
+
+  return lengthOfString;
+};
+
+const thing = "I am a thing";
+
+const findType = () => {
+  const thingType = typeof thing;
 };
