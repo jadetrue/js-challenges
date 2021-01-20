@@ -5,7 +5,7 @@
  *
  * Find length of string
  * Typeof something
- * Return a personalised statement based on the users age and name -> "Sorry John, you're only old enough to drink coke."
+ * Check if strings first letter is capital and only 8 characters long so it fits on a name tag
  *
  * Convert string to number "14.4" -> 14x 14.4
  * Turn a string that looks like this IAmAString to this "i_am_a_string"

@@ -74,6 +74,76 @@ const findLengthOfString = () => {
 
 const thing = "I am a thing";
 
+/**
+ * A function that programmatically tells you what the type of the variable is.
+ * This variable was still one of the accepted types it would still output a string.
+ * If the variable is a string output "This is a string"
+ * If the variable is a number output "This is a number"
+ * If the variable is a boolean output "This is a boolean"
+ * If the variable is not any of those types output "I don't know what this thing is"
+ *
+ * @returns {string} This is a string
+ */
 const findType = () => {
   const thingType = typeof thing;
+  if (thingType === "string") {
+    return "This is a string";
+  } else if (thingType === "number") {
+    return "This is a number";
+  } else if (thingType === "boolean") {
+    return "This is a boolean";
+  } else {
+    return "I don't know what this thing is";
+  }
 };
+
+/* Advanced Challenges */
+
+const stringToConvert = "14.45";
+
+/**
+ * A function that programmatically converts a number stored as a string to a number type.
+ * This means if the string was different it would still convert it to a number.
+ *
+ * @returns {number} The number converted from the string "32.87" -> 32.87
+ */
+const convertStringToNumber = () => {
+  const convertedString = parseFloat(stringToConvert);
+
+  return convertedString;
+};
+
+const nameTagOption = "Timothy";
+
+/**
+ * A function to programmatically decide if a name is suitable for a name tag.
+ * This means it must still work even if the name is different and return something if name provided is incorrect.
+ * Name tag rules are: The name must be less than or equal to 8 characters and begin with a capital letter.
+ *
+ * @returns {boolean} true || false
+ */
+const getIsValidOnNameTag = () => {
+  const firstLetterOfName = nameTagOption.substring(0, 1);
+  const isValidName = nameTagOption.length <= 8 && firstLetterOfName === firstLetterOfName.toUpperCase();
+
+  return isValidName;
+};
+
+/* Expert Challenge */
+
+const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
+
+/**
+ * A function to programmatically test if a string contains uppercase letters.
+ * This means if the string was different it would still accurately return true or false.
+ *
+ * @returns {boolean} true || false
+ */
+const getHasUppercaseLetters = () => {
+  const regex = /([A-Z])/g;
+
+  const hasUpperCaseLetters = regex.test(stringWithUppercaseLetters);
+  return hasUpperCaseLetters;
+};
+
+console.log(fitsOnNameTag());
