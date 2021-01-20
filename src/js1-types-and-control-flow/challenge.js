@@ -13,47 +13,39 @@ const string1 = "Hello";
 const string2 = "World!";
 
 /**
- * A Function that programmatically concatenates two strings together.
+ * A function that programmatically concatenates two strings together.
  * This means if the string were different it would still add them together.
  *
  * @returns {string} Hello World!
  */
 export const concatenateStrings = () => {
-  const returnString = string1 + " " + string2;
-
-  return returnString;
+  // Write your code here
 };
 
 const largeNumber1 = 100;
 const largeNumber2 = 200;
 
 /**
- * A Function that programmatically returns the largest number.
+ * A function that programmatically returns the largest number.
  * This means if the numbers were different it would still return the largest one.
  *
  * @returns {number} the largest number
  */
 export const findLargestNumber = () => {
-  if (largeNumber1 > largeNumber2) {
-    return largeNumber1;
-  } else {
-    return largeNumber2;
-  }
+  // Write your code here
 };
 
 const addNumber1 = 12;
 const addNumber2 = 24;
 
 /**
- * A Function that programmatically adds two numbers together.
+ * A function that programmatically adds two numbers together.
  * This means if the numbers were different it would still add them together.
  *
  * @returns {number} the sum of both numbers
  */
 export const addNumbers = () => {
-  const sum = addNumber1 + addNumber2;
-
-  return sum;
+  // Write your code here
 };
 
 /* Intermediate Challenges */
@@ -67,9 +59,7 @@ const longString = "I am a very very very very very long string";
  * @returns {number} the length of the string
  */
 export const findLengthOfString = () => {
-  const lengthOfString = longString.length;
-
-  return lengthOfString;
+  // Write your code here
 };
 
 const thing = "I am a thing";
@@ -85,17 +75,7 @@ const thing = "I am a thing";
  * @returns {string} This is a string
  */
 export const findType = () => {
-  const thingType = typeof thing;
-
-  if (thingType === "string") {
-    return "This is a string";
-  } else if (thingType === "number") {
-    return "This is a number";
-  } else if (thingType === "boolean") {
-    return "This is a boolean";
-  } else {
-    return "I don't know what this thing is";
-  }
+  // Write your code here
 };
 
 const nameTagOption = "Timothy";
@@ -108,10 +88,7 @@ const nameTagOption = "Timothy";
  * @returns {boolean} true || false
  */
 export const getIsValidOnNameTag = () => {
-  const firstLetterOfName = nameTagOption.substring(0, 1);
-  const isValidName = nameTagOption.length <= 8 && firstLetterOfName === firstLetterOfName.toUpperCase();
-
-  return isValidName;
+  // Write your code here
 };
 
 /* Advanced Challenges */
@@ -125,9 +102,7 @@ const stringToConvert = "14.45";
  * @returns {number} The number converted from the string "32.87" -> 32.87
  */
 export const convertStringToNumber = () => {
-  const convertedString = parseFloat(stringToConvert);
-
-  return convertedString;
+  // Write your code here
 };
 
 const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
@@ -139,20 +114,19 @@ const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
  * @returns {boolean} true || false
  */
 export const getHasUppercaseLetters = () => {
-  const regex = /([A-Z])/g;
-  const hasUpperCaseLetters = regex.test(stringWithUppercaseLetters);
-
-  return hasUpperCaseLetters;
+  // Write your code here
 };
 
 /* Expert Challenge */
 
 const pascalCaseVariableName = "IWantToBeSnakeCase";
 
+/**
+ * A function that programmatically converts a string written in PascalCase to a string written in snake_case (lowercase with underscores).
+ * This means if the PascalCase string changes then the function should still convert it.
+ *
+ * @returns {string} i_want_to_be_snake_case
+ */
 export const convertPascalCaseToSnakeCase = () => {
-  const splitWords = pascalCaseVariableName.split(/(?=[A-Z])/);
-  const joinedWordsWithUnderscores = splitWords.join("_");
-  const snakeCase = joinedWordsWithUnderscores.toLowerCase();
-
-  return snakeCase;
+  // Write your code here
 };
