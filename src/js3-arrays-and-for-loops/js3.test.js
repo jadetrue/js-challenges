@@ -1,34 +1,106 @@
 import challenge from "./index";
+const {
+  getFirstAndLastItems,
+  totalScores,
+  moveFirstAndLastItems,
+  createRecipeString,
+  totalRange,
+  removeEvenNumbers,
+  generateHighscores,
+  generateAverage,
+  reverseOrder,
+} = challenge;
 
-test("Find the largest  of two numbers", () => {
-  expect(challenge.findLargerOfTwoNumbers(1, 2)).toBe(2);
-  expect(challenge.findLargerOfTwoNumbers(-1, 2)).toBe(2);
-  expect(challenge.findLargerOfTwoNumbers(3, 3)).toBe(3);
-  expect(challenge.findLargerOfTwoNumbers(10, 9)).toBe(10);
+/**
+ * REMOVE X FROM DESCRIBE FUNCTION TO STOP SKIPPING TEST BLOCKS
+ */
+
+const coaches = ["Andy", "Bex", "Calum", "Charlie", "Matt", "Ollie", "Sam"];
+const items = ["Apple", "Orange", "Pear"];
+const scores = [20, 40, 50, 60];
+const ingredients = ["Bacon", "Lettuce", "Tomato"];
+const ingredientsString = "Bacon+Lettuce+Tomato";
+const itemString = "Apple+Orange+Pear";
+
+describe("Testing the Foundation Level Challenges", () => {
+  it("createRecipeString Should create a Sandwich", () => {
+    expect(createRecipeString(ingredients)).toEqual(ingredientsString);
+    expect(createRecipeString(items)).toEqual(itemString);
+  });
+
+  it("getFirstAndLastItems Should return the First and Last Items in an Array", () => {
+    expect(getFirstAndLastItems(coaches)).toEqual(["Andy", "Sam"]);
+    expect(getFirstAndLastItems(items)).toEqual(["Apple", "Pear"]);
+  });
+
+  it("totalScores Should Totals the Scores given", () => {
+    expect(totalScores(scores)).toBe(170);
+    expect(totalScores([])).toEqual(0);
+  });
 });
 
-test("Find the smallest  of three numbers", () => {
-  expect(challenge.findSmallestOfThreeNumbers(1, 2, 3)).toBe(1);
-  expect(challenge.findSmallestOfThreeNumbers(1, 2, -3)).toBe(-3);
-  expect(challenge.findSmallestOfThreeNumbers(10, 100000, 239823489)).toBe(10);
+xdescribe("Testing the Intemediate Level Challenges", () => {
+  it("moveFirstAndLastItems Should remove the last item and add it to the start", () => {
+    expect(moveFirstAndLastItems(items)).toEqual(["Pear", "Apple", "Orange"]);
+    expect(moveFirstAndLastItems(["Pear"])).toEqual(["Pear"]);
+  });
+
+  it("totalRange Should Total up the range of numbers bettween 0 - given number", () => {
+    expect(totalRange(10)).toBe(55);
+    expect(totalRange(5)).toBe(15);
+    expect(totalRange()).toBe(0);
+  });
+
+  it("removeEvenNumbers Should remove the even numbers from the array", () => {
+    expect(removeEvenNumbers([1, 2, 3])).toEqual([1, 3]);
+    expect(removeEvenNumbers(scores)).toEqual([]);
+  });
+
+  it("removeEvenNumbers Should return a new array", () => {
+    expect(removeEvenNumbers(scores)).not.toMatchObject(scores);
+  });
 });
 
-test("calculate grade based on score out of 100", () => {
-  expect(challenge.calculateGrade(30)).toBe("D");
-  expect(challenge.calculateGrade(70)).toBe("C");
-  expect(challenge.calculateGrade(80)).toBe("B");
-  expect(challenge.calculateGrade(90)).toBe("A");
-  expect(challenge.calculateGrade(100)).toBe("A");
-  expect(challenge.calculateGrade(-100)).toBe("Not a valid score!");
-  expect(challenge.calculateGrade("Hello")).toBe("Not a valid score!");
-  expect(challenge.calculateGrade("100")).toBe("Not a valid score!");
+xdescribe("Testing the Advanced Level Challenges", () => {
+  it("reverseOrder Should return the Array Reversed", () => {
+    expect(reverseOrder(items)).toEqual(["Pear", "Orange", "Apple"]);
+    expect(reverseOrder(["Pear", "Orange", "Apple"])).toEqual(items);
+  });
+
+  it("reverseOrder Should return a new array", () => {
+    expect(reverseOrder(items)).not.toMatchObject(items);
+  });
+
+  it("generateAverage Should calculate the average", () => {
+    expect(generateAverage([1, 2, 3, 4, 5, 6])).toBe(4);
+    expect(generateAverage([])).toBe(0);
+  });
+
+  it("generateAverage Should calculate the average", () => {
+    expect(generateAverage([])).toBe(0);
+  });
 });
 
-test("Generate the report card greeting statement", () => {
-  expect(challenge.generateReportCardGreeting("Liam", 100)).toBe("Well done Liam! you received the highest grade of A");
-  expect(challenge.generateReportCardGreeting("Shea", "Hello")).toBe(
-    "Sorry Shea, we were unable to process your score results"
-  );
-  expect(challenge.generateReportCardGreeting("Matt", 50)).toBe("Sorry Matt, you received a failing grade of D");
-  expect(challenge.generateReportCardGreeting("John", 80)).toBe("Well done John, you received a grade of B");
+xdescribe("Testing the Expert Level Challenges", () => {
+  let players, playerScores, highscores;
+  beforeEach(() => {
+    players = ["Andy", "Bex", "Calum"];
+    playerScores = [60, 99, 71];
+    highscores = ["P:1 Andy scored 60", "P:2 Bex scored 99", "P:3 Calum scored 71"];
+  });
+
+  it("generateHighscores Should format arrays with valid parameters", () => {
+    expect(generateHighscores(players, playerScores)).toEqual(highscores);
+    players.pop();
+    playerScores.pop();
+    highscores.pop();
+    expect(generateHighscores(players, playerScores)).toEqual(highscores);
+  });
+
+  it("generateHighscores Should catch invalid parameters.", () => {
+    players.pop();
+    expect(generateHighscores(players, playerScores)).toBe("invalid inputs");
+    expect(generateHighscores(["dave"], [1, 2])).toBe("invalid inputs");
+    expect(generateHighscores([], [])).toBe("invalid inputs");
+  });
 });
