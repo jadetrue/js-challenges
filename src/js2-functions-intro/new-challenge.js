@@ -1,3 +1,3 @@
 /**
- * All previous challenges but using the parameters instead
+ * Rewrite concatenate strings to take inputs;
  */
