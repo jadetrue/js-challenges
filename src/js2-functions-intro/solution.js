@@ -1,32 +1,69 @@
 /* JS2 builds on the previous challenges and adds the use of functions with parameters */
 
+/* 
+  All challenges in this repository are seperated into four levels: Foundation, Intermediate, Advanced and Expert.
+  The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
+  and may require you to google things in order to solve them. If you find an answer online somewhere, be kind and
+  share it with the group!
+*/
+
+/* Foundation Challenges */
+
 /**
- * A function that uses the function parameters to output "Hi John, you are great!"
+ * A function that concatenates two strings together with a space in between them.
  *
- * @return {string} Hi John, you are great!
+ * @param {string} firstName John
+ * @param {string} lastName Smith
+ * @returns {string} John Smith
  */
-export const greet = (firstName) => {
-  return "Hi " + firstName + ", you are great!";
+export const createFullName = (firstName, lastName) => {
+  const fullName = firstName + " " + lastName;
+
+  return fullName;
 };
 
 /**
- * A function that uses the function parameters to calculate the age differences and outputs a string e.g.
- * "The age difference between person 1 and person 2 is 10 years"
+ * A function that takes two numbers as an input and returns the smallest one.
+ * !!NOTE!! You'll have to write in the parameters for this function yourself.
  *
- * @return {string} The age difference between person 1 and person 2 is 10 years
+ * @param {number} number1 100
+ * @param {number} number2 200
+ * @returns {number} 100
  */
-export const calculateAgeDifference = (age1, age2) => {
-  const ageDifference = Math.abs(age1 - age2);
-  return "The age difference between person 1 and person 2 is " + ageDifference + " years";
+export const findSmallestNumber = (number1, number2) => {
+  if (number1 < number2) {
+    return number1;
+  } else {
+    return number2;
+  }
 };
 
 /**
- * A function that uses the function parameters to calcualte the length of the provided names and 
- * retruns a string e.g. "The total length of the names provided is 10 characters"
+ * A function that takes two numbers as input, multiplies them together and returns the product.
+ * !!NOTE!! You'll have to write in the parameters for this function yourself.
  *
- * @return {string} The total length of the names provided is 10 characters
+ * @param {number} number1 3
+ * @param {number} number2 6
+ * @returns {number} 18
  */
-export const totalNameLength = (firstName, lastName) => {
-  const totalNameLength = firstName.length + lastName.length;
-  return "The total length of the names provided is " + totalNameLength + " characters"
+export const multiplyNumbers = (number1, number2) => {
+  const product = number1 * number2;
+
+  return product;
+};
+
+/* Intermediate Challenges */
+
+/**
+ * A function that converts a temperature a in celsuis to farenheit and outputs it in a string format -> "15 degrees celsius is 59 degrees farenheit".
+ *
+ * @param {number} tempInCelsius 15
+ * @returns {string} "15 degrees celsius is 59 degrees farenheit"
+ */
+export const celsiusToFarenheit = (tempInCelsius) => {
+  const tempInFarenheit = (tempInCelsius * 9) / 5 + 32;
+
+  const temperatureString = tempInCelsius + " degrees celsius is " + tempInFarenheit + " degrees farenheit";
+
+  return temperatureString;
 };
