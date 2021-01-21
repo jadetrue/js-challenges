@@ -18,7 +18,7 @@
 const firstName = "John";
 const lastName = "Smith";
 
-export const concatenateStrings = () => {
+export const createFullName = () => {
   const returnString = firstName + " " + lastName;
 
   return returnString;

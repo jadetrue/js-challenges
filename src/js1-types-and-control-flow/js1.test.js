@@ -1,7 +1,7 @@
 import challenge from "./index";
 
 const {
-  concatenateStrings,
+  createFullName,
   findLargestNumber,
   addNumbers,
   findLengthOfPassword,
@@ -12,9 +12,9 @@ const {
   convertPascalCaseToSnakeCase
 } = challenge;
 
-test("concatenateStrings() tests", () => {
-  expect(concatenateStrings()).toBeDefined();
-  expect(concatenateStrings()).toBe("John Smith");
+test("createFullName() tests", () => {
+  expect(createFullName()).toBeDefined();
+  expect(createFullName()).toBe("John Smith");
 });
 
 test("findLargestNumber() tests", () => {
