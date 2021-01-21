@@ -4,7 +4,7 @@ const {
   concatenateStrings,
   findLargestNumber,
   addNumbers,
-  findLengthOfString,
+  findLengthOfPassword,
   findType,
   getIsValidOnNameTag,
   convertStringToNumber,
@@ -14,7 +14,7 @@ const {
 
 test("concatenateStrings() tests", () => {
   expect(concatenateStrings()).toBeDefined();
-  expect(concatenateStrings()).toBe("Hello World!");
+  expect(concatenateStrings()).toBe("John Smith");
 });
 
 test("findLargestNumber() tests", () => {
@@ -27,9 +27,9 @@ test("addNumbers() tests", () => {
   expect(addNumbers()).toBe(36);
 });
 
-test("findLengthOfString() tests", () => {
-  expect(findLengthOfString()).toBeDefined();
-  expect(findLengthOfString()).toBe(43);
+test("findLengthOfPassword() tests", () => {
+  expect(findLengthOfPassword()).toBeDefined();
+  expect(findLengthOfPassword()).toBe(33);
 });
 
 test("findType() tests", () => {

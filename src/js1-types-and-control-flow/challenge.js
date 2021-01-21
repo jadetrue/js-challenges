@@ -9,21 +9,18 @@
 
 /* Foundation Challenges */
 
-const string1 = "Hello";
-const string2 = "World!";
-
 /**
- * A function that programmatically concatenates two strings together.
+ * A function that programmatically concatenates two strings together with a space in between them.
  * This means if the string were different it would still add them together.
  *
- * @returns {string} Hello World!
+ * @returns {string} John Smith
  */
+const firstName = "John";
+const lastName = "Smith";
+
 export const concatenateStrings = () => {
   // Write your code here
 };
-
-const largeNumber1 = 100;
-const largeNumber2 = 200;
 
 /**
  * A function that programmatically returns the largest number.
@@ -31,12 +28,12 @@ const largeNumber2 = 200;
  *
  * @returns {number} the largest number
  */
+const largeNumber1 = 100;
+const largeNumber2 = 200;
+
 export const findLargestNumber = () => {
   // Write your code here
 };
-
-const addNumber1 = 12;
-const addNumber2 = 24;
 
 /**
  * A function that programmatically adds two numbers together.
@@ -44,13 +41,14 @@ const addNumber2 = 24;
  *
  * @returns {number} the sum of both numbers
  */
+const addNumber1 = 12;
+const addNumber2 = 24;
+
 export const addNumbers = () => {
   // Write your code here
 };
 
 /* Intermediate Challenges */
-
-const longString = "I am a very very very very very long string";
 
 /**
  * A function to programmatically find the length of a string.
@@ -58,11 +56,11 @@ const longString = "I am a very very very very very long string";
  *
  * @returns {number} the length of the string
  */
-export const findLengthOfString = () => {
+const password = "thisIsMyVeryLongPassword123456789";
+
+export const findLengthOfPassword = () => {
   // Write your code here
 };
-
-const thing = "I am a thing";
 
 /**
  * A function that programmatically tells you what the type of the variable is.
@@ -74,11 +72,11 @@ const thing = "I am a thing";
  *
  * @returns {string} This is a string
  */
+const thing = "I am a thing";
+
 export const findType = () => {
   // Write your code here
 };
-
-const nameTagOption = "Timothy";
 
 /**
  * A function to programmatically decide if a name is suitable for a name tag.
@@ -87,13 +85,13 @@ const nameTagOption = "Timothy";
  *
  * @returns {boolean} true || false
  */
+const nameTagOption = "Timothy";
+
 export const getIsValidOnNameTag = () => {
   // Write your code here
 };
 
 /* Advanced Challenges */
-
-const stringToConvert = "14.45";
 
 /**
  * A function that programmatically converts a number stored as a string to a number type.
@@ -101,25 +99,27 @@ const stringToConvert = "14.45";
  *
  * @returns {number} The number converted from the string "32.87" -> 32.87
  */
+const stringToConvert = "14.45";
+
 export const convertStringToNumber = () => {
   // Write your code here
 };
 
-const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
-
 /**
- * A function to programmatically test if a string contains uppercase letters.
+ * A function that uses regex to programmatically test if a string contains uppercase letters.
  * This means if the string was different it would still accurately return true or false.
+ *
+ * !!NOTE!! You should use regex to solve this problem!
  *
  * @returns {boolean} true || false
  */
+const stringWithUppercaseLetters = "I Am A String With Uppercase Letters";
+
 export const getHasUppercaseLetters = () => {
   // Write your code here
 };
 
 /* Expert Challenge */
-
-const pascalCaseVariableName = "IWantToBeSnakeCase";
 
 /**
  * A function that programmatically converts a string written in PascalCase to a string written in snake_case (lowercase with underscores).
@@ -127,6 +127,8 @@ const pascalCaseVariableName = "IWantToBeSnakeCase";
  *
  * @returns {string} i_want_to_be_snake_case
  */
+const pascalCaseVariableName = "IWantToBeSnakeCase";
+
 export const convertPascalCaseToSnakeCase = () => {
   // Write your code here
 };
