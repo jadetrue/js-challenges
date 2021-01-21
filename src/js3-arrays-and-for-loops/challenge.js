@@ -14,13 +14,14 @@
  */
 
 /**
- * A function that creates a sandwich from an array of ingredients. Add "Bread" to the start and the end of the array.
+ * A function that creates a a Recipe string from a given array of Ingredients.
+ * Each ingredient will be joined with a +.
  *
- * @return {array} e.g. (["Bacon","Lettuce","Tomato"]) => ["Bread","Bacon","Lettuce","Tomato","Bread"]
+ * @return {string} e.g. (["Bacon","Lettuce","Tomato"]) => "Bacon+Lettuce+Tomato"
  */
 
-export const createSandwich = (array) => {
-  return;
+export const createRecipeString = (ingredientsArr) => {
+  return
 };
 
 /**
@@ -29,7 +30,7 @@ export const createSandwich = (array) => {
  * @return {array} e.g (["Tony","John","Dave"]) => ["Tony","Dave"]
  */
 
-export const getFirstAndLastItems = (array) => {
+export const getFirstAndLastItems = (itemsArr) => {
   return;
 };
 
@@ -39,7 +40,7 @@ export const getFirstAndLastItems = (array) => {
  * @return {number} e.g ([1,2,3]) => 6
  */
 
-export const totalScores = (array) => {
+export const totalScores = (scoresArr) => {
   return;
 };
 
@@ -63,7 +64,7 @@ export const totalRange = (number) => {
  * @return {array} e.g. (["Tony","John","Dave"]) => ["Dave","Tony","John"]
  */
 
-export const moveFirstAndLastItems = (array) => {
+export const moveFirstAndLastItems = (itemsArr) => {
   return;
 };
 
@@ -80,7 +81,7 @@ export const moveFirstAndLastItems = (array) => {
  * @return {number} e.g. ([1,1,8,1,1,8]) => [1,1,1,1]
  */
 
-export const removeEvenNumbers = (array) => {
+export const removeEvenNumbers = (numberArr) => {
   return;
 };
 
@@ -95,7 +96,7 @@ export const removeEvenNumbers = (array) => {
  * @return {number} e.g. ([1,2,3]) => 2
  */
 
-export const generateAverage = (array) => {
+export const generateAverage = (numberArr) => {
   return;
 };
 

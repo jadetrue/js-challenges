@@ -3,7 +3,7 @@ const {
   getFirstAndLastItems,
   totalScores,
   moveFirstAndLastItems,
-  createSandwich,
+  createRecipeString,
   totalRange,
   removeEvenNumbers,
   generateHighscores,
@@ -11,16 +11,21 @@ const {
   reverseOrder,
 } = challenge;
 
+/**
+ * REMOVE X FROM DESCRIBE FUNCTION TO STOP SKIPPING TEST BLOCKS
+ */
+
 const coaches = ["Andy", "Bex", "Calum", "Charlie", "Matt", "Ollie", "Sam"];
 const items = ["Apple", "Orange", "Pear"];
 const scores = [20, 40, 50, 60];
+const ingredients = ["Bacon", "Lettuce", "Tomato"];
+const ingredientsString = "Bacon+Lettuce+Tomato";
+const itemString = "Apple+Orange+Pear";
 
 describe("Testing the Foundation Level Challenges", () => {
-  const ingredients = ["Bacon", "Lettuce", "Tomato"];
-  const sandwich = ["Bread", "Bacon", "Lettuce", "Tomato", "Bread"];
-  it("createSandwich Should create a Sandwich", () => {
-    expect(createSandwich(ingredients)).toEqual(sandwich);
-    expect(createSandwich([])).toEqual(["Bread", "Bread"]);
+  it("createRecipeString Should create a Sandwich", () => {
+    expect(createRecipeString(ingredients)).toEqual(ingredientsString);
+    expect(createRecipeString(items)).toEqual(itemString);
   });
 
   it("getFirstAndLastItems Should return the First and Last Items in an Array", () => {

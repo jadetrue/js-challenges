@@ -19,8 +19,9 @@
  * @return {array} e.g. (["Bacon","Lettuce","Tomato"]) => ["Bread","Bacon","Lettuce","Tomato","Bread"]
  */
 
-export const createSandwich = (ingredients) => {
-  return ["Bread", ...ingredients, "Bread"];
+export const createRecipeString = (ingredientsArr) => {
+  const recipeString = ingredientsArr.join("+")
+  return recipeString
 };
 
 /**
@@ -29,9 +30,9 @@ export const createSandwich = (ingredients) => {
  * @return {array} e.g (["Tony","John","Dave"]) => ["Tony","Dave"]
  */
 
-export const getFirstAndLastItems = (items) => {
-  const first = items[0];
-  const last = items[items.length - 1];
+export const getFirstAndLastItems = (itemsArr) => {
+  const first = itemsArr[0];
+  const last = itemsArr[itemsArr.length - 1];
   return [first, last];
 };
 
@@ -41,10 +42,10 @@ export const getFirstAndLastItems = (items) => {
  * @return {number} e.g ([1,2,3]) => 6
  */
 
-export const totalScores = (score) => {
+export const totalScores = (scoreArr) => {
   let total = 0;
-  for (let index = 0; index < score.length; index++) {
-    total += score[index];
+  for (let index = 0; index < scoreArr.length; index++) {
+    total += scoreArr[index];
   }
   return total;
 };
@@ -73,8 +74,8 @@ export const totalRange = (number) => {
  * @return {array} e.g. (["Tony","John","Dave"]) => ["Dave","Tony","John"]
  */
 
-export const moveFirstAndLastItems = (items) => {
-  const result = [...items];
+export const moveFirstAndLastItems = (itemsArr) => {
+  const result = [...itemsArr];
   const lastItem = result.pop();
   result.unshift(lastItem);
   return result;
@@ -93,10 +94,10 @@ export const moveFirstAndLastItems = (items) => {
  * @return {number} e.g. ([1,1,8,1,1,8]) => [1,1,1,1]
  */
 
-export const removeEvenNumbers = (array) => {
+export const removeEvenNumbers = (numberArr) => {
   const oddNumbers = [];
-  for (let index = 0; index < array.length; index++) {
-    let current = array[index];
+  for (let index = 0; index < numberArr.length; index++) {
+    let current = numberArr[index];
     if (current % 2 !== 0) {
       oddNumbers.push(current);
     }
@@ -116,9 +117,9 @@ export const removeEvenNumbers = (array) => {
  * @return {number} e.g. ([1,2,3]) => 2
  */
 
-export const generateAverage = (array) => {
-  const total = totalScores(array);
-  const average = total / array.length;
+export const generateAverage = (numberArr) => {
+  const total = totalScores(numberArr);
+  const average = total / numberArr.length;
   return Math.round(average) || 0;
 };
 
@@ -162,4 +163,3 @@ export const generateHighscores = (players, highscores) => {
 
   return scores;
 };
-
