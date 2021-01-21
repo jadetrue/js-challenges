@@ -34,7 +34,7 @@ describe("Testing the Foundation Level Challenges", () => {
   });
 });
 
-describe("Testing the Intemediate Level Challenges", () => {
+xdescribe("Testing the Intemediate Level Challenges", () => {
   it("moveFirstAndLastItems Should remove the last item and add it to the start", () => {
     expect(moveFirstAndLastItems(items)).toEqual(["Pear", "Apple", "Orange"]);
     expect(moveFirstAndLastItems(["Pear"])).toEqual(["Pear"]);
@@ -56,7 +56,7 @@ describe("Testing the Intemediate Level Challenges", () => {
   });
 });
 
-describe("Testing the Advanced Level Challenges", () => {
+xdescribe("Testing the Advanced Level Challenges", () => {
   it("reverseOrder Should return the Array Reversed", () => {
     expect(reverseOrder(items)).toEqual(["Pear", "Orange", "Apple"]);
     expect(reverseOrder(["Pear", "Orange", "Apple"])).toEqual(items);
@@ -76,7 +76,7 @@ describe("Testing the Advanced Level Challenges", () => {
   });
 });
 
-describe("Testing the Expert Level Challenges", () => {
+xdescribe("Testing the Expert Level Challenges", () => {
   let players, playerScores, highscores;
   beforeEach(() => {
     players = ["Andy", "Bex", "Calum"];

@@ -28,6 +28,7 @@ export const createSandwich = (ingredients) => {
  *
  * @return {array} e.g (["Tony","John","Dave"]) => ["Tony","Dave"]
  */
+
 export const getFirstAndLastItems = (items) => {
   const first = items[0];
   const last = items[items.length - 1];
@@ -39,6 +40,7 @@ export const getFirstAndLastItems = (items) => {
  *
  * @return {number} e.g ([1,2,3]) => 6
  */
+
 export const totalScores = (score) => {
   let total = 0;
   for (let index = 0; index < score.length; index++) {
@@ -50,11 +52,13 @@ export const totalScores = (score) => {
 /**
  * Intermediate Challenges
  */
+
 /**
  * A function that takes an number and returns the total of the range of numbers between 0 and the given number.
  *
  * @return {number} e.g. (10) => 0+1+2+3+4+5+6+7+8+9+10 => 55
  */
+
 export const totalRange = (number) => {
   let total = 0;
   for (let index = 0; index <= number; index++) {
@@ -68,6 +72,7 @@ export const totalRange = (number) => {
  *
  * @return {array} e.g. (["Tony","John","Dave"]) => ["Dave","Tony","John"]
  */
+
 export const moveFirstAndLastItems = (items) => {
   const result = [...items];
   const lastItem = result.pop();
@@ -87,6 +92,7 @@ export const moveFirstAndLastItems = (items) => {
  *
  * @return {number} e.g. ([1,1,8,1,1,8]) => [1,1,1,1]
  */
+
 export const removeEvenNumbers = (array) => {
   const oddNumbers = [];
   for (let index = 0; index < array.length; index++) {
@@ -109,6 +115,7 @@ export const removeEvenNumbers = (array) => {
  *
  * @return {number} e.g. ([1,2,3]) => 2
  */
+
 export const generateAverage = (array) => {
   const total = totalScores(array);
   const average = total / array.length;
