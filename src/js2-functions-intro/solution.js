@@ -67,3 +67,57 @@ export const celsiusToFarenheit = (tempInCelsius) => {
 
   return temperatureString;
 };
+
+/**
+ * A function that calculates the numebr of snickers needed for the rest of your life based on the number you eat per day,
+ * your age and your maximum age.
+ *
+ * @param {number} snickersPerDay 2
+ * @param {number} age 25
+ * @param {number} maxAge 90
+ * @returns {number} 47450
+ */
+export const calculateLifetimeSupple = (snickersPerDay, age, maxAge) => {
+  const snickersPerYear = snickersPerDay * 365;
+  const yearsLeft = maxAge - age;
+
+  const lifetimeSupplyOfSnickers = snickersPerYear * yearsLeft;
+
+  return lifetimeSupplyOfSnickers;
+};
+
+/**
+ * A function that takes a score input and returns a letter grade.
+ * If the score is:
+ *  100 - 80: "A"
+ *  79 - 70: "B"
+ *  79 - 60: "C"
+ *  59 - 50: "D"
+ *  49 - 40: "E"
+ *  39 - 0: "F"
+ * If the score is above 100, less than 0, or not a number it should return "Score unavailable"
+ *
+ * @param {number} score 0 - 100
+ * @returns {string} A - F || Score unavailable
+ */
+export const gradeFinder = (score) => {
+  if (score < 0 || score > 100 || typeof score !== "number") {
+    return "Score unavailable";
+  }
+
+  if (score >= 80) {
+    return "A";
+  } else if (score >= 70) {
+    return "B";
+  } else if (score >= 60) {
+    return "C";
+  } else if (score >= 50) {
+    return "D";
+  } else if (score >= 40) {
+    return "E";
+  } else {
+    return "F";
+  }
+};
+
+/* Advanced Challenges */
