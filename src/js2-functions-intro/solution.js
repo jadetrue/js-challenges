@@ -87,6 +87,27 @@ export const calculateLifetimeSupple = (snickersPerDay, age, maxAge) => {
 };
 
 /**
+ * A function that tells the user whether or not they've achieved a new high score.
+ * If they new score is larger than the current high score then return "You got a new high score!"
+ * Other return "Better luck next Time"
+ *
+ * @param {number} score 300
+ * @param {number} highScore 325
+ * @returns {string} "You got a new high score!" | "Better luck next time!"
+ */
+export const getIsNewHighScore = (score, highScore) => {
+  const isNewHighScore = score > highScore;
+
+  if (isNewHighScore) {
+    return "You got a new high score!";
+  } else {
+    return "Better luck next time!";
+  }
+};
+
+/* Advanced Challenges */
+
+/**
  * A function that takes a score input and returns a letter grade.
  * If the score is:
  *  100 - 80: "A"
@@ -100,7 +121,7 @@ export const calculateLifetimeSupple = (snickersPerDay, age, maxAge) => {
  * @param {number} score 0 - 100
  * @returns {string} A - F || Score unavailable
  */
-export const gradeFinder = (score) => {
+export const getGrade = (score) => {
   if (score < 0 || score > 100 || typeof score !== "number") {
     return "Score unavailable";
   }
@@ -120,4 +141,51 @@ export const gradeFinder = (score) => {
   }
 };
 
-/* Advanced Challenges */
+/**
+ * A function that find the area of a circle.
+ *
+ * @param {number} radius 3
+ * @returns {number} 28.27
+ */
+export const calculateAreaOfCirlce = (radius) => {
+  const PI = Math.PI;
+  const area = PI * radius ** 2;
+
+  return area;
+};
+
+/* Expert Challenge */
+
+/**
+ * A function that generates a student summary from an inputted score and name, to place at the end of a report card for a student.
+ * "A": "Congratulations John! You achieved a grade of A."
+ * "B": "Well done John! You achieved a grade of B."
+ * "C": "Nicely done John! You achieved a grade of C."
+ * "D": "That's okay John. You achieved a grade of D."
+ * "E": "Too bad John. You achieved a grade of E."
+ * "F": "Sorry John. You achieved a grade of F. There's always next year."
+ * If there is a score error : "My aplogies John, there's been an error in processing your grade."
+ *
+ * @param {number} score 0 - 100
+ * @param {string} name John
+ */
+export const getStudentSummary = (score, name) => {
+  const letterGrade = getGrade(score);
+
+  switch (letterGrade) {
+    case "A":
+      return `Congratulations ${name}! You achieved a grade of ${letterGrade}.`;
+    case "B":
+      return `Well done ${name}! You achieved a grade of ${letterGrade}.`;
+    case "C":
+      return `Nicely done ${name}! You achieved a grade of ${letterGrade}.`;
+    case "D":
+      return `That's okay ${name}. You achieved a grade of ${letterGrade}.`;
+    case "E":
+      return `Too bad ${name}. You achieved a grade of ${letterGrade}.`;
+    case "F":
+      return `Sorry ${name}. You achieved a grade of ${letterGrade}. There's always next year.`;
+    default:
+      return `My aplogies ${name}, there's been an error in processing your grade.`;
+  }
+};
