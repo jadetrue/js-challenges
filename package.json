@@ -17,7 +17,8 @@
     "test-solution": "jest",
     "test-coverage": "jest ./src/js13/challenge.test.js --watch --coverage",
     "lint": "jshint ./src/",
-    "test": "jest --config jest-challenge.config.js"
+    "test": "jest --config jest-challenge.config.js",
+    "test-watch": "jest --config jest-challenge.config.js --watch"
   },
   "author": "",
   "license": "ISC"

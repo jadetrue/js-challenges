@@ -55,6 +55,27 @@ export const multiplyNumbers = (number1, number2) => {
 /* Intermediate Challenges */
 
 /**
+ * A function that tells the user whether or not they've achieved a new high score.
+ * If they new score is larger than the current high score then return "You got a new high score!"
+ * Other return "Better luck next Time"
+ *
+ * @param {number} score 300
+ * @param {number} highScore 325
+ * @returns {string} "You got a new high score!" | "So close!" | "Better luck next time!"
+ */
+export const checkIfNewHighScore = (score, highScore) => {
+  const isNewHighScore = score > highScore;
+
+  if (isNewHighScore) {
+    return "You got a new high score!";
+  } else if (score === highScore) {
+    return "So close!";
+  } else {
+    return "Better luck next time!";
+  }
+};
+
+/**
  * A function that converts a temperature a in celsuis to farenheit and outputs it in a string format -> "15 degrees celsius is 59 degrees farenheit".
  *
  * @param {number} tempInCelsius 15
@@ -77,32 +98,13 @@ export const celsiusToFarenheit = (tempInCelsius) => {
  * @param {number} maxAge 90
  * @returns {number} 47450
  */
-export const calculateLifetimeSupple = (snickersPerDay, age, maxAge) => {
+export const calculateLifetimeSupply = (snickersPerDay, age, maxAge) => {
   const snickersPerYear = snickersPerDay * 365;
   const yearsLeft = maxAge - age;
 
   const lifetimeSupplyOfSnickers = snickersPerYear * yearsLeft;
 
   return lifetimeSupplyOfSnickers;
-};
-
-/**
- * A function that tells the user whether or not they've achieved a new high score.
- * If they new score is larger than the current high score then return "You got a new high score!"
- * Other return "Better luck next Time"
- *
- * @param {number} score 300
- * @param {number} highScore 325
- * @returns {string} "You got a new high score!" | "Better luck next time!"
- */
-export const getIsNewHighScore = (score, highScore) => {
-  const isNewHighScore = score > highScore;
-
-  if (isNewHighScore) {
-    return "You got a new high score!";
-  } else {
-    return "Better luck next time!";
-  }
 };
 
 /* Advanced Challenges */
@@ -119,7 +121,7 @@ export const getIsNewHighScore = (score, highScore) => {
  * If the score is above 100, less than 0, or not a number it should return "Score unavailable"
  *
  * @param {number} score 0 - 100
- * @returns {string} A - F || Score unavailable
+ * @returns {string} A - F | Score unavailable
  */
 export const getGrade = (score) => {
   if (score < 0 || score > 100 || typeof score !== "number") {
@@ -142,7 +144,7 @@ export const getGrade = (score) => {
 };
 
 /**
- * A function that find the area of a circle.
+ * A function that find the area of a circle to 2 decimal places.
  *
  * @param {number} radius 3
  * @returns {number} 28.27
@@ -150,8 +152,9 @@ export const getGrade = (score) => {
 export const calculateAreaOfCirlce = (radius) => {
   const PI = Math.PI;
   const area = PI * radius ** 2;
+  const areaTo2DecimalPlaces = area.toFixed(2);
 
-  return area;
+  return areaTo2DecimalPlaces;
 };
 
 /* Expert Challenge */
@@ -164,7 +167,9 @@ export const calculateAreaOfCirlce = (radius) => {
  * "D": "That's okay John. You achieved a grade of D."
  * "E": "Too bad John. You achieved a grade of E."
  * "F": "Sorry John. You achieved a grade of F. There's always next year."
- * If there is a score error : "My aplogies John, there's been an error in processing your grade."
+ * If there is a score error : "My apologies John, there's been an error in processing your grade."
+ *
+ * !!NOTE!! Think about how you can use a previous function challenge to complete this one.
  *
  * @param {number} score 0 - 100
  * @param {string} name John
@@ -186,6 +191,6 @@ export const getStudentSummary = (score, name) => {
     case "F":
       return `Sorry ${name}. You achieved a grade of ${letterGrade}. There's always next year.`;
     default:
-      return `My aplogies ${name}, there's been an error in processing your grade.`;
+      return `My apologies ${name}, there's been an error in processing your grade.`;
   }
 };
