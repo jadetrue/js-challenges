@@ -12,6 +12,10 @@ const {
   encryptString,
 } = challenge;
 
+/**
+ * REMOVE X FROM DESCRIBE FUNCTION TO STOP SKIPPING TEST BLOCKS
+ */
+
 const mixedBooleanArr = [true, false, false, true, false, true, true];
 const toBePercentages = [1, 0.5, 0.25, 0.4, 0.99, 0.1];
 const percentages = ["100%", "50%", "25%", "40%", "99%", "10%"];
@@ -43,7 +47,7 @@ describe("Testing removeFalseValues()", () => {
   });
 });
 
-describe("Testing createPercentageList()", () => {
+xdescribe("Testing createPercentageList()", () => {
   it("Should convert numbers into percentages", () => {
     expect(createPercentageList(toBePercentages)).toEqual(percentages);
     expect(createPercentageList([0.25])).toEqual(["25%"]);
@@ -63,7 +67,7 @@ describe("Testing createPercentageList()", () => {
   });
 });
 
-describe("Testing createListOfPoessessions()", () => {
+xdescribe("Testing createListOfPoessessions()", () => {
   it("Should prefix name as expected", () => {
     expect(createListOfPoessessions(possessions, "Matt's")).toEqual(mattsPosessions);
     expect(createListOfPoessessions(["shoes", "jacket", "belt"], "disco")).toEqual([
@@ -87,7 +91,7 @@ describe("Testing createListOfPoessessions()", () => {
   });
 });
 
-describe("Testing convertStringToNumbersArray()", () => {
+xdescribe("Testing convertStringToNumbersArray()", () => {
   it("Should convert string as expected", () => {
     expect(convertStringToNumbersArray(numbersCSV)).toEqual([5, 2, 55, 1990, 45, 15, 22]);
     expect(convertStringToNumbersArray("1+2")).toEqual([1, 2]);
@@ -104,7 +108,7 @@ describe("Testing convertStringToNumbersArray()", () => {
   });
 });
 
-describe("Testing createOddEvenArray()", () => {
+xdescribe("Testing createOddEvenArray()", () => {
   it("Should convert string as expected", () => {
     expect(createOddEvenArray(numbersCSV)).toEqual(["odd", "even", "odd", "even", "odd", "odd", "even"]);
     expect(createOddEvenArray("1+2")).toEqual(["odd", "even"]);
@@ -121,7 +125,7 @@ describe("Testing createOddEvenArray()", () => {
   });
 });
 
-describe("Testing filterBooksBySearch()", () => {
+xdescribe("Testing filterBooksBySearch()", () => {
   
 
   it("Should handle one match", () => {
@@ -155,7 +159,7 @@ describe("Testing filterBooksBySearch()", () => {
   });
 });
 
-describe("Testing formatStringArray()", () => {
+xdescribe("Testing formatStringArray()", () => {
   it("Should NOT return undefined", () => {
     expect(formatStringArray(["  front"])).toBeDefined();
   });
@@ -181,7 +185,7 @@ describe("Testing formatStringArray()", () => {
   });
 });
 
-describe("Testing formatString()", () => {
+xdescribe("Testing formatString()", () => {
   it("Should NOT return undefined", () => {
     expect(formatString("  defined")).toBeDefined();
   });
@@ -221,7 +225,7 @@ describe("Testing formatString()", () => {
   });
 });
 
-describe("Testing encryptString()", () => {
+xdescribe("Testing encryptString()", () => {
   it("Should NOT return undefined", () => {
     expect(encryptString("  defined")).toBeDefined();
   });

@@ -1,27 +1,169 @@
-/* JS4 builds on the previous challenges and adds the use of Arrays */
+/* JS4 builds on the previous challenges and adds the use of Array iterators, Arrays, For Loops, Conditionals (If, else, switch)
+ *  & calling your own functions.
+ */
+
+/* 
+  All challenges in this repository are seperated into four levels: Foundation, Intermediate, Advanced and Expert.
+  The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
+  and may require you to google things in order to solve them. If you find an answer online somewhere, be kind and
+  share it with the group!
+*/
 
 /**
- * A function that will take two array arguments.
- * The function will combine both arrays together into a single array and return it.
- *
- * @param {array} list1 - An array e.g. ["red", "blue"]
- * @param {array} list2 - An array e.g ["hello", "goodbye"]
- * @return {array} A merged array
+ * Foundation Challenges
  */
-export const mergeArrays = (list1, list2) => {
-  // your code here
+
+/**
+ * A function that takes an array of Booleans and then removes the false values from the given array.
+ * It should create a new array only consiting of the true values.
+ *
+ * @param {boolean[]} booleanArr [true, true, false, false, true]
+ * @return {boolean[]} [true, true, true]
+ */
+
+export const removeFalseValues = (booleanArr) => {
+  return;
 };
 
 /**
- * A function that will take two arguments: an array of colors and an index.
- * The function will test whether the item at index is not a pre-approved colour (red, green, blue).
- * If the colour at the index is not pre-approved, the colour will be deleted.
- * This should not mutate the provided array.
+ * A function that takes an array of numbers that are between 0 - 1.
+ * The function needs to create a new array with the numbers converted into a percentage
  *
- * @param {array} colours - An array of colours e.g. ["red", "blue"]
- * @param {number} index - Index of the array item to test
- * @return {array} A list of updated colours
+ * @param {number[]} numbersArr [1, .5, .7, .25]
+ * @return {string[]} ["100%", "50%", "70%", "25%"]
  */
-export const checkColour = (colours, index) => {
-  // your code here
+
+export const createPercentageList = (numbersArr) => {
+  return;
+};
+
+/**
+ * A function that takes an array of possessions and a name.
+ * The functions needs to create a new array with the name prefixed to each item.
+ *
+ * @param {string[]} possessionsArr ["shoes", "jacket", "belt"]
+ * @param {string} name "disco"
+ * @return {string[]} ["disco shoes", "disco jacket", "disco belt"]
+ */
+
+export const createListOfPoessessions = (possessionsArr, name) => {
+  return;
+};
+
+/**
+ * Intemediate Challenges
+ */
+
+/**
+ * A function that takes a string of numbers joined with a "+" and returns an array of those numbers.
+ * The strings will need to be converted into numbers.
+ * e.g 1 instead of "1"
+ *
+ * @param {string} numberString - "1+2+3+4+5"
+ * @return {number[]} [1, 2, 3, 4, 5]
+ */
+
+export const convertStringToNumbersArray = (numberString) => {
+  return;
+};
+
+/**
+ * A function that takes a string of numbers joined with a "+" and creates a new array based on if the number is even or odd.
+ * Every number in the string will need to checked.
+ *
+ * @param {string} numberString - "1+2+3+4+5"
+ * @return {string[]} ['odd', 'even', 'odd', 'even', 'odd']
+ */
+
+export const createOddEvenArray = (numberString) => {
+  return;
+};
+
+/**
+ * A function that takes an array of book titles and a search term.
+ * The function needs fo remove any book titles that do not include the search term.
+ *
+ * @param {string[]} booksArr ["JavaScript: The Definitive Guide", "JavaScript: The Good Parts", "The Google story"]
+ * @param {string} - searchTerm - "Google"
+ * @return {string[]} - ["The Google story"]
+ */
+
+export const filterBooksBySearch = (booksArr, searchTerm) => {
+  return;
+};
+
+/**
+ * Advanced Challenges
+ */
+
+/**
+ * A function that takes a list, cleans each item and joins them with a +.
+ * When it "cleans" it remove's whitespace and makes sure the string is lowercase.
+ *
+ * This function is failing the test's can you figure out why?
+ * The bug is within the function, the test's are fine.
+ * Can you get it to pass the tests?
+ *
+ * @param {string[]} stringArr ["  dIsco", " ShOes "]
+ * @return {string} "disco+shoes"
+ */
+
+export const formatStringArray = (stringArr) => {
+  const cleanedArr = stringArr.forEach((string) => {
+    const cleanStr = string.trim().toLowerCase();
+    return cleanStr;
+  });
+
+  // console.log(???)
+
+  const joinedString = cleanedArr.join("+");
+
+  return joinedString;
+};
+
+/**
+ * A function that takes a string, cleans it and formats it based on a condition.
+ *
+ * It will need to remove anything that is NOT a letter from the string.
+ * - e.g numbers, punctuation, whitespace.
+ *
+ * If the index of the letter is even the letter needs to be Uppercase.
+ * If the index of the letter is odd the letter needs to be Lowercase.
+ *
+ * @param {string} string " 22 $$He LL--O!%^& "
+ * @return {string[]} [ 'H', 'e', 'L', 'l', 'O' ]
+ */
+
+export const formatString = (string) => {
+  return;
+};
+
+/**
+ * Expert Challenge
+ */
+
+/**
+ * A function that takes a string and creates a simple encrypted message.
+ *
+ * The string will be broken into 3 lists.
+ * The first three letters will go into their own list.
+ * The next three letters will follow this pattern.
+ * Joining the first three letters in each of their list.
+ * The rest of the letter's will follow this pattern.
+ * Each list will be joined together and returned as an encrypted message.
+ *
+ * The word "encrypted" would be broken into:
+ *
+ * e r t
+ * n y e
+ * c p d
+ *
+ * and joined together as ert + nye + cpd
+ *
+ * @param {string} toEncrypt "encrypted"
+ * @return {string} "ertnyecpd"
+ */
+
+export const encryptString = (toEncrypt) => {
+  return;
 };
