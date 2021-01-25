@@ -89,10 +89,9 @@ export const createOddEvenArray = (numberString) => {
  * A function that takes an array of book titles and a search term.
  * The function needs fo remove any book titles that do not include the search term.
  *
- * @param {string[], string} - books, searchTerm
- * @param {}
- * const bookTitles = ["JavaScript: The Definitive Guide", "JavaScript: The Good Parts", "The Google story"];
- * @return {array} e.g. (bookTitles, "Google") => ["The Google story"]
+ * @param {string[]} - books - ["JavaScript: The Definitive Guide", "JavaScript: The Good Parts", "The Google story"]
+ * @param {string} - searchTerm - "Google"
+ * @return {string[]} - ["The Google story"]
  */
 
 export const filterBooksBySearch = (books, searchTerm) => {
@@ -113,8 +112,8 @@ export const filterBooksBySearch = (books, searchTerm) => {
  * The bug is within the function, the test's are fine.
  * Can you get it to pass the tests?
  *
- * @param {string[]} - books, searchTerm
- * @return {string} e.g. (["  dIsco", " ShOes "]) => disco+shoes
+ * @param {string[]} - stringArr - , ["  dIsco", " ShOes "]
+ * @return {string} - "disco+shoes"
  */
 
 export const formatStringArray = (stringArr) => {
@@ -123,6 +122,8 @@ export const formatStringArray = (stringArr) => {
     return cleanStr;
   });
 
+  // console.log(???)
+  
   const formattedString = cleanedArr.join("+");
 
   return formattedString;
@@ -133,11 +134,13 @@ export const formatStringArray = (stringArr) => {
  * A function that takes a string, cleans it and formats it based on a condition.
  *
  * It will need to remove anything that is NOT a letter from the string.
+ * - e.g numbers, punctuation, whitespace.
+ * 
  * If the index of the letter is even the letter needs to be Uppercase.
  * If the index of the letter is odd the letter needs to be Lowercase.
  *
- * @param {string} - books, searchTerm
- * @return {string[]} e.g. (" 22 $$He LL--O!%^& ") => [ 'H', 'e', 'L', 'l', 'O' ]
+ * @param {string} - string - " 22 $$He LL--O!%^& "
+ * @return {string[]} - [ 'H', 'e', 'L', 'l', 'O' ]
  */
 
 export const formatString = (string) => {
@@ -172,15 +175,15 @@ export const formatString = (string) => {
  * and joined together as ertnyecpd
  *
  *
- * @param {string} - books, searchTerm
- * @return {string} e.g. ("encrypted") => "ertnyecpd"
+ * @param {string} - toEncrypt - "encrypted"
+ * @return {string} - "ertnyecpd"
  */
 
-export const encryptString = (string) => {
+export const encryptString = (toEncrypt) => {
   const encrypted = [[], [], []];
   let arrayIndex = 0;
-  string.split("").forEach((el) => {
-    encrypted[arrayIndex].push(el);
+  toEncrypt.split("").forEach((letter) => {
+    encrypted[arrayIndex].push(letter);
     arrayIndex++;
     arrayIndex > 2 ? (arrayIndex = 0) : null;
   });

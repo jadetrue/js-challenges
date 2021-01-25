@@ -18,8 +18,11 @@ const percentages = ["100%", "50%", "25%", "40%", "99%", "10%"];
 const possessions = ["Cabbage", "Turnip", "Radish", "Carrot"];
 const mattsPosessions = ["Matt's Cabbage", "Matt's Turnip", "Matt's Radish", "Matt's Carrot"];
 const numbersCSV = "5+2+55+1990+45+15+22";
+const stringsToClean = ["  CaBBage  ", "TuRnIp", "  RADish", "CARroT  "];
+const cleanedStrings = "cabbage+turnip+radish+carrot";
+const formattedStringArr = ["T", "e", "S", "t", "S", "t", "R", "i", "N", "g"];
 
-xdescribe("Testing removeFalseValues()", () => {
+describe("Testing removeFalseValues()", () => {
   it("Should remove false values from an array", () => {
     expect(removeFalseValues(Array(5).fill(false)).length).toBe(0);
     expect(removeFalseValues(Array(20).fill(false)).length).toBe(0);
@@ -36,11 +39,11 @@ xdescribe("Testing removeFalseValues()", () => {
   });
 
   it("Should return a new array and not modify the old one", () => {
-    expect(removeFalseValues(mixedBooleanArr)).not.toMatchObject(mixedBooleanArr);
+    expect(removeFalseValues(mixedBooleanArr)).not.toBe(mixedBooleanArr);
   });
 });
 
-xdescribe("Testing createPercentageList()", () => {
+describe("Testing createPercentageList()", () => {
   it("Should convert numbers into percentages", () => {
     expect(createPercentageList(toBePercentages)).toEqual(percentages);
     expect(createPercentageList([0.25])).toEqual(["25%"]);
@@ -56,11 +59,11 @@ xdescribe("Testing createPercentageList()", () => {
   });
 
   it("Should return a new array and not modify the old one", () => {
-    expect(createPercentageList(toBePercentages)).not.toMatchObject(toBePercentages);
+    expect(createPercentageList(toBePercentages)).not.toBe(toBePercentages);
   });
 });
 
-xdescribe("Testing createListOfPoessessions()", () => {
+describe("Testing createListOfPoessessions()", () => {
   it("Should prefix name as expected", () => {
     expect(createListOfPoessessions(possessions, "Matt's")).toEqual(mattsPosessions);
     expect(createListOfPoessessions(["shoes", "jacket", "belt"], "disco")).toEqual([
@@ -80,11 +83,11 @@ xdescribe("Testing createListOfPoessessions()", () => {
   });
 
   it("Should return a new array and not modify the old one", () => {
-    expect(createListOfPoessessions(possessions, "Matt's")).not.toMatchObject(possessions);
+    expect(createListOfPoessessions(possessions, "Matt's")).not.toBe(possessions);
   });
 });
 
-xdescribe("Testing convertStringToNumbersArray()", () => {
+describe("Testing convertStringToNumbersArray()", () => {
   it("Should convert string as expected", () => {
     expect(convertStringToNumbersArray(numbersCSV)).toEqual([5, 2, 55, 1990, 45, 15, 22]);
     expect(convertStringToNumbersArray("1+2")).toEqual([1, 2]);
@@ -115,5 +118,136 @@ describe("Testing createOddEvenArray()", () => {
 
   it("Should handle single inputs", () => {
     expect(createOddEvenArray("100")).toEqual(["even"]);
+  });
+});
+
+describe("Testing filterBooksBySearch()", () => {
+  
+
+  it("Should handle one match", () => {
+    expect(filterBooksBySearch(["one thing"], "one thing")).toEqual(["one thing"]);
+    expect(filterBooksBySearch(["a", "aa", "bb", "aaa", "b"], "bb").length).toBe(1);
+  });
+
+  it("Should handle multiple matches", () => {
+    expect(filterBooksBySearch(["disco", "disco", "shoes", "disco shoe"], "disco").length).toBe(3);
+    expect(filterBooksBySearch(["disco", "disco", "shoes", "disco shoe"], "oe").length).toBe(2);
+  });
+
+  it("Should handle large matches", () => {
+    expect(filterBooksBySearch(Array(100).fill("disco"), "disco").length).toBe(100);
+  });
+
+  it("Should handle single character matches", () => {
+    expect(filterBooksBySearch(["a", "aa", "bb", "aaa", "b"], "a").length).toBe(3);
+    expect(filterBooksBySearch(["a", "aa", "bb", "aaa", "b"], "b").length).toBe(2);
+  });
+
+  it("Should handle no matches", () => {
+    expect(filterBooksBySearch(Array(100).fill("disco"), "techno").length).toBe(0);
+    expect(filterBooksBySearch(["one thing"], "nothing")).toEqual([]);
+    expect(filterBooksBySearch([], "nothing")).toEqual([]);
+    expect(filterBooksBySearch([])).toEqual([]);
+  });
+
+  it("Should return a new array and not modify the old one", () => {
+    expect(filterBooksBySearch(mattsPosessions, "Matt")).not.toBe(mattsPosessions);
+  });
+});
+
+describe("Testing formatStringArray()", () => {
+  it("Should NOT return undefined", () => {
+    expect(formatStringArray(["  front"])).toBeDefined();
+  });
+
+  it("Should remove whitespace", () => {
+    expect(formatStringArray(["  front"])).toBe("front");
+    expect(formatStringArray(["back "])).toBe("back");
+    expect(formatStringArray(["  both "])).toBe("both");
+  });
+
+  it("Should be lowercase", () => {
+    expect(formatStringArray(["UPPERCASE"])).toBe("uppercase");
+    expect(formatStringArray(["mIxEd"])).toBe("mixed");
+  });
+
+  it("Should format a single string as expected", () => {
+    expect(formatStringArray(["  DAVID "])).toBe("david");
+  });
+
+  it("Should format multiple strings as expected", () => {
+    expect(formatStringArray(stringsToClean)).toBe(cleanedStrings);
+    expect(formatStringArray(cleanedStrings.split("+"))).toBe(cleanedStrings);
+  });
+});
+
+describe("Testing formatString()", () => {
+  it("Should NOT return undefined", () => {
+    expect(formatString("  defined")).toBeDefined();
+  });
+
+  it("Should remove numbers", () => {
+    expect(formatString("nu55mber77s").length).toBe(7);
+    expect(formatString("1234567").length).toBe(0);
+  });
+
+  it("Should remove punctuation", () => {
+    expect(formatString("punctuation!\"£$%^&*()?[]{}|,./;'@~#+=").length).toBe(11);
+    expect(formatString('!"£$%^&').length).toBe(0);
+  });
+
+  it("Should remove whitespace", () => {
+    expect(formatString("  white  space  ").length).toBe(10);
+    expect(formatString("white  space").length).toBe(10);
+  });
+
+  it("Should uppercase even index", () => {
+    expect(formatString("he")[0]).toBe("H");
+    expect(formatString("hello")[2]).toBe("L");
+  });
+
+  it("Should lowercase odd index", () => {
+    expect(formatString("he")[1]).toBe("e");
+    expect(formatString("hello")[3]).toBe("l");
+  });
+
+  it("Should format string as expected", () => {
+    expect(formatString("test string")).toEqual(formattedStringArr);
+    expect(formatString('898    te%^$£"&*()st str3552621ing')).toEqual(formattedStringArr);
+  });
+
+  it("Should handle empty input", () => {
+    expect(formatString("")).toEqual([]);
+  });
+});
+
+describe("Testing encryptString()", () => {
+  it("Should NOT return undefined", () => {
+    expect(encryptString("  defined")).toBeDefined();
+  });
+
+  it("Should NOT encrypt three letters", () => {
+    expect(encryptString("hey")).toBe("hey");
+    expect(encryptString("ola")).toBe("ola");
+  });
+
+  it("Should encrypt after three plus letters", () => {
+    expect(encryptString("heya")).toBe("haey");
+    expect(encryptString("disco")).toBe("dcios");
+    expect(encryptString("cellardoor")).toBe("cldreaolro");
+  });
+
+  it("Should encrypt large words", () => {
+    expect(encryptString("antidisestablishmentarianism")).toBe("aistlhnrnmndeaimtiitisbseaas");
+    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe("hpomsosielpbiototsqpdihipponreupaooa");
+  });
+
+  it("Should keep spaces between words", () => {
+    expect(encryptString("keep it secret")).toBe("kpteee  cteisr");
+    expect(encryptString("keep it safe.")).toBe("kpta.e  feise");
+  });
+
+  it("Should handle empty input", () => {
+    expect(encryptString("")).toBe("");
   });
 });
