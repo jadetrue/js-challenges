@@ -17,17 +17,19 @@
  * A function that creates a a Recipe string from a given array of Ingredients.
  * Each ingredient will be joined with a +.
  *
- * @return {string} e.g. (["Bacon","Lettuce","Tomato"]) => "Bacon+Lettuce+Tomato"
+ * @param {string[]} ingredientsArr ["Bacon","Lettuce","Tomato"]
+ * @return {string[]} "Bacon+Lettuce+Tomato"
  */
 
 export const createRecipeString = (ingredientsArr) => {
-  return
+  return;
 };
 
 /**
  * A function that takes Array of Items and returns a NEW ARRAY with the first and last item in it.
  *
- * @return {array} e.g (["Tony","John","Dave"]) => ["Tony","Dave"]
+ * @param {string[]} itemsArr ["Tony","John","Dave"]
+ * @return {string[]} ["Tony","Dave"]
  */
 
 export const getFirstAndLastItems = (itemsArr) => {
@@ -37,10 +39,11 @@ export const getFirstAndLastItems = (itemsArr) => {
 /**
  * A function that takes an array of scores and totals the scores by looping through the array.
  *
- * @return {number} e.g ([1,2,3]) => 6
+ * @param {number[]} scoreArr [1,2,3]
+ * @return {number} 6
  */
 
-export const totalScores = (scoresArr) => {
+export const totalScores = (scoreArr) => {
   return;
 };
 
@@ -50,18 +53,21 @@ export const totalScores = (scoresArr) => {
 
 /**
  * A function that takes an number and returns the total of the range of numbers between 0 and the given number.
+ * e.g. 10 => 0+1+2+3+4+5+6+7+8+9+10 = 55.
  *
- * @return {number} e.g. (10) => 0+1+2+3+4+5+6+7+8+9+10 => 55
+ * @param {number} rangeMax 10
+ * @return {number} 55
  */
 
-export const totalRange = (number) => {
+export const totalRange = (rangeMax) => {
   return;
 };
 
 /**
  * A function that takes an array and returns a NEW ARRAY where the last item has been moved to the front of the array and removed from the back.
  *
- * @return {array} e.g. (["Tony","John","Dave"]) => ["Dave","Tony","John"]
+ * @param {string[]} itemsArr ["Tony","John","Dave"]
+ * @return {string[]} ["Dave","Tony","John"]
  */
 
 export const moveFirstAndLastItems = (itemsArr) => {
@@ -72,13 +78,14 @@ export const moveFirstAndLastItems = (itemsArr) => {
  * Read this article on how to clone an array.
  * https://www.samanthaming.com/tidbits/35-es6-way-to-clone-an-array/
  *
- * From here on you should not be mutating the input array.Clone it first and then mutate.
+ * From here on you should not be mutating the input array. Clone it first and then mutate / manipulate.
  */
 
 /**
  * A function that takes an array of numbers and returns a NEW ARRAY with only the odd numbers from the given array. It should not mutate the input array.
  *
- * @return {number} e.g. ([1,1,8,1,1,8]) => [1,1,1,1]
+ * @param {number[]} numberArr [1,1,8,1,1,8]
+ * @return {number[]} [1,1,1,1]
  */
 
 export const removeEvenNumbers = (numberArr) => {
@@ -93,7 +100,8 @@ export const removeEvenNumbers = (numberArr) => {
  * A function that takes an array of numbers. It returns the average from the given array.
  * The result should rounded up to the nearest decimal place.
  *
- * @return {number} e.g. ([1,2,3]) => 2
+ * @param {number[]} numberArr [1,2,3]
+ * @return {number} 2
  */
 
 export const generateAverage = (numberArr) => {
@@ -103,19 +111,20 @@ export const generateAverage = (numberArr) => {
 /**
  * A function that uses a loop to reverse the order of an Array. It should return a NEW ARRAY and not Mutate the orginal array.
  *
- * @return {number} e.g. ([1,2,3]) => [3,2,1]
+ * @param {number[]} toReverseArr [1,2,3]
+ * @return {number} [3,2,1]
  */
-export const reverseOrder = (array) => {
+
+export const reverseOrder = (toReverseArr) => {
   return;
 };
 
 /**
- * Expert Challenge
+ * Expert Challenges
  */
 
 /**
- * Given two arrays, The first being an array of players and the second being there corresponding score.
- * Loop through them and generate a new array matching the format below.
+ * Given two arrays, The first being an array of players and the second being there corresponding score. Loop through them and generate a new array matching the format below.
  *
  * ["P:INDEX PLAYER scored HIGHSCORE","P:INDEX PLAYER scored HIGHSCORE","P:INDEX PLAYER scored HIGHSCORE"]
  *
@@ -123,9 +132,11 @@ export const reverseOrder = (array) => {
  *
  * If the inputs are not the same size or empty return "invalid inputs"
  *
- ** @return {array} e.g. (["Tony","John","Dave"],[45,55,66]) => ["P:1 Dave scored 45","P:2 Tony scored 55","P:3 John scored 66"]
+ * @param {string[]} playersArr ["Tony","John","Dave"]
+ * @param {number[]} scoresArr [45,55,66]
+ * @return {string[]} ["P:1 Dave scored 45","P:2 Tony scored 55","P:3 John scored 66"]
  */
 
-export const generateHighscores = (players, highscores) => {
+export const generateHighscores = (playersArr, scoresArr) => {
   return;
 };
