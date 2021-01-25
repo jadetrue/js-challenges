@@ -47,7 +47,7 @@ describe("Testing createRecipeString()", () => {
   });
 });
 
-describe("Testing getFirstAndLastItems()", () => {
+xdescribe("Testing getFirstAndLastItems()", () => {
   it("Should be defined", () => {
     expect(getFirstAndLastItems(coaches)).toBeDefined();
   });
@@ -73,7 +73,7 @@ describe("Testing getFirstAndLastItems()", () => {
   });
 });
 
-describe("Testing totalScores()", () => {
+xdescribe("Testing totalScores()", () => {
   it("Should be defined", () => {
     expect(totalScores(scores)).toBeDefined();
   });
@@ -101,7 +101,7 @@ describe("Testing totalScores()", () => {
   });
 });
 
-describe("Testing moveFirstAndLastItems()", () => {
+xdescribe("Testing moveFirstAndLastItems()", () => {
   it("Should be defined", () => {
     expect(moveFirstAndLastItems(items)).toBeDefined();
   });
@@ -126,7 +126,7 @@ describe("Testing moveFirstAndLastItems()", () => {
   });
 });
 
-describe("Testing totalRange()", () => {
+xdescribe("Testing totalRange()", () => {
   it("Should be defined", () => {
     expect(totalRange(10)).toBeDefined();
   });
@@ -152,7 +152,7 @@ describe("Testing totalRange()", () => {
   });
 });
 
-describe("Testing removeEvenNumbers()", () => {
+xdescribe("Testing removeEvenNumbers()", () => {
   it("Should be defined", () => {
     expect(removeEvenNumbers(scores)).toBeDefined();
   });
@@ -184,7 +184,7 @@ describe("Testing removeEvenNumbers()", () => {
   });
 });
 
-describe("Testing reverseOrder()", () => {
+xdescribe("Testing reverseOrder()", () => {
   it("Should be defined", () => {
     expect(reverseOrder(items)).toBeDefined();
   });
@@ -212,7 +212,7 @@ describe("Testing reverseOrder()", () => {
   });
 });
 
-describe("Testing generateAverage()", () => {
+xdescribe("Testing generateAverage()", () => {
   it("Should be defined", () => {
     expect(generateAverage(10)).toBeDefined();
   });
@@ -237,7 +237,7 @@ describe("Testing generateAverage()", () => {
   });
 });
 
-describe("Testing generateHighscores()", () => {
+xdescribe("Testing generateHighscores()", () => {
   let players, playerScores, highscores;
   beforeEach(() => {
     players = ["Andy", "Bex", "Calum"];
