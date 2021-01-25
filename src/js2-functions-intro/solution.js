@@ -154,7 +154,7 @@ export const calculateAreaOfCirlce = (radius) => {
   const area = PI * radius ** 2;
   const areaTo2DecimalPlaces = area.toFixed(2);
 
-  return areaTo2DecimalPlaces;
+  return parseFloat(areaTo2DecimalPlaces);
 };
 
 /* Expert Challenge */
