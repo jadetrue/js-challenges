@@ -72,3 +72,37 @@ describe("checkIfNewHighScore() tests", () => {
     expect(checkIfNewHighScore(300, 325)).toBe("Better luck next time!");
   });
 });
+
+describe("celsiusToFarenheit() tests", () => {
+  it("Should have a return", () => {
+    expect(celsiusToFarenheit(15)).toBeDefined();
+  });
+
+  it("Should return a string", () => {
+    expect(typeof celsiusToFarenheit(15)).toBe("string");
+  });
+
+  it("Should convert 15 C to 59 F", () => {
+    expect(celsiusToFarenheit(15)).toBe("15 degrees celsius is 59 degrees farenheit");
+  });
+});
+
+describe("calculateLifeTimeSupply() tests", () => {
+  it("Should have a return", () => {
+    expect(calculateLifetimeSupply(2, 25, 90)).toBeDefined();
+  });
+
+  it("Should calculate the correct number if given 2 snickers, 25 years old and 90 years lifeExpectancy", () => {
+    expect(calculateLifetimeSupply(2, 25, 90)).toBe(47450);
+  });
+
+  it("Should calculate the correct number if given 1 snickers, 20 years old and 70 years lifeExpectancy", () => {
+    expect(calculateLifetimeSupply(1.5, 22, 77)).toBe(30112.5);
+  });
+});
+
+describe("getGrade() tests", () => {
+  it("Should have a return", () => {
+    expect(getGrade(70)).toBeDefined();
+  });
+});
