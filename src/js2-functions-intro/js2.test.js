@@ -26,7 +26,7 @@ describe("createFullName() tests", () => {
   });
 });
 
-describe("findSmallestNumber() tests", () => {
+xdescribe("findSmallestNumber() tests", () => {
   it("Should have a return", () => {
     expect(findSmallestNumber(100, 200)).toBeDefined();
   });
@@ -41,7 +41,7 @@ describe("findSmallestNumber() tests", () => {
   });
 });
 
-describe("multiplyNumbers() tests", () => {
+xdescribe("multiplyNumbers() tests", () => {
   it("Should have a return", () => {
     expect(multiplyNumbers(2, 6)).toBeDefined();
   });
@@ -55,7 +55,7 @@ describe("multiplyNumbers() tests", () => {
   });
 });
 
-describe("checkIfNewHighScore() tests", () => {
+xdescribe("checkIfNewHighScore() tests", () => {
   it("Should have a return", () => {
     expect(checkIfNewHighScore(300, 325)).toBeDefined();
   });
@@ -73,7 +73,7 @@ describe("checkIfNewHighScore() tests", () => {
   });
 });
 
-describe("celsiusToFarenheit() tests", () => {
+xdescribe("celsiusToFarenheit() tests", () => {
   it("Should have a return", () => {
     expect(celsiusToFarenheit(15)).toBeDefined();
   });
@@ -87,7 +87,7 @@ describe("celsiusToFarenheit() tests", () => {
   });
 });
 
-describe("calculateLifeTimeSupply() tests", () => {
+xdescribe("calculateLifeTimeSupply() tests", () => {
   it("Should have a return", () => {
     expect(calculateLifetimeSupply(2, 25, 90)).toBeDefined();
   });
@@ -101,7 +101,7 @@ describe("calculateLifeTimeSupply() tests", () => {
   });
 });
 
-describe("getGrade() tests", () => {
+xdescribe("getGrade() tests", () => {
   it("Should have a return", () => {
     expect(getGrade(70)).toBeDefined();
   });
@@ -144,7 +144,7 @@ describe("getGrade() tests", () => {
   });
 });
 
-describe("calculateAreaOfCircle() tests", () => {
+xdescribe("calculateAreaOfCircle() tests", () => {
   it("Should have a return", () => {
     expect(calculateAreaOfCirlce(3)).toBeDefined();
   });
@@ -164,7 +164,7 @@ describe("calculateAreaOfCircle() tests", () => {
   });
 });
 
-describe("getStudentSummary() tests", () => {
+xdescribe("getStudentSummary() tests", () => {
   it("Should have a return", () => {
     expect(getStudentSummary(70, "John")).toBeDefined();
   });
