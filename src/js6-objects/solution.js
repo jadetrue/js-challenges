@@ -140,7 +140,26 @@ export const getUserAddress = (user) => {
   return address;
 };
 
-// Do some arrays on objects / nested objects stuff here
+/**
+ * A function that given a customer for the restaurant with a list of known allergies and a list of allergens in an
+ * array, will attach an array of allergens safe for the customer to eat to the customer object and return it
+ *
+ * @param {object} customer - A cutomer for the restaurant
+ * @param {number} customer.id - The id of the customer
+ * @param {string} customer.name - The name of the customer
+ * @param {string[]} customer.allergies - The things the customer is allergic to
+ * @param {string[]} allergenList - A list of all known allergens
+ * @return {{id: number, name: string, allergies: string[], safeAllergens: string[]}} customer
+ */
+export const addSafeAllergens = (customer, allergenList) => {
+  const safeAllergens = allergenList.filter((allergen) => {
+    return !customer.allergies.includes(allergen);
+  });
+
+  customer.safeAllergens = safeAllergens;
+
+  return customer;
+};
 
 /* Expert Challenge */
 

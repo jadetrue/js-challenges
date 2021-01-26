@@ -7,7 +7,8 @@ const {
   addUserName,
   splitFullNameToFirstAndLast,
   accessGivenKey,
-  getUserAddress
+  getUserAddress,
+  addSafeAllergens
 } = challenge;
 
 describe("getFurniturePrice() tests", () => {
@@ -156,5 +157,91 @@ describe("getUserAddress() tests", () => {
   it("Should be able to get the address from the user object", () => {
     expect(getUserAddress(user1)).toBe("4 Privet Drive Little Whinging Surrey CR3 0AA");
     expect(getUserAddress(user2)).toBe("32 Windsor Gardens London W9 3RG");
+  });
+});
+
+describe("addSafeAllergens() tests", () => {
+  const allergenList = [
+    "celery",
+    "gluten",
+    "crustaceans",
+    "eggs",
+    "fish",
+    "lupin",
+    "milk",
+    "molluscs",
+    "mustard",
+    "peanuts",
+    "sesame",
+    "soybeans",
+    "sulphites",
+    "tree nuts"
+  ];
+
+  const customer1 = {
+    id: 103,
+    name: "Jordan Jordanson",
+    allergies: []
+  };
+
+  it("Should include all allergens as safe if none present on the object allergies array", () => {
+    expect(addSafeAllergens(customer1, allergenList).safeAllergens).toMatchObject([
+      "celery",
+      "gluten",
+      "crustaceans",
+      "eggs",
+      "fish",
+      "lupin",
+      "milk",
+      "molluscs",
+      "mustard",
+      "peanuts",
+      "sesame",
+      "soybeans",
+      "sulphites",
+      "tree nuts"
+    ]);
+  });
+
+  const customer2 = {
+    id: 104,
+    name: "Peter Peterson",
+    allergies: [
+      "celery",
+      "gluten",
+      "crustaceans",
+      "eggs",
+      "fish",
+      "lupin",
+      "milk",
+      "molluscs",
+      "mustard",
+      "peanuts",
+      "sesame",
+      "soybeans",
+      "sulphites",
+      "tree nuts"
+    ]
+  };
+
+  it("Should include no allergens if all are found on the customer object", () => {
+    expect(addSafeAllergens(customer2, allergenList).safeAllergens).toMatchObject([]);
+  });
+
+  const customer3 = {
+    id: 105,
+    name: "Mandy Manderson",
+    allergies: ["eggs", "fish", "lupin", "molluscs", "mustard", "sesame", "soybeans", "sulphites"]
+  };
+
+  it("Should include some allergens if some are present on customer allergen list", () => {
+    expect(addSafeAllergens(customer3, allergenList).safeAllergens).toMatchObject([
+      "celery",
+      "gluten",
+      "crustaceans",
+      "milk",
+      "peanuts",
+      "tree nuts"
+    ]);
   });
 });
