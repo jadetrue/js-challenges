@@ -120,6 +120,28 @@ export const accessGivenKey = (object, key) => {
 
 /* Advanced Challenges */
 
+/**
+ * A function which takes a user object, accesses it's address and returns it as a string to print onto a shipping label
+ * "4 Privet Drive Little Whinging Surrey CR3 0AA"
+ *
+ * @param {object} user - A user object from the database
+ * @param {number} user.id - The user ID
+ * @param {string} user.name - The users name
+ * @param {object} user.address - The users address
+ * @param {string} user.address.line1 - Line 1 of the address
+ * @param {string} user.address.line2 - Line 2 of the address
+ * @param {string} user.address.city - City of the address
+ * @param {string} user.address.postcode - postcode of the address
+ * @returns {string} An address string for a shipping label
+ */
+export const getUserAddress = (user) => {
+  const address = `${user.address.line1} ${user.address.line2} ${user.address.city} ${user.address.postcode}`;
+
+  return address;
+};
+
 // Do some arrays on objects / nested objects stuff here
 
 /* Expert Challenge */
+
+// Iterate over an object

@@ -6,7 +6,8 @@ const {
   makeSpaceship,
   addUserName,
   splitFullNameToFirstAndLast,
-  accessGivenKey
+  accessGivenKey,
+  getUserAddress
 } = challenge;
 
 describe("getFurniturePrice() tests", () => {
@@ -126,5 +127,34 @@ describe("accessGivenKey() tests", () => {
 
   it("Should access the likesIceCream property", () => {
     expect(accessGivenKey(person, "likesIceCream")).toBe(false);
+  });
+});
+
+describe("getUserAddress() tests", () => {
+  const user1 = {
+    id: 101,
+    name: "Harry Potter",
+    address: {
+      line1: "4 Privet Drive",
+      line2: "Little Whinging",
+      city: "Surrey",
+      postcode: "CR3 0AA"
+    }
+  };
+
+  const user2 = {
+    id: 102,
+    name: "Paddington Bear",
+    address: {
+      line1: "32",
+      line2: "Windsor Gardens",
+      city: "London",
+      postcode: "W9 3RG"
+    }
+  };
+
+  it("Should be able to get the address from the user object", () => {
+    expect(getUserAddress(user1)).toBe("4 Privet Drive Little Whinging Surrey CR3 0AA");
+    expect(getUserAddress(user2)).toBe("32 Windsor Gardens London W9 3RG");
   });
 });
