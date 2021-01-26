@@ -106,6 +106,8 @@ export const splitFullNameToFirstAndLast = (customer) => {
 /**
  * A function which access a given key on an object
  *
+ * HELPFUL RESOURCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_accessors
+ *
  * @param {object} object An object with some key value pairs (Not important what they are)
  * @param {string} key A key to access on the object
  * @returns {any} value - The value you have accessed on the object
@@ -115,6 +117,7 @@ export const accessGivenKey = (object, key) => {
 
   return value;
 };
+
 /* Advanced Challenges */
 
 // Do some arrays on objects / nested objects stuff here
