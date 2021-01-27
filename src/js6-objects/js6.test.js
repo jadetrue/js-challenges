@@ -22,7 +22,7 @@ describe("getFurniturePrice() tests", () => {
   });
 });
 
-describe("addFurnitureStorLocation() tests", () => {
+xdescribe("addFurnitureStorLocation() tests", () => {
   const table = { name: "lack", price: 6 };
   const cabinet = { name: "brimnes", price: 55 };
 
@@ -51,7 +51,7 @@ describe("addFurnitureStorLocation() tests", () => {
   });
 });
 
-describe("makeSpaceship() tests", () => {
+xdescribe("makeSpaceship() tests", () => {
   it("Should return an object", () => {
     expect(typeof makeSpaceship("rocinante", 8, "epstein drive", true)).toBe("object");
   });
@@ -69,7 +69,7 @@ describe("makeSpaceship() tests", () => {
   });
 });
 
-describe("setUserName() tests", () => {
+xdescribe("setUserName() tests", () => {
   const user1 = { name: "john smith", username: "johnnyboiii" };
   const user2 = { name: "jane doe", username: "killerZ" };
   it("Should return and object", () => {
@@ -93,7 +93,7 @@ describe("setUserName() tests", () => {
   });
 });
 
-describe("splitFullNameToFirstAndLast() tests", () => {
+xdescribe("splitFullNameToFirstAndLast() tests", () => {
   const customer1 = { fullName: "Barry Chuckle" };
   const customer2 = { fullName: "Paul Chuckle" };
 
@@ -112,7 +112,7 @@ describe("splitFullNameToFirstAndLast() tests", () => {
   });
 });
 
-describe("accessGivenKey() tests", () => {
+xdescribe("accessGivenKey() tests", () => {
   const person = { name: "Joe Bloggs", height: 170, eyeColour: "blue", likesIceCream: false };
 
   it("Should access the eyeColour property", () => {
@@ -132,7 +132,7 @@ describe("accessGivenKey() tests", () => {
   });
 });
 
-describe("getUserAddress() tests", () => {
+xdescribe("getUserAddress() tests", () => {
   const user1 = {
     id: 101,
     name: "Harry Potter",
@@ -161,7 +161,7 @@ describe("getUserAddress() tests", () => {
   });
 });
 
-describe("setSafeAllergens() tests", () => {
+xdescribe("setSafeAllergens() tests", () => {
   const allergenList = [
     "celery",
     "gluten",
@@ -247,7 +247,7 @@ describe("setSafeAllergens() tests", () => {
   });
 });
 
-describe("mergeFurniture() tests", () => {
+xdescribe("mergeFurniture() tests", () => {
   const tableLocationInfo = { id: 101, location: "Bristol", sku: "bXpGsZC2j4" };
   const tableProductInfo = { id: 101, name: "lack", price: 6, isAvailable: true };
 
@@ -267,6 +267,7 @@ describe("mergeFurniture() tests", () => {
 
   it("Should not modify the original object", () => {
     const testTable = mergeFurniture(tableLocationInfo, tableProductInfo);
+    expect(testTable).toBeDefined();
     expect(testTable).not.toStrictEqual(tableLocationInfo);
     expect(testTable).not.toStrictEqual(tableProductInfo);
   });
