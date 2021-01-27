@@ -163,4 +163,5 @@ export const addSafeAllergens = (customer, allergenList) => {
 
 /* Expert Challenge */
 
-// Iterate over an object
+// Two pieces of data from different data tables need to be turned into a single piece of data
+// {...object1, ...object2}
