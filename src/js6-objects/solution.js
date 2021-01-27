@@ -178,6 +178,7 @@ export const mergeFurniture = (furnitureLocationData, furnitureProductData) => {
     const element = furnitureLocationData[key];
     mergeFurniture[key] = element;
   }
+
   for (const key in furnitureProductData) {
     const element = furnitureProductData[key];
     mergeFurniture[key] = element;
