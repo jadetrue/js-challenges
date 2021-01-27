@@ -26,7 +26,7 @@ const stringsToClean = ["  CaBBage  ", "TuRnIp", "  RADish", "CARroT  "];
 const cleanedStrings = "cabbage+turnip+radish+carrot";
 const formattedStringArr = ["T", "e", "S", "t", "S", "t", "R", "i", "N", "g"];
 
-xdescribe("Testing removeFalseValues()", () => {
+describe("Testing removeFalseValues()", () => {
   it("Should return an array", () => {
     expect(Array.isArray(removeFalseValues([true]))).toBe(true);
     expect(Array.isArray(removeFalseValues([false]))).toBe(true);
@@ -291,7 +291,7 @@ xdescribe("Testing formatString()", () => {
   });
 });
 
-describe("Testing encryptString()", () => {
+xdescribe("Testing encryptString()", () => {
   it("Should NOT return undefined", () => {
     expect(encryptString("  defined")).toBeDefined();
   });
