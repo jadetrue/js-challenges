@@ -59,6 +59,7 @@ export const makeSpaceship = (name, noOfSeats, engineType, canTravelSolarSystems
 
   return spaceship;
 };
+
 /* Intermediate Challenges */
 
 /**
@@ -93,6 +94,7 @@ export const splitFullNameToFirstAndLast = (customer) => {
 
   customer.firstName = firstName;
   customer.lastName = lastName;
+
   return customer;
 };
 
