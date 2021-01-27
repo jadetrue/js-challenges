@@ -3,11 +3,13 @@ import challenge from "./index";
 const {
   totalScoresArr,
   reverseString,
-  checkItemInstock,
   sortCharactersAlphabetically,
   sortNumbersHighToLow,
+  checkItemInstock,
   checkPrimaryColours,
+  checkStringPalindrome,
   totalNestedScoresArr,
+  encryptString,
 } = challenge;
 
 /**
@@ -81,47 +83,6 @@ xdescribe("Testing reverseString()", () => {
   });
 });
 
-xdescribe("Testing checkItemInstock()", () => {
-  const stockList = [
-    "apple",
-    "banana",
-    "orange",
-    "coconut",
-    "strawberry",
-    "lime",
-    "grapefruit",
-    "lemon",
-    "kumquat",
-    "blueberry",
-    "melon",
-  ];
-
-  const expectedMatchMessage = (item, index) => `${item} is instock, it is on aisle ${index}.`;
-  const expectedNoMatchMessage = (item) => `Sorry ${item} is not instock.`;
-
-  it("Should return a String", () => {
-    expect(typeof checkItemInstock("coconut")).toBe("string");
-    expect(typeof checkItemInstock("test")).toBe("string");
-  });
-
-  it("Should handle single items from the stock list", () => {
-    expect(checkItemInstock("apple")).toBe(expectedMatchMessage("apple", 0));
-    expect(checkItemInstock("melon")).toBe(expectedMatchMessage("melon", 10));
-  });
-
-  it("Should handle single no match items", () => {
-    expect(checkItemInstock("carrot")).toBe(expectedNoMatchMessage("carrot"));
-    expect(checkItemInstock("kiwi")).toBe(expectedNoMatchMessage("kiwi"));
-  });
-
-  it("Should handle every item in the stock list", () => {
-    const checkAllStock = stockList.every(
-      (item, index) => checkItemInstock(item) === expectedMatchMessage(item, index)
-    );
-    expect(checkAllStock).toBe(true);
-  });
-});
-
 xdescribe("Testing sortCharactersAlphabetically()", () => {
   const lowerCaseCharArr = "dloejmixwrsnfacqyukvhtgzpb".split("");
   const upperCaseCharArr = "DLOEJMIXWRSNFACQYUKVHTGZPB".split("");
@@ -166,7 +127,7 @@ xdescribe("Testing sortCharactersAlphabetically()", () => {
   });
 });
 
-describe("Testing sortNumbersHighToLow()", () => {
+xdescribe("Testing sortNumbersHighToLow()", () => {
   const lowToHigh = Array(50)
     .fill(1)
     .map((number, index) => (number += index));
@@ -209,6 +170,47 @@ describe("Testing sortNumbersHighToLow()", () => {
   });
 });
 
+xdescribe("Testing checkItemInstock()", () => {
+  const stockList = [
+    "apple",
+    "banana",
+    "orange",
+    "coconut",
+    "strawberry",
+    "lime",
+    "grapefruit",
+    "lemon",
+    "kumquat",
+    "blueberry",
+    "melon",
+  ];
+
+  const expectedMatchMessage = (item, index) => `${item} is instock, it is on aisle ${index}.`;
+  const expectedNoMatchMessage = (item) => `Sorry ${item} is not instock.`;
+
+  it("Should return a String", () => {
+    expect(typeof checkItemInstock("coconut")).toBe("string");
+    expect(typeof checkItemInstock("test")).toBe("string");
+  });
+
+  it("Should handle single items from the stock list", () => {
+    expect(checkItemInstock("apple")).toBe(expectedMatchMessage("apple", 0));
+    expect(checkItemInstock("melon")).toBe(expectedMatchMessage("melon", 10));
+  });
+
+  it("Should handle single no match items", () => {
+    expect(checkItemInstock("carrot")).toBe(expectedNoMatchMessage("carrot"));
+    expect(checkItemInstock("kiwi")).toBe(expectedNoMatchMessage("kiwi"));
+  });
+
+  it("Should handle every item in the stock list", () => {
+    const checkAllStock = stockList.every(
+      (item, index) => checkItemInstock(item) === expectedMatchMessage(item, index)
+    );
+    expect(checkAllStock).toBe(true);
+  });
+});
+
 xdescribe("Testing checkPrimaryColours()", () => {
   const rainbowColours = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
   const primaryColours = ["red", "yellow", "blue"];
@@ -239,7 +241,38 @@ xdescribe("Testing checkPrimaryColours()", () => {
   });
 });
 
-describe("Testing totalNestedScoresArr()", () => {
+describe("Testing checkStringPalindrome()", () => {
+  it("Should return a Boolean", () => {
+    expect(typeof checkStringPalindrome("red", "green")).toBe("boolean");
+    expect(typeof checkStringPalindrome("green", "green")).toBe("boolean");
+  });
+
+  it("Should return true for a palindrome", () => {
+    expect(checkStringPalindrome("madam")).toBe(true);
+    expect(checkStringPalindrome("radar")).toBe(true);
+    expect(checkStringPalindrome("racecar")).toBe(true);
+    expect(checkStringPalindrome("abba")).toBe(true);
+  });
+
+  it("Should return false for a string", () => {
+    expect(checkStringPalindrome("tom")).toBe(false);
+    expect(checkStringPalindrome("dumoulin")).toBe(false);
+    expect(checkStringPalindrome("greg")).toBe(false);
+    expect(checkStringPalindrome("lemond")).toBe(false);
+  });
+
+  it("Should return true for a palindrome with spaces", () => {
+    expect(checkStringPalindrome("step on no pets")).toBe(true);
+    expect(checkStringPalindrome("racecar racecar")).toBe(true);
+  });
+
+  it("Should return false for a string with spaces", () => {
+    expect(checkStringPalindrome("george bennett")).toBe(false);
+    expect(checkStringPalindrome("greg lemond")).toBe(false);
+  });
+});
+
+xdescribe("Testing totalNestedScoresArr()", () => {
   const nestedScoreArr = [
     [3, 2, 1],
     [45, 6, 2],
@@ -270,5 +303,37 @@ describe("Testing totalNestedScoresArr()", () => {
 
   it("Should return a new array and not modify the old one", () => {
     expect(sortNumbersHighToLow(nestedScoreArr)).not.toBe(nestedScoreArr);
+  });
+});
+
+xdescribe("Testing encryptString()", () => {
+  it("Should return a string", () => {
+    expect(typeof encryptString("defined")).toBe("string");
+    expect(typeof encryptString("disco flex")).toBe("string");
+  });
+
+  it("Should NOT encrypt three letters", () => {
+    expect(encryptString("hey")).toBe("hey");
+    expect(encryptString("ola")).toBe("ola");
+  });
+
+  it("Should encrypt after three plus letters", () => {
+    expect(encryptString("heya")).toBe("haey");
+    expect(encryptString("disco")).toBe("dcios");
+    expect(encryptString("cellardoor")).toBe("cldreaolro");
+  });
+
+  it("Should encrypt large words", () => {
+    expect(encryptString("antidisestablishmentarianism")).toBe("aistlhnrnmndeaimtiitisbseaas");
+    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe("hpomsosielpbiototsqpdihipponreupaooa");
+  });
+
+  it("Should keep spaces between words", () => {
+    expect(encryptString("keep it secret")).toBe("kpteee  cteisr");
+    expect(encryptString("keep it safe.")).toBe("kpta.e  feise");
+  });
+
+  it("Should handle empty input", () => {
+    expect(encryptString("")).toBe("");
   });
 });

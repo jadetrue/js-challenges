@@ -140,16 +140,18 @@ export const checkPrimaryColours = (coloursArr) => {
  */
 
 /**
- * A
+ * A function that takes a strings and checks to see if it is a palindrome.
+ * PALINDROME - a word, phrase, or sequence that reads the same backwards as forwards.
+ * It will return true or false depending if it is a palindrome or not.
  *
- * @param {number[]} numberArr [[7, 7, 6], [2, 3, 2], [3]]
- * @return {number[]} [20, 7, 3]
+ * @param {string} stringOne racecar
+ * @return {boolean} true
  */
 
-export const totalNestedScoresArr = (scoresArr) => {
-  const score = scoresArr.map(totalScoresArr);
-
-  return score;
+export const checkStringPalindrome = (stringOne) => {
+  const reversedString = reverseString(stringOne);
+  const checkPalindrome = reversedString === stringOne;
+  return checkPalindrome;
 };
 
 /**
@@ -173,7 +175,10 @@ export const totalNestedScoresArr = (scoresArr) => {
  */
 
 /**
- * A function that takes an encrypted string and is able to decrypt the message.
+ * This is the same challenge as advanced JS4, can you implement it differently.
+ * Can you complete this challenge using the REDUCE iterator?
+ *
+ * A function that takes a string and creates a simple encrypted message.
  *
  * The string will be broken into 3 lists.
  * The first three letters will go into their own list.
@@ -194,16 +199,19 @@ export const totalNestedScoresArr = (scoresArr) => {
  * @return {string} "ertnyecpd"
  */
 
-export const decryptString = (toDecrypt) => {
-  const decrypt = toDecrypt.split("").reduce(
-    (total, current, index) => {
-      const remainder = index % 3;
-      total[remainder].push(current);
-      return total;
-    },
-    [[], [], []]
-  );
-  return decrypt.flat().join("");
+export const encryptString = (toEncrypt) => {
+  const encrypted = toEncrypt
+    .split("")
+    .reduce(
+      (total, current, index) => {
+        const remainder = index % 3;
+        total[remainder].push(current);
+        return total;
+      },
+      [[], [], []]
+    )
+    .flat()
+    .join("");
+    
+  return encrypted;
 };
-
-console.log(decryptString("ertnyecpd"));
