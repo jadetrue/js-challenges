@@ -144,7 +144,7 @@ export const getUserAddress = (user) => {
  * A function that given a customer for the restaurant with a list of known allergies and a list of allergens in an
  * array, will attach an array of allergens safe for the customer to eat to the customer object and return it
  *
- * @param {object} customer - A cutomer for the restaurant
+ * @param {object} customer - A customer for the restaurant
  * @param {number} customer.id - The id of the customer
  * @param {string} customer.name - The name of the customer
  * @param {string[]} customer.allergies - The things the customer is allergic to
@@ -163,5 +163,25 @@ export const addSafeAllergens = (customer, allergenList) => {
 
 /* Expert Challenge */
 
-// Two pieces of data from different data tables need to be turned into a single piece of data
-// {...object1, ...object2}
+/**
+ * A function which takes two objects which hold different information about the same piece of furniture, merges them
+ * and returns it. You should do this WITHOUT modifying the original pieces of data
+ *
+ * @param {{id: number, location: string, sku: string}} furnitureLocationData - All of the data about the furnitures location in the store
+ * @param {{id: number, name: string, price: number, isAvailable: boolean}} furnitureProductData - All of the data about the furniture product
+ * @returns {{id: number, location: string, sku: string, name: string, price: number, isAvailable: boolean}}
+ */
+export const mergeFurniture = (furnitureLocationData, furnitureProductData) => {
+  const mergeFurniture = {};
+
+  for (const key in furnitureLocationData) {
+    const element = furnitureLocationData[key];
+    mergeFurniture[key] = element;
+  }
+  for (const key in furnitureProductData) {
+    const element = furnitureProductData[key];
+    mergeFurniture[key] = element;
+  }
+
+  return mergeFurniture;
+};

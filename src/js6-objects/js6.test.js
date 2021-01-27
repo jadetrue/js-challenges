@@ -8,7 +8,8 @@ const {
   splitFullNameToFirstAndLast,
   accessGivenKey,
   getUserAddress,
-  addSafeAllergens
+  addSafeAllergens,
+  mergeFurniture
 } = challenge;
 
 describe("getFurniturePrice() tests", () => {
@@ -45,8 +46,8 @@ describe("addFurnitureStorLocation() tests", () => {
   });
 
   it("Should exactly match given object", () => {
-    expect(tableWithLocation).toMatchObject({ name: "lack", price: 6, location: "Bristol" });
-    expect(cabinetWithLocation).toMatchObject({ name: "brimnes", price: 55, location: "Cardiff" });
+    expect(tableWithLocation).toStrictEqual({ name: "lack", price: 6, location: "Bristol" });
+    expect(cabinetWithLocation).toStrictEqual({ name: "brimnes", price: 55, location: "Cardiff" });
   });
 });
 
@@ -63,8 +64,8 @@ describe("makeSpaceship() tests", () => {
     canTravelSolarSystems: true
   };
   it("Should create an object with the provided arguments as values", () => {
-    expect(makeSpaceship("rocinante", 8, "epstein drive", true)).toMatchObject(rocinante);
-    expect(makeSpaceship("uss enterprise (ncc-1701-d)", 5, "impulse drive", true)).toMatchObject(enterprise);
+    expect(makeSpaceship("rocinante", 8, "epstein drive", true)).toStrictEqual(rocinante);
+    expect(makeSpaceship("uss enterprise (ncc-1701-d)", 5, "impulse drive", true)).toStrictEqual(enterprise);
   });
 });
 
@@ -77,18 +78,18 @@ describe("addUserName() tests", () => {
 
   it("Shouldn't change the username if one already exists", () => {
     expect(addUserName(user1, "XXjohnyboiXX").username).toBe("johnnyboiii");
-    expect(addUserName(user1, "XXjohnyboiXX")).toMatchObject(user1);
+    expect(addUserName(user1, "XXjohnyboiXX")).toStrictEqual(user1);
     expect(addUserName(user2, "butterflyflowerqueen").username).toBe("killerZ");
-    expect(addUserName(user2, "butterflyflowerqueen")).toMatchObject(user2);
+    expect(addUserName(user2, "butterflyflowerqueen")).toStrictEqual(user2);
   });
 
   const user3 = { name: "paul blart" };
   const user4 = { name: "gimli son of gloin" };
   it("Should change the username if none exists", () => {
     expect(addUserName(user3, "mallcop12").username).toBe("mallcop12");
-    expect(addUserName(user3, "mallcop12")).toMatchObject({ name: "paul blart", username: "mallcop12" });
+    expect(addUserName(user3, "mallcop12")).toStrictEqual({ name: "paul blart", username: "mallcop12" });
     expect(addUserName(user4, "ih8elves").username).toBe("ih8elves");
-    expect(addUserName(user4, "ih8elves")).toMatchObject({ name: "gimli son of gloin", username: "ih8elves" });
+    expect(addUserName(user4, "ih8elves")).toStrictEqual({ name: "gimli son of gloin", username: "ih8elves" });
   });
 });
 
@@ -97,13 +98,13 @@ describe("splitFullNameToFirstAndLast() tests", () => {
   const customer2 = { fullName: "Paul Chuckle" };
 
   it("Should split up basic names", () => {
-    expect(splitFullNameToFirstAndLast(customer1)).toMatchObject({
+    expect(splitFullNameToFirstAndLast(customer1)).toStrictEqual({
       fullName: "Barry Chuckle",
       firstName: "Barry",
       lastName: "Chuckle"
     });
 
-    expect(splitFullNameToFirstAndLast(customer2)).toMatchObject({
+    expect(splitFullNameToFirstAndLast(customer2)).toStrictEqual({
       fullName: "Paul Chuckle",
       firstName: "Paul",
       lastName: "Chuckle"
@@ -185,7 +186,7 @@ describe("addSafeAllergens() tests", () => {
   };
 
   it("Should include all allergens as safe if none present on the object allergies array", () => {
-    expect(addSafeAllergens(customer1, allergenList).safeAllergens).toMatchObject([
+    expect(addSafeAllergens(customer1, allergenList).safeAllergens).toStrictEqual([
       "celery",
       "gluten",
       "crustaceans",
@@ -225,7 +226,7 @@ describe("addSafeAllergens() tests", () => {
   };
 
   it("Should include no allergens if all are found on the customer object", () => {
-    expect(addSafeAllergens(customer2, allergenList).safeAllergens).toMatchObject([]);
+    expect(addSafeAllergens(customer2, allergenList).safeAllergens).toStrictEqual([]);
   });
 
   const customer3 = {
@@ -235,7 +236,7 @@ describe("addSafeAllergens() tests", () => {
   };
 
   it("Should include some allergens if some are present on customer allergen list", () => {
-    expect(addSafeAllergens(customer3, allergenList).safeAllergens).toMatchObject([
+    expect(addSafeAllergens(customer3, allergenList).safeAllergens).toStrictEqual([
       "celery",
       "gluten",
       "crustaceans",
@@ -243,5 +244,52 @@ describe("addSafeAllergens() tests", () => {
       "peanuts",
       "tree nuts"
     ]);
+  });
+});
+
+describe("mergeFurniture() tests", () => {
+  const tableLocationInfo = { id: 101, location: "Bristol", sku: "bXpGsZC2j4" };
+  const tableProductInfo = { id: 101, name: "lack", price: 6, isAvailable: true };
+
+  const cabinetLocationInfo = { id: 202, location: "Cardiff", sku: "6kX83aRVdn" };
+  const cabinetProductInfo = { id: 202, name: "bimnes", price: 55, isAvailable: false };
+
+  it("Should return an object which has a combination of both keys", () => {
+    const testFurniture = mergeFurniture(tableLocationInfo, tableProductInfo);
+
+    expect(testFurniture).toHaveProperty("id");
+    expect(testFurniture).toHaveProperty("location");
+    expect(testFurniture).toHaveProperty("sku");
+    expect(testFurniture).toHaveProperty("name");
+    expect(testFurniture).toHaveProperty("price");
+    expect(testFurniture).toHaveProperty("isAvailable");
+  });
+
+  it("Should not modify the original object", () => {
+    const testTable = mergeFurniture(tableLocationInfo, tableProductInfo);
+    expect(testTable).not.toStrictEqual(tableLocationInfo);
+    expect(testTable).not.toStrictEqual(tableProductInfo);
+  });
+
+  it("Should return an object which has the exact key value pairs of both objects", () => {
+    const testTable = mergeFurniture(tableLocationInfo, tableProductInfo);
+    expect(testTable).toStrictEqual({
+      id: 101,
+      location: "Bristol",
+      sku: "bXpGsZC2j4",
+      name: "lack",
+      price: 6,
+      isAvailable: true
+    });
+
+    const testCabinet = mergeFurniture(cabinetLocationInfo, cabinetProductInfo);
+    expect(testCabinet).toStrictEqual({
+      id: 202,
+      location: "Cardiff",
+      sku: "6kX83aRVdn",
+      name: "bimnes",
+      price: 55,
+      isAvailable: false
+    });
   });
 });
