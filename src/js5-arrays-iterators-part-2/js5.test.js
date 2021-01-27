@@ -16,7 +16,7 @@ const {
  * REMOVE X FROM DESCRIBE FUNCTION TO STOP SKIPPING TEST BLOCKS
  */
 
-xdescribe("Testing totalScoresArr()", () => {
+describe("Testing totalScoresArr()", () => {
   const positiveScoresArr = Array(50).fill(20);
   const negativeScoresArr = Array(20).fill(-5);
   const mixedScoresArr = [...positiveScoresArr, ...negativeScoresArr];
@@ -241,7 +241,7 @@ xdescribe("Testing checkPrimaryColours()", () => {
   });
 });
 
-describe("Testing checkStringPalindrome()", () => {
+xdescribe("Testing checkStringPalindrome()", () => {
   it("Should return a Boolean", () => {
     expect(typeof checkStringPalindrome("red", "green")).toBe("boolean");
     expect(typeof checkStringPalindrome("green", "green")).toBe("boolean");
