@@ -2,13 +2,13 @@ import challenge from "./index";
 
 const {
   getFurniturePrice,
-  addFurnitureStoreLocation,
+  setFurnitureStoreLocation,
   makeSpaceship,
-  addUserName,
+  setUserName,
   splitFullNameToFirstAndLast,
   accessGivenKey,
   getUserAddress,
-  addSafeAllergens,
+  setSafeAllergens,
   mergeFurniture
 } = challenge;
 
@@ -27,11 +27,11 @@ describe("addFurnitureStorLocation() tests", () => {
   const cabinet = { name: "brimnes", price: 55 };
 
   it("Should return an object", () => {
-    expect(typeof addFurnitureStoreLocation(table, "Bristol")).toBe("object");
+    expect(typeof setFurnitureStoreLocation(table, "Bristol")).toBe("object");
   });
 
-  const tableWithLocation = addFurnitureStoreLocation(table, "Bristol");
-  const cabinetWithLocation = addFurnitureStoreLocation(cabinet, "Cardiff");
+  const tableWithLocation = setFurnitureStoreLocation(table, "Bristol");
+  const cabinetWithLocation = setFurnitureStoreLocation(cabinet, "Cardiff");
 
   it("Should add a property of location", () => {
     expect(tableWithLocation).toHaveProperty("location");
@@ -69,27 +69,27 @@ describe("makeSpaceship() tests", () => {
   });
 });
 
-describe("addUserName() tests", () => {
+describe("setUserName() tests", () => {
   const user1 = { name: "john smith", username: "johnnyboiii" };
   const user2 = { name: "jane doe", username: "killerZ" };
   it("Should return and object", () => {
-    expect(typeof addUserName(user1, "XXjohnyboiXX")).toBe("object");
+    expect(typeof setUserName(user1, "XXjohnyboiXX")).toBe("object");
   });
 
   it("Shouldn't change the username if one already exists", () => {
-    expect(addUserName(user1, "XXjohnyboiXX").username).toBe("johnnyboiii");
-    expect(addUserName(user1, "XXjohnyboiXX")).toStrictEqual(user1);
-    expect(addUserName(user2, "butterflyflowerqueen").username).toBe("killerZ");
-    expect(addUserName(user2, "butterflyflowerqueen")).toStrictEqual(user2);
+    expect(setUserName(user1, "XXjohnyboiXX").username).toBe("johnnyboiii");
+    expect(setUserName(user1, "XXjohnyboiXX")).toStrictEqual(user1);
+    expect(setUserName(user2, "butterflyflowerqueen").username).toBe("killerZ");
+    expect(setUserName(user2, "butterflyflowerqueen")).toStrictEqual(user2);
   });
 
   const user3 = { name: "paul blart" };
   const user4 = { name: "gimli son of gloin" };
   it("Should change the username if none exists", () => {
-    expect(addUserName(user3, "mallcop12").username).toBe("mallcop12");
-    expect(addUserName(user3, "mallcop12")).toStrictEqual({ name: "paul blart", username: "mallcop12" });
-    expect(addUserName(user4, "ih8elves").username).toBe("ih8elves");
-    expect(addUserName(user4, "ih8elves")).toStrictEqual({ name: "gimli son of gloin", username: "ih8elves" });
+    expect(setUserName(user3, "mallcop12").username).toBe("mallcop12");
+    expect(setUserName(user3, "mallcop12")).toStrictEqual({ name: "paul blart", username: "mallcop12" });
+    expect(setUserName(user4, "ih8elves").username).toBe("ih8elves");
+    expect(setUserName(user4, "ih8elves")).toStrictEqual({ name: "gimli son of gloin", username: "ih8elves" });
   });
 });
 
@@ -161,7 +161,7 @@ describe("getUserAddress() tests", () => {
   });
 });
 
-describe("addSafeAllergens() tests", () => {
+describe("setSafeAllergens() tests", () => {
   const allergenList = [
     "celery",
     "gluten",
@@ -186,7 +186,7 @@ describe("addSafeAllergens() tests", () => {
   };
 
   it("Should include all allergens as safe if none present on the object allergies array", () => {
-    expect(addSafeAllergens(customer1, allergenList).safeAllergens).toStrictEqual([
+    expect(setSafeAllergens(customer1, allergenList).safeAllergens).toStrictEqual([
       "celery",
       "gluten",
       "crustaceans",
@@ -226,7 +226,7 @@ describe("addSafeAllergens() tests", () => {
   };
 
   it("Should include no allergens if all are found on the customer object", () => {
-    expect(addSafeAllergens(customer2, allergenList).safeAllergens).toStrictEqual([]);
+    expect(setSafeAllergens(customer2, allergenList).safeAllergens).toStrictEqual([]);
   });
 
   const customer3 = {
@@ -236,7 +236,7 @@ describe("addSafeAllergens() tests", () => {
   };
 
   it("Should include some allergens if some are present on customer allergen list", () => {
-    expect(addSafeAllergens(customer3, allergenList).safeAllergens).toStrictEqual([
+    expect(setSafeAllergens(customer3, allergenList).safeAllergens).toStrictEqual([
       "celery",
       "gluten",
       "crustaceans",

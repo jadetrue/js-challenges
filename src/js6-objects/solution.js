@@ -33,7 +33,7 @@ export const getFurniturePrice = (furniture) => {
  * @param {string} location - A store location to attach to a piece of furniture
  * @returns {{name: string, price: number, location: string}} furniture - A furniture object from the catalogue
  */
-export const addFurnitureStoreLocation = (furniture, location) => {
+export const setFurnitureStoreLocation = (furniture, location) => {
   furniture.location = location;
 
   return furniture;
@@ -68,7 +68,7 @@ export const makeSpaceship = (name, noOfSeats, engineType, canTravelSolarSystems
  * @param {string} username - A username to attach
  * @returns {{name: string, username: string}} User - The user object with the same username or a new one
  */
-export const addUserName = (user, username) => {
+export const setUserName = (user, username) => {
   const hasUserName = user.hasOwnProperty("username");
 
   if (!hasUserName) {
@@ -134,7 +134,7 @@ export const getUserAddress = (user) => {
  * @param {string[]} allergenList - A list of all known allergens
  * @return {{id: number, name: string, allergies: string[], safeAllergens: string[]}} customer
  */
-export const addSafeAllergens = (customer, allergenList) => {
+export const setSafeAllergens = (customer, allergenList) => {
   const safeAllergens = allergenList.filter((allergen) => {
     return !customer.allergies.includes(allergen);
   });
