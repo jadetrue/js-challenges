@@ -89,7 +89,7 @@ export const createOddEvenArray = (numberString) => {
  * A function that takes an array of book titles and a search term.
  * The function needs fo remove any book titles that do not include the search term.
  *
- * @param {string[]} booksArr ["JavaScript: The Definitive Guide", "JavaScript: The Good Parts", "The Google story"]
+ * @param {string[]} booksArr ["JavaScript: The Definitive Guide", "JavaScript: The Good Parts", "The Google story", "React for Dummies"]
  * @param {string} - searchTerm - "Google"
  * @return {string[]} - ["The Google story"]
  */

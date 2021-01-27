@@ -26,7 +26,17 @@ const stringsToClean = ["  CaBBage  ", "TuRnIp", "  RADish", "CARroT  "];
 const cleanedStrings = "cabbage+turnip+radish+carrot";
 const formattedStringArr = ["T", "e", "S", "t", "S", "t", "R", "i", "N", "g"];
 
-describe("Testing removeFalseValues()", () => {
+xdescribe("Testing removeFalseValues()", () => {
+  it("Should return an array", () => {
+    expect(Array.isArray(removeFalseValues([true]))).toBe(true);
+    expect(Array.isArray(removeFalseValues([false]))).toBe(true);
+  });
+
+  it("Should return an array of Booleans", () => {
+    const testForBooleans = removeFalseValues(mixedBooleanArr).every((bool) => typeof bool === "boolean");
+    expect(testForBooleans).toBe(true);
+  });
+
   it("Should remove false values from an array", () => {
     expect(removeFalseValues(Array(5).fill(false)).length).toBe(0);
     expect(removeFalseValues(Array(20).fill(false)).length).toBe(0);
@@ -48,6 +58,15 @@ describe("Testing removeFalseValues()", () => {
 });
 
 xdescribe("Testing createPercentageList()", () => {
+  it("Should return an array", () => {
+    expect(Array.isArray(createPercentageList(toBePercentages))).toBe(true);
+  });
+
+  it("Should return an array of Strings", () => {
+    const testForStrings = createPercentageList(toBePercentages).every((string) => typeof string === "string");
+    expect(testForStrings).toBe(true);
+  });
+
   it("Should convert numbers into percentages", () => {
     expect(createPercentageList(toBePercentages)).toEqual(percentages);
     expect(createPercentageList([0.25])).toEqual(["25%"]);
@@ -68,6 +87,15 @@ xdescribe("Testing createPercentageList()", () => {
 });
 
 xdescribe("Testing createListOfPoessessions()", () => {
+  it("Should return an array", () => {
+    expect(Array.isArray(createListOfPoessessions(possessions, "Matt's"))).toBe(true);
+  });
+
+  it("Should return an array of Strings", () => {
+    const testForStrings = createListOfPoessessions(possessions, "Matt's").every((string) => typeof string === "string");
+    expect(testForStrings).toBe(true);
+  });
+
   it("Should prefix name as expected", () => {
     expect(createListOfPoessessions(possessions, "Matt's")).toEqual(mattsPosessions);
     expect(createListOfPoessessions(["shoes", "jacket", "belt"], "disco")).toEqual([
@@ -92,6 +120,15 @@ xdescribe("Testing createListOfPoessessions()", () => {
 });
 
 xdescribe("Testing convertStringToNumbersArray()", () => {
+  it("Should return an array", () => {
+    expect(Array.isArray(convertStringToNumbersArray(numbersCSV))).toBe(true);
+  });
+
+  it("Should return an array of Numbers", () => {
+    const testForNumbers = convertStringToNumbersArray(numbersCSV).every((number) => typeof number === "number");
+    expect(testForNumbers).toBe(true);
+  });
+
   it("Should convert string as expected", () => {
     expect(convertStringToNumbersArray(numbersCSV)).toEqual([5, 2, 55, 1990, 45, 15, 22]);
     expect(convertStringToNumbersArray("1+2")).toEqual([1, 2]);
@@ -109,6 +146,15 @@ xdescribe("Testing convertStringToNumbersArray()", () => {
 });
 
 xdescribe("Testing createOddEvenArray()", () => {
+  it("Should return an array", () => {
+    expect(Array.isArray(createOddEvenArray(numbersCSV))).toBe(true);
+  });
+
+  it("Should return an array of Strings", () => {
+    const testForStrings = createOddEvenArray(numbersCSV).every((string) => typeof string === "string");
+    expect(testForStrings).toBe(true);
+  });
+
   it("Should convert string as expected", () => {
     expect(createOddEvenArray(numbersCSV)).toEqual(["odd", "even", "odd", "even", "odd", "odd", "even"]);
     expect(createOddEvenArray("1+2")).toEqual(["odd", "even"]);
@@ -126,7 +172,14 @@ xdescribe("Testing createOddEvenArray()", () => {
 });
 
 xdescribe("Testing filterBooksBySearch()", () => {
-  
+  it("Should return an array", () => {
+    expect(Array.isArray(filterBooksBySearch(["one thing"], "one thing"))).toBe(true);
+  });
+
+  it("Should return an array of Strings", () => {
+    const testForStrings = filterBooksBySearch(["disco", "disco", "shoes", "disco shoe"], "disco").every((string) => typeof string === "string");
+    expect(testForStrings).toBe(true);
+  });
 
   it("Should handle one match", () => {
     expect(filterBooksBySearch(["one thing"], "one thing")).toEqual(["one thing"]);
@@ -160,6 +213,10 @@ xdescribe("Testing filterBooksBySearch()", () => {
 });
 
 xdescribe("Testing formatStringArray()", () => {
+  it("Should return a String", () => {
+    expect(typeof formatStringArray(["  front"])).toBe("string");
+  });
+
   it("Should NOT return undefined", () => {
     expect(formatStringArray(["  front"])).toBeDefined();
   });
@@ -188,6 +245,15 @@ xdescribe("Testing formatStringArray()", () => {
 xdescribe("Testing formatString()", () => {
   it("Should NOT return undefined", () => {
     expect(formatString("  defined")).toBeDefined();
+  });
+
+  it("Should return an array", () => {
+    expect(Array.isArray(formatString("white  space"))).toBe(true);
+  });
+
+  it("Should return an array of Strings", () => {
+    const testForStrings = formatString("white  space").every((string) => typeof string === "string");
+    expect(testForStrings).toBe(true);
   });
 
   it("Should remove numbers", () => {
@@ -225,9 +291,13 @@ xdescribe("Testing formatString()", () => {
   });
 });
 
-xdescribe("Testing encryptString()", () => {
+describe("Testing encryptString()", () => {
   it("Should NOT return undefined", () => {
     expect(encryptString("  defined")).toBeDefined();
+  });
+
+  it("Should return a String", () => {
+    expect(typeof encryptString("  front")).toBe("string");
   });
 
   it("Should NOT encrypt three letters", () => {
