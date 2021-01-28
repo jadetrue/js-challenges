@@ -55,6 +55,14 @@ export const createListOfPoessessions = (possessionsArr, name) => {
  */
 
 /**
+ * Have a look at the String method split()
+ * 
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
+ * 
+ * You may need to use it below.
+ */
+
+/**
  * A function that takes a string of numbers joined with a "+" and returns an array of those numbers.
  * The strings will need to be converted into numbers.
  * e.g 1 instead of "1"
