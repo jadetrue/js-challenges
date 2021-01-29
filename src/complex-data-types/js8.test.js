@@ -1,8 +1,15 @@
 import challenge from "./index";
 
-const { getEmployeeQuotes, getTheManagers, getNumberOfKeys } = challenge;
+const {
+  getEmployeeQuotes,
+  getTheManagers,
+  getNumberOfKeys,
+  findMostExpensiveItem,
+  settotalPrice,
+  totalShoppingBasket
+} = challenge;
 
-describe("Foundation level tests", () => {
+describe("Foundation level challenges", () => {
   const employeeData = [
     {
       name: "Edith Gibson",
@@ -81,6 +88,127 @@ describe("Foundation level tests", () => {
       expect(getNumberOfKeys(object1)).toBe(2);
       expect(getNumberOfKeys(object2)).toBe(4);
       expect(getNumberOfKeys(object3)).toBe(6);
+    });
+  });
+});
+
+describe("Intermediate level challenges", () => {
+  const shoppingBasket = [
+    {
+      name: "jeans",
+      price: 30,
+      hasFreeShipping: false,
+      quantity: 2
+    },
+    {
+      name: "hoodie",
+      price: 35,
+      hasFreeShipping: false,
+      quantity: 1
+    },
+    {
+      name: "pants",
+      price: 5,
+      hasFreeShipping: true,
+      quantity: 5
+    },
+    {
+      name: "socks",
+      price: 5,
+      hasFreeShipping: true,
+      quantity: 1
+    },
+    {
+      name: "shirt",
+      price: 20,
+      hasFreeShipping: false,
+      quantity: 3
+    }
+  ];
+
+  const shoppingBasketWithTotals = [
+    {
+      name: "hoodie",
+      price: 35,
+      hasFreeShipping: false,
+      quantity: 1,
+      totalPrice: 35
+    },
+    {
+      name: "jeans",
+      price: 30,
+      hasFreeShipping: false,
+      quantity: 2,
+      totalPrice: 60
+    },
+    {
+      name: "shirt",
+      price: 20,
+      hasFreeShipping: false,
+      quantity: 3,
+      totalPrice: 60
+    },
+    {
+      name: "pants",
+      price: 5,
+      hasFreeShipping: true,
+      quantity: 5,
+      totalPrice: 25
+    },
+    {
+      name: "socks",
+      price: 5,
+      hasFreeShipping: true,
+      quantity: 1,
+      totalPrice: 5
+    }
+  ];
+
+  describe("findMostExpensiveItem() tests", () => {
+    it("Should return a single object", () => {
+      expect(findMostExpensiveItem(shoppingBasket)).toHaveProperty("name");
+      expect(findMostExpensiveItem(shoppingBasket).name).toBe("hoodie");
+    });
+
+    it("Should return the most expensive item which is a hoodie", () => {
+      expect(findMostExpensiveItem(shoppingBasket)).toStrictEqual({
+        name: "hoodie",
+        price: 35,
+        hasFreeShipping: false,
+        quantity: 1
+      });
+    });
+  });
+
+  describe("settotalPrice() tests", () => {
+    it("Should return an array", () => {
+      expect(Array.isArray(settotalPrice(shoppingBasket))).toBe(true);
+    });
+
+    it("Should not modify original array of objects", () => {
+      expect(settotalPrice(shoppingBasket)).not.toStrictEqual(shoppingBasket);
+    });
+
+    it("Should add a totalPrice key to each object", () => {
+      settotalPrice(shoppingBasket).forEach((item) => {
+        expect(item).toHaveProperty("totalPrice");
+      });
+    });
+
+    it("Should accurately total each shopping item", () => {
+      expect(settotalPrice(shoppingBasket).sort((a, b) => a.price - b.price)).toStrictEqual(
+        shoppingBasketWithTotals.sort((a, b) => a.price - b.price)
+      );
+    });
+  });
+
+  describe("totalShoppingBasket() tests", () => {
+    it("Should return a number", () => {
+      expect(typeof totalShoppingBasket(shoppingBasketWithTotals)).toBe("number");
+    });
+
+    it("Should accurately total all objects", () => {
+      expect(totalShoppingBasket(shoppingBasketWithTotals)).toBe(185);
     });
   });
 });

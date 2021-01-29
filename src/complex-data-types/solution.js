@@ -54,10 +54,60 @@ export const getNumberOfKeys = (object) => {
 /* Intermediate Challenges */
 
 // Find the object which matches a certain condition
+/**
+ * A function to find the most expensive item in the basket and returns it in order to offer this customer a discount
+ * later on down the line.
+ *
+ * @param {{name: string, price: number, hasFreeShipping: boolean, quantity: number}[]} shoppingBasketArr - An array of basket items for an online shop
+ * @returns {{name: string, price: number, hasFreeShipping: boolean, quantity: number}} The most expensive item in the shopping basket
+ */
+export const findMostExpensiveItem = (shoppingBasketArr) => {
+  const sortedArray = shoppingBasketArr.sort((a, b) => b.price - a.price);
 
-// Total up a shopping basket (reduce)
+  return sortedArray[0];
+};
 
 // Modify every object in array and return the array of objects
+/**
+ * A function which add a new key of totalPrice to each shopping basket item in the array where total cost is
+ * the price * the quantity of items ordered i.e.
+ * {
+ *  name: "jeans",
+ *  price: 30,
+ *  hasFreeShipping: false,
+ *  quantity: 2,
+ *  totalPrice: 60
+ * }
+ * Then returns a new array of objects
+ *
+ * @param {{name: string, price: number, hasFreeShipping: boolean, quantity: number}[]} shoppingBasketArr - An array of basket items for an online shop
+ * @returns {{name: string, price: number, hasFreeShipping: boolean, quantity: number, totalPrice: number}[]} A new array where each object has had a total price added to it
+ */
+export const settotalPrice = (shoppingBasketArr) => {
+  const shoppingBasketWithTotals = shoppingBasketArr.map((item) => {
+    const newItem = { ...item };
+    const totalPrice = newItem.price * newItem.quantity;
+    newItem.totalPrice = totalPrice;
+    return newItem;
+  });
+
+  return shoppingBasketWithTotals;
+};
+
+// Total up a shopping basket (reduce)
+/**
+ * A function which sums the total cost of every item in the array and returns it as a single number.
+ *
+ * @param {{name: string, price: number, hasFreeShipping: boolean, quantity: number, totalPrice: number}[]} shoppingBasketArr - An array of basket items for an online shop
+ * @returns {number} The total cost of the order
+ */
+export const totalShoppingBasket = (shoppingBasketArr) => {
+  const total = shoppingBasketArr.reduce((previous, current) => {
+    return (previous += current.totalPrice);
+  }, 0);
+
+  return total;
+};
 
 /* Advanced Challenges */
 
