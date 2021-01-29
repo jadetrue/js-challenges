@@ -53,7 +53,6 @@ export const getNumberOfKeys = (object) => {
 
 /* Intermediate Challenges */
 
-// Find the object which matches a certain condition
 /**
  * A function to find the most expensive item in the basket and returns it in order to offer this customer a discount
  * later on down the line.
@@ -67,7 +66,6 @@ export const findMostExpensiveItem = (shoppingBasketArr) => {
   return sortedArray[0];
 };
 
-// Modify every object in array and return the array of objects
 /**
  * A function which add a new key of totalPrice to each shopping basket item in the array where total cost is
  * the price * the quantity of items ordered i.e.
@@ -94,7 +92,6 @@ export const settotalPrice = (shoppingBasketArr) => {
   return shoppingBasketWithTotals;
 };
 
-// Total up a shopping basket (reduce)
 /**
  * A function which sums the total cost of every item in the array and returns it as a single number.
  *
