@@ -59,7 +59,7 @@ describe("Foundation level challenges", () => {
     });
   });
 
-  describe("getTheManagers() tests", () => {
+  xdescribe("getTheManagers() tests", () => {
     it("Should return an array containing only employees where isManagement is true", () => {
       expect(getTheManagers(employeeData)).toStrictEqual([
         {
@@ -78,7 +78,7 @@ describe("Foundation level challenges", () => {
     });
   });
 
-  describe("getNumberOfKeys() tests", () => {
+  xdescribe("getNumberOfKeys() tests", () => {
     const object1 = { a: 1, b: 2 };
     const object2 = { a: 1, b: 2, c: 3, d: 4 };
     const object3 = { a: 1, b: 2, c: 3, d: 4, e: 5, f: 6 };
@@ -167,7 +167,7 @@ describe("Intermediate level challenges", () => {
     }
   ];
 
-  describe("findMostExpensiveItem() tests", () => {
+  xdescribe("findMostExpensiveItem() tests", () => {
     it("Should return a single object", () => {
       expect(findMostExpensiveItem(shoppingBasket)).toHaveProperty("name");
       expect(findMostExpensiveItem(shoppingBasket).name).toBe("hoodie");
@@ -183,7 +183,7 @@ describe("Intermediate level challenges", () => {
     });
   });
 
-  describe("settotalPrice() tests", () => {
+  xdescribe("settotalPrice() tests", () => {
     it("Should return an array", () => {
       expect(Array.isArray(settotalPrice(shoppingBasket))).toBe(true);
     });
@@ -205,7 +205,7 @@ describe("Intermediate level challenges", () => {
     });
   });
 
-  describe("totalShoppingBasket() tests", () => {
+  xdescribe("totalShoppingBasket() tests", () => {
     it("Should return a number", () => {
       expect(typeof totalShoppingBasket(shoppingBasketWithTotals)).toBe("number");
     });
@@ -216,7 +216,7 @@ describe("Intermediate level challenges", () => {
   });
 });
 
-describe("getImportantKeys() tests", () => {
+xdescribe("getImportantKeys() tests", () => {
   const mealsArr = [
     {
       id: 10,
@@ -281,7 +281,7 @@ describe("getImportantKeys() tests", () => {
   });
 });
 
-describe("setImportantKeys() tests", () => {
+xdescribe("setImportantKeys() tests", () => {
   const mealsArr = [
     {
       id: 10,
@@ -353,7 +353,7 @@ describe("setImportantKeys() tests", () => {
   });
 });
 
-describe("cleanCocktailResponseData() tests", () => {
+xdescribe("cleanCocktailResponseData() tests", () => {
   const mockCocktailData = [
     {
       idDrink: 12768,
