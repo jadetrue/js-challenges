@@ -133,8 +133,6 @@ export class Engine {
  * Intemediate Challenges
  */
 
-
-
 /**
  * Complete the Skeleton of a Counter Class below.
  *
@@ -209,7 +207,7 @@ export class Counter {
  *
  * MODAL-TITLE will be the title key from the class.
  * MODAL-MESSAGE will be the mesage key from the class.
- * 
+ *
  * The second will need to be called toggleModal.
  * This method when called will toggle the "hide" class
  *
@@ -231,7 +229,7 @@ export class Modal {
 
   /**
    * A method that sets the html
-   * 
+   *
    */
 
   // WRITE renderHtml FUNCTION HERE
@@ -253,6 +251,10 @@ export class Modal {
     this.htmlRef.classList.toggle("hide");
   }
 }
+
+/**
+ * Advanced Challenges
+ */
 
 /**
  * Complete the Skeleton of a BookShelf Class below.
@@ -327,9 +329,45 @@ export class BookShelf {
 }
 
 /**
- * Advanced Challenges
+ * Expert Challenge
  */
 
 /**
- * Expert Challenge
+ * Complete the Skeleton of a User Class below.
+ *
+ * You will need to complete the constructor.
+ * It needs to accept three parameters called name, email and password.
+ * It will also have a property of active which by default will be set to false.
+ * It will also have a property of likes which by default will be set to a empty array.
+ * The keys will need to be called name, email, password and active.
+ *
+ * You will need to write three methods
+ *
+ * the first needs to be called login()
+ * THis method takes a username and a email address if they match the user
+ *
  */
+
+/** Class representing a User. */
+export class User {
+  /**
+   * Create a user.
+   * @param {string} name
+   * @param {string} email
+   * @param {string} password
+   *
+   */
+  constructor(name, email, password) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.active = false;
+    this.likes = [];
+  }
+
+  /**
+   * A getter that returns the current books on the shelf.
+   * @return {string[]} ["JavaScript for Kids", "Learning JavaScript Design Patterns"]
+   */
+  get booksOnShelf() {}
+}
