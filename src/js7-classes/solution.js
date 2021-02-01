@@ -133,6 +133,8 @@ export class Engine {
  * Intemediate Challenges
  */
 
+
+
 /**
  * Complete the Skeleton of a Counter Class below.
  *
@@ -182,6 +184,73 @@ export class Counter {
   decrement() {
     if (this.count > 0) this.count--;
     return this.count;
+  }
+}
+
+/**
+ * Complete the Skeleton of the Modal Class below.
+ *
+ * You will need to complete the constructor.
+ * It needs to accept three parameters called htmlRef, title and message.
+ * The keys will need to be called htmlRef, title and message.
+ *
+ * htmlRef will be a mock html element.
+ * It will have innerHtml key and classList.toggle() method
+ *
+ * You will need to create two methods on the instance of the Modal class.
+ *
+ * The first will need to be called renderHtml.
+ * This method will set the htmlRef's innerHtml property to match the format below.
+ *
+ * <div class="modal">
+ *    <h2 class="modal--title">MODAL-TITLE</h2>
+ *    <p class="modal--message">MODAL-MESSAGE</p>
+ * </div>
+ *
+ * MODAL-TITLE will be the title key from the class.
+ * MODAL-MESSAGE will be the mesage key from the class.
+ * 
+ * The second will need to be called toggleModal.
+ * This method when called will toggle the "hide" class
+ *
+ */
+
+/** Class representing a Modal. */
+export class Modal {
+  /**
+   * Create an modal.
+   * @param {HTMLElement} htmlRef - 50
+   * @param {string} title - 50
+   * @param {string} message - 50
+   */
+  constructor(htmlRef, title, message) {
+    this.htmlRef = htmlRef;
+    this.title = title;
+    this.message = message;
+  }
+
+  /**
+   * A method that sets the html
+   * 
+   */
+
+  // WRITE renderHtml FUNCTION HERE
+  renderHtml() {
+    this.htmlRef.innerHtml = `
+    <div class="modal">
+      <h2 class="modal--title">${this.title}</h2>
+      <p class="modal--message">${this.message}</p>
+    </div>
+    `;
+  }
+
+  /**
+   * A method that decrements count by 1 but will not go below 0.
+   */
+
+  // WRITE DECREMENT FUNCTION HERE
+  displayModal() {
+    this.htmlRef.classList.toggle("hide");
   }
 }
 

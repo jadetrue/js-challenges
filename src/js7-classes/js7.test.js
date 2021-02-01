@@ -1,6 +1,6 @@
 import challenge from "./index";
 
-const { Coordinate, Alert, Engine, Counter, BookShelf } = challenge;
+const { Coordinate, Alert, Engine, Counter, Modal, BookShelf } = challenge;
 
 xdescribe("Testing Coordinate class", () => {
   const coordOne = new Coordinate(5, 10);
@@ -266,6 +266,99 @@ xdescribe("Testing Counter class", () => {
   });
 });
 
+xdescribe("Testing Modal class", () => {
+  let modal;
+
+  let htmlReference;
+
+  beforeEach(() => {
+    htmlReference = {
+      innerHtml: "",
+      classList: {
+        list: ["hide"],
+        toggle(cssClass) {
+          if (this.list.includes(cssClass)) {
+            this.list = this.list.filter((listItem) => listItem !== cssClass);
+          } else {
+            this.list.push(cssClass);
+          }
+        },
+      },
+    };
+    modal = new Modal(htmlReference, "Error", "Sorry there has been some sort of error");
+  });
+
+  it("Should be an object", () => {
+    expect(typeof modal).toBe("object");
+  });
+
+  it("Should have htmlRef, title and message keys", () => {
+    expect(modal).toHaveProperty("htmlRef");
+    expect(modal).toHaveProperty("title");
+    expect(modal).toHaveProperty("message");
+  });
+
+  it("Should have correct values assigned to the keys", () => {
+    expect(modal.htmlRef).toEqual(htmlReference);
+    expect(modal.title).toBe("Error");
+    expect(modal.message).toBe("Sorry there has been some sort of error");
+  });
+
+  it("Should ONLY have three keys", () => {
+    expect(Object.keys(modal).length).toBe(3);
+  });
+
+  it("Should have renderHtml and toggleModalfunctions", () => {
+    expect(typeof modal.renderHtml).toBe("function");
+    expect(typeof modal.displayModal).toBe("function");
+  });
+
+  it("Should update the innerHtml of the htmlRefernce after renderHtml() has been called", () => {
+    const expectedHtml = `
+    <div class="modal">
+      <h2 class="modal--title">Error</h2>
+      <p class="modal--message">Sorry there has been some sort of error</p>
+    </div>
+    `;
+
+    modal.renderHtml();
+    expect(htmlReference.innerHtml).toBe(expectedHtml);
+  });
+
+  it("Should update the innerHtml of the htmlRefernce dynamically after renderHtml() has been called", () => {
+    modal = new Modal(htmlReference, "Good Morning", "Have a great day!");
+
+    const expectedHtml = `
+    <div class="modal">
+      <h2 class="modal--title">Good Morning</h2>
+      <p class="modal--message">Have a great day!</p>
+    </div>
+    `;
+
+    modal.renderHtml();
+    expect(htmlReference.innerHtml).toBe(expectedHtml);
+  });
+
+  it("Should update the classList of the htmlRefernce - remove hide", () => {
+    modal.displayModal();
+
+    expect(htmlReference.classList.list).toEqual([]);
+  });
+
+  it("Should update the classList of the htmlRefernce - add hide", () => {
+    modal.displayModal();
+    modal.displayModal();
+
+    expect(htmlReference.classList.list).toEqual(["hide"]);
+  });
+
+  it("Should update the classList with the string of hide", () => {
+    modal.displayModal();
+    modal.displayModal();
+    expect(htmlReference.classList.list[0]).toBe("hide");
+  });
+});
+
 xdescribe("Testing BookShelf class", () => {
   let bookShelf;
   const bookArray = [
@@ -342,7 +435,7 @@ xdescribe("Testing BookShelf class", () => {
     bookShelf = new BookShelf();
     const largeBookArray = [...bookArray, ...bookArray, ...bookArray];
     largeBookArray.forEach((book) => (bookShelf.addBookToShelf = book));
-    const lastItem = largeBookArray[largeBookArray.length -1];
+    const lastItem = largeBookArray[largeBookArray.length - 1];
     expect(bookShelf.latestBook).toBe(lastItem);
   });
 
