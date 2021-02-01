@@ -1,6 +1,6 @@
 import challenge from "./index";
 
-const { Coordinate, Alert, Engine, Counter } = challenge;
+const { Coordinate, Alert, Engine, Counter, BookShelf } = challenge;
 
 xdescribe("Testing Coordinate class", () => {
   const coordOne = new Coordinate(5, 10);
@@ -85,68 +85,68 @@ xdescribe("Testing Alert class", () => {
   });
 });
 
-describe("Testing Engine class", () => {
-  let engine;
+xdescribe("Testing Engine class", () => {
+  let bookShelf;
 
   beforeEach(() => {
-    engine = new Engine();
+    bookShelf = new Engine();
   });
 
   it("Should be an object", () => {
-    expect(typeof engine).toBe("object");
+    expect(typeof bookShelf).toBe("object");
   });
 
   it("Should have a engineIsRunning key", () => {
-    expect(engine).toHaveProperty("engineIsRunning");
+    expect(bookShelf).toHaveProperty("engineIsRunning");
   });
 
   it("Should set engineIsRunning to false by default", () => {
-    expect(engine.engineIsRunning).toBe(false);
+    expect(bookShelf.engineIsRunning).toBe(false);
   });
 
   it("Should have a startEngine function", () => {
-    expect(typeof engine.startEngine).toBe("function");
+    expect(typeof bookShelf.startEngine).toBe("function");
   });
 
   it("Should return a string when the startEngine method is called", () => {
-    expect(typeof engine.startEngine()).toBe("string");
+    expect(typeof bookShelf.startEngine()).toBe("string");
   });
 
   it("Should return the correct string when startEngine() is called and engineIsRunning is false", () => {
-    expect(engine.startEngine()).toBe("Engine has started running");
+    expect(bookShelf.startEngine()).toBe("Engine has started running");
   });
 
   it("Should set engineIsRunning to true after startEngine() has been called", () => {
-    engine.startEngine();
-    expect(engine.engineIsRunning).toBe(true);
+    bookShelf.startEngine();
+    expect(bookShelf.engineIsRunning).toBe(true);
   });
 
   it("Should return the correct string when startEngine() is called and engineIsRunning is true", () => {
-    engine.startEngine();
-    expect(engine.startEngine()).toBe("Engine is already running");
+    bookShelf.startEngine();
+    expect(bookShelf.startEngine()).toBe("Engine is already running");
   });
 
   it("Should have a stopEngine function", () => {
-    expect(typeof engine.stopEngine).toBe("function");
+    expect(typeof bookShelf.stopEngine).toBe("function");
   });
 
   it("Should return a string when the stopEngine method is called", () => {
-    expect(typeof engine.stopEngine()).toBe("string");
+    expect(typeof bookShelf.stopEngine()).toBe("string");
   });
 
   it("Should return the correct string when stopEngine() is called and engineIsRunning is false", () => {
-    expect(engine.stopEngine()).toBe("Engine has already stopped running");
+    expect(bookShelf.stopEngine()).toBe("Engine has already stopped running");
   });
 
   it("Should return the correct string when stopEngine() is called and engineIsRunning is true", () => {
-    engine.startEngine();
-    expect(engine.stopEngine()).toBe("Engine has stopped running");
+    bookShelf.startEngine();
+    expect(bookShelf.stopEngine()).toBe("Engine has stopped running");
   });
 
   it("Should set engineIsRunning to false after startEngine() and stopEngine() have been called", () => {
-    engine.startEngine();
-    engine.stopEngine();
-    expect(engine.engineIsRunning).toBe(false);
+    bookShelf.startEngine();
+    bookShelf.stopEngine();
+    expect(bookShelf.engineIsRunning).toBe(false);
   });
 });
 
@@ -263,6 +263,92 @@ xdescribe("Testing Counter class", () => {
     expect(lowCount.count).toBe(0);
     expect(highCount.count).toBe(0);
     expect(noCount.count).toBe(0);
+  });
+});
+
+xdescribe("Testing BookShelf class", () => {
+  let bookShelf;
+  const bookArray = [
+    "JavaScript: The Definitive Guide",
+    "JavaScript: The Good Parts",
+    "The Google story",
+    "React for Dummies",
+  ];
+
+  const newBookArray = bookArray.filter((book) => book.includes("JavaScript"));
+
+  beforeEach(() => {
+    bookShelf = new BookShelf("aa0200a01", bookArray);
+  });
+
+  it("Should be an object", () => {
+    expect(typeof bookShelf).toBe("object");
+  });
+
+  it("Should have a _shelfId and a _booksOnShelf key", () => {
+    expect(bookShelf).toHaveProperty("_shelfId");
+    expect(bookShelf).toHaveProperty("_booksOnShelf");
+  });
+
+  it("Should set _booksOnShelf to [] by default", () => {
+    bookShelf = new BookShelf();
+    expect(bookShelf._booksOnShelf).toEqual([]);
+  });
+
+  it("Should have the getters and setters", () => {
+    expect(bookShelf).toHaveProperty("booksOnShelf");
+    expect(bookShelf).toHaveProperty("latestBook");
+    expect(bookShelf).toHaveProperty("addBookToShelf");
+  });
+
+  it("Should return the _booksOnShelf written as a getter", () => {
+    expect(bookShelf.booksOnShelf).toEqual(bookArray);
+  });
+
+  it("Should update the _booksOnShelf written as a setter", () => {
+    bookShelf.booksOnShelf = newBookArray;
+    expect(bookShelf.booksOnShelf).toEqual(newBookArray);
+  });
+
+  it("Should return the latestBook written as a getter", () => {
+    const lastItem = bookArray[bookArray.length - 1];
+    expect(bookShelf.latestBook).toBe(lastItem);
+  });
+
+  it("Should update using a setter and return the latestBook written as a getter", () => {
+    bookShelf.booksOnShelf = newBookArray;
+    const lastItem = newBookArray[newBookArray.length - 1];
+    expect(bookShelf.latestBook).toBe(lastItem);
+  });
+
+  it("Should Error if latestBook is attempted to be assigned", () => {
+    expect(() => (bookShelf.latestBook = "book")).toThrow();
+  });
+
+  it("Should add a new book to the bookshelf written as a setter", () => {
+    bookArray.push("Added");
+    bookShelf.addBookToShelf = "Added";
+    expect(bookShelf.booksOnShelf).toEqual(bookArray);
+  });
+
+  it("Should handle multiple books being added to the shelf", () => {
+    bookShelf = new BookShelf();
+    const largeBookArray = [...bookArray, ...bookArray, ...bookArray];
+    largeBookArray.forEach((book) => (bookShelf.addBookToShelf = book));
+    expect(bookShelf.booksOnShelf.length).toEqual(largeBookArray.length);
+  });
+
+  it("Should match last item when multiple books have been added", () => {
+    bookShelf = new BookShelf();
+    const largeBookArray = [...bookArray, ...bookArray, ...bookArray];
+    largeBookArray.forEach((book) => (bookShelf.addBookToShelf = book));
+    const lastItem = largeBookArray[largeBookArray.length -1];
+    expect(bookShelf.latestBook).toBe(lastItem);
+  });
+
+  it("Should add a new book to the END of bookshelf written as a setter", () => {
+    bookShelf.addBookToShelf = "Added";
+    expect(bookShelf.latestBook).toBe("Added");
   });
 });
 

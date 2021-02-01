@@ -1,7 +1,4 @@
 // Classes - Foundation
-// - adding constructors
-// - adding methods
-// - adding method that updates key
 
 // Most of it there, have them write method bodies
 // Intermediate
@@ -86,7 +83,7 @@ export class Alert {
 /**
  * Complete the Skeleton of a Engine Class below.
  *
- * You DO NOT need a constructor.
+ * You DO NOT always need parameters for a constructor.
  * When the Engine class is created engineIsRunning will always be set to false.
  * The key needs to remain named engineIsRunning.
  *
@@ -104,7 +101,12 @@ export class Alert {
 
 /** Class representing an engine. */
 export class Engine {
-  engineIsRunning = false;
+  /**
+   * Create an alert.
+   */
+  constructor() {
+    this.engineIsRunning = false;
+  }
 
   /**
    * Updates engineIsRunning to true and returns a conditonal string based if the engine is already running.
@@ -172,15 +174,86 @@ export class Counter {
   }
 
   /**
-   * A method that decrements count by 1.
+   * A method that decrements count by 1 but will not go below 0.
    * @return {number} 49
    */
 
   // WRITE DECREMENT FUNCTION HERE
   decrement() {
     if (this.count > 0) this.count--;
-
     return this.count;
+  }
+}
+
+/**
+ * Complete the Skeleton of a BookShelf Class below.
+ *
+ * You will be implementing getters and setters on the class below.
+ *
+ * The constructor is completed.
+ * It accepts two a parameters called shelfId and booksOnShelf.
+ * The keys on the class are prefixed with a "_" indicating that a given property is private and shouldn’t be accessed from outside of the class.
+ * The keys need to remain with the names _shelfId and _booksOnShelf
+ *
+ * A getter and a setter have been added to the class.
+ * The getter is called booksOnShelf and returns the private property _booksOnShelf
+ * The setter is called booksOnShelf and allows you to replace the private property _booksOnShelf
+ *
+ *
+ * You will need to create a getter and a setter on the instance of the BookShelf class.
+ *
+ * The getter will need to be called latestBook.
+ * This will return the last item of the private property _booksOnShelf.
+ *
+ * The setter will need to be called addBookToShelf.
+ * This will need to take a book as a parameter and add it to end of the of the private property _booksOnShelf.
+ *
+ */
+
+/** Class representing a book shelf. */
+export class BookShelf {
+  /**
+   * Create a book shelf.
+   * @param {string} shelfId - "aa0050a01"
+   * @param {string[]} booksOnShelf - ["JavaScript for Kids", "Learning JavaScript Design Patterns"]
+   *
+   */
+  constructor(shelfId, booksOnShelf = []) {
+    this._shelfId = shelfId;
+    this._booksOnShelf = booksOnShelf;
+  }
+
+  /**
+   * A getter that returns the current books on the shelf.
+   * @return {string[]} ["JavaScript for Kids", "Learning JavaScript Design Patterns"]
+   */
+  get booksOnShelf() {
+    return this._booksOnShelf;
+  }
+
+  /**
+   * A setter that replaces the current books on the shelf with a new list of books.
+   * @param {string[]} bookArray ["Learn JavaScript Visually"]
+   */
+  set booksOnShelf(bookArray = []) {
+    this._booksOnShelf = bookArray;
+  }
+
+  /**
+   * A getter that returns the latest book to be added to the book shelf.
+   * @return {string} "Learning JavaScript Design Patterns"
+   */
+  get latestBook() {
+    const lastIndex = this.booksOnShelf.length - 1;
+    return this.booksOnShelf[lastIndex];
+  }
+
+  /**
+   * A setter that adds a new book to the list of books.
+   * @param {string} "Eloquent JavaScript"
+   */
+  set addBookToShelf(book) {
+    this._booksOnShelf.push(book);
   }
 }
 
