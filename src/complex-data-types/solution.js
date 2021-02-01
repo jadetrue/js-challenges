@@ -108,10 +108,96 @@ export const totalShoppingBasket = (shoppingBasketArr) => {
 
 /* Advanced Challenges */
 
-// Return a new array of objects but each object only has a some of the keys
+/**
+ * A function which takes an array of meal objects, removes unneeded keys from the objects and returns a new array of
+ * meal objects.
+ *
+ * @param {{id: number, name: string, ingredients: string[], country: string, timeStamp: number, userCreated: string}[]} mealsArr - An array containing meal objects
+ * @returns {{id: number, name: string, ingredients: string[], country: string}[]} An array of cleaned meal objects
+ */
+export const getImportantKeys = (mealsArr) => {
+  const cleanedMealArr = mealsArr.map((meal) => {
+    const newMeal = { ...meal.id, ...meal.name, ...meal.ingredients, ...meal.country };
+    return newMeal;
+  });
 
-// Check if each object has a certain key, if it doesn't, add a default value (data cleaning)
+  return cleanedMealArr;
+};
+
+/**
+ * A function which takes an array of meal objects and check if every object contains the necessary keys. If a key is
+ * missing it adds a default value instead.
+ * default values:
+ * isVegetarian = false
+ * timeToCook = 15
+ *
+ * @param {{id: number, name: string, ingredients: string[], country: string, isVegetarian?: boolean, timeToCook?: number}[]} mealsArr - An array containing meal objects
+ * @returns {{id: number, name: string, ingredients: string[], country: string, isVegetarian: boolean, timeToCook: number}[]}
+ */
+export const setImportantKeys = (mealsArr) => {
+  const cleanedMealsArr = mealsArr.map((meal) => {
+    const newMeal = { ...meal };
+    if (!newMeal.hasOwnProperty("isVegetarian")) {
+      newMeal.isVegetarian = false;
+    }
+
+    if (!newMeal.hasOwnProperty("timeToCook")) {
+      newMeal.timeToCook = 15;
+    }
+
+    return newMeal;
+  });
+
+  return cleanedMealsArr;
+};
 
 /* Expert Challenge */
 
-// Check if each object matches the specified structure. Remove unnecessary keys and add default values for missing keys.
+/**
+ * A function that takes a raw response from a cocktail API and turn each object in the response into a cleaner form
+ * so that it is easier to work with.
+ *
+ * @param {{
+ *  idDrink: number,
+ *  strDrink: string,
+ *  strCategory: string,
+ *  strAlcoholic: string,
+ *  strInstructions: string,
+ *  strIngredient1: string | null,
+ *  strIngredient2: string | null,
+ *  strIngredient3: string | null,
+ *  strIngredient4: string | null,
+ *  strIngredient5: string | null,
+ *  strIngredient6: string | null
+ * }[]} cocktailData - The raw response from the cocktail API
+ * @returns {{
+ *  id: number,
+ *  drink: string,
+ *  category: string,
+ *  alcoholic: string,
+ *  instructions: string,
+ *  ingredients: string[],
+ * }[]} A Cleaned array of cocktail data
+ */
+export const cleanCocktailResponseData = (cocktailData) => {
+  const cleanCocktailData = cocktailData.map((cocktail) => {
+    const cleanCocktail = {};
+    cleanCocktail.id = cocktail.idDrink;
+    cleanCocktail.drink = cocktail.strDrink;
+    cleanCocktail.category = cocktail.strCategory;
+    cleanCocktail.alcoholic = cocktail.strAlcoholic;
+    cleanCocktail.instructions = cocktail.strInstructions;
+    cleanCocktail.ingredients = [];
+
+    for (const key in cocktail) {
+      const element = cocktail[key];
+      if (key.includes("strIngredient") && element) {
+        cleanCocktail.ingredients.push(element);
+      }
+    }
+
+    return cleanCocktail;
+  });
+
+  return cleanCocktailData;
+};
