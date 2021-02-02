@@ -27,10 +27,7 @@ export class Coordinate {
    * @param {number} xCoord - 22.
    * @param {number} yCoord - 20.
    */
-  constructor(xCoord, yCoord) {
-    this.xCoord = xCoord;
-    this.yCoord = yCoord;
-  }
+  constructor(xCoord, yCoord) {}
 }
 
 /**
@@ -51,17 +48,14 @@ export class Alert {
    * Create an alert.
    * @param {string} message - "Are sure you want to proceed?"
    */
-  constructor(message) {
-    this.message = message;
-  }
+  constructor() {}
 
   /**
    * Returns a string with "!!!! " + " !!!" added to the start and end of the message key.
    * @return {string} "!!!! Are sure you want to proceed? !!!!"
    */
   printMessage() {
-    const message = `!!!! ${this.message} !!!!`;
-    return message;
+    return;
   }
 }
 
@@ -89,78 +83,22 @@ export class Loader {
    * Create a loader.
    * @param {{innerHtml:string}} htmlRef - {innerHtml:""}
    */
-  constructor(htmlRef) {
-    this.htmlRef = htmlRef;
-  }
+  constructor() {}
 
   /**
    * Updates the htmlRef.innerHtml to display the loader's html.
    */
-  displayLoader() {
-    this.htmlRef.innerHtml = '<div class="loader"></div>';
-  }
+  displayLoader() {}
 
   /**
    * Updates the htmlRef.innerHtml to remove the loader's html.
    */
-  removeLoader() {
-    this.htmlRef.innerHtml = "";
-  }
+  removeLoader() {}
 }
 
 /**
  * Intemediate Challenges
  */
-
-/**
- * Complete the Skeleton of a Engine Class below.
- *
- * You will need to complete the constructor.
- *
- * You DO NOT always need parameters for a constructor.
- * When the Engine class is created engineIsRunning will always be set to false.
- * The key needs to be named engineIsRunning.
- *
- * You will need to complete the two methods.
- *
- * The first is called startEngine().
- * If engineIsRunning is true it will return "Engine is already running".
- * If engineIsRunning is false it will set engineIsRunning to true and return "Engine has started running".
- *
- * The second is called stopEngine().
- * If engineIsRunning is true it will set engineIsRunning to false and return "Engine has stopped running".
- * If engineIsRunning is false it will return "Engine has already stopped running".
- */
-
-/** Class representing an engine. */
-export class Engine {
-  /**
-   * Create an engine.
-   */
-  constructor() {
-    this.engineIsRunning = false;
-  }
-
-  /**
-   * Updates engineIsRunning to true and returns a conditonal string based if the engine is already running.
-   * @return {string} "Engine has started running" or "Engine is already running"
-   */
-  startEngine() {
-    const message = this.engineIsRunning ? "Engine is already running" : "Engine has started running";
-    !this.engineIsRunning ? (this.engineIsRunning = true) : null;
-    return message;
-  }
-
-  /**
-   * Updates engineIsRunning to false and returns a conditonal string based if the engine has already stopped.
-   * @return {string} "Engine has stopped running" or "Engine has already stopped running"
-   */
-  stopEngine() {
-    const message = this.engineIsRunning ? "Engine has stopped running" : "Engine has already stopped running";
-    this.engineIsRunning ? (this.engineIsRunning = false) : null;
-    return message;
-  }
-}
 
 /**
  * Complete the Skeleton of a Counter Class below.
@@ -187,9 +125,7 @@ export class Counter {
    * Create an counter.
    * @param {number} count - 50
    */
-  constructor(count = 0) {
-    this.count = count;
-  }
+  constructor() {}
 
   /**
    * A method that increments count by 1.
@@ -197,10 +133,6 @@ export class Counter {
    */
 
   // WRITE INCREMENT FUNCTION HERE
-  increment() {
-    this.count++;
-    return this.count;
-  }
 
   /**
    * A method that decrements count by 1 but will not go below 0.
@@ -208,9 +140,49 @@ export class Counter {
    */
 
   // WRITE DECREMENT FUNCTION HERE
-  decrement() {
-    if (this.count > 0) this.count--;
-    return this.count;
+}
+
+/**
+ * Complete the Skeleton of a Engine Class below.
+ *
+ * You will need to complete the constructor.
+ *
+ * You DO NOT always need parameters for a constructor.
+ * When the Engine class is created engineIsRunning will always be set to false.
+ * The key needs to be named engineIsRunning.
+ *
+ * You will need to complete the two methods.
+ *
+ * The first is called startEngine().
+ * If engineIsRunning is true it will return "Engine is already running".
+ * If engineIsRunning is false it will set engineIsRunning to true and return "Engine has started running".
+ *
+ * The second is called stopEngine().
+ * If engineIsRunning is true it will set engineIsRunning to false and return "Engine has stopped running".
+ * If engineIsRunning is false it will return "Engine has already stopped running".
+ */
+
+/** Class representing an engine. */
+export class Engine {
+  /**
+   * Create an engine.
+   */
+  constructor() {}
+
+  /**
+   * Updates engineIsRunning to true and returns a conditonal string based if the engine is already running.
+   * @return {string} "Engine has started running" or "Engine is already running"
+   */
+  startEngine() {
+    return;
+  }
+
+  /**
+   * Updates engineIsRunning to false and returns a conditonal string based if the engine has already stopped.
+   * @return {string} "Engine has stopped running" or "Engine has already stopped running"
+   */
+  stopEngine() {
+    return;
   }
 }
 
@@ -225,7 +197,7 @@ export class Counter {
  * It will have an innerHtml and classList key.
  * Inside classList it will have the list key and the toggle() method.
  *
- * You will need to create two methods on the instance of the Modal class.
+ * You will need to write two methods on the instance of the Modal class.
  *
  * The first will need to be called renderHtml().
  * This method will set the htmlRef's innerHtml property to match the format below.
@@ -252,30 +224,19 @@ export class Modal {
    * @param {string} title - "Error"
    * @param {string} message - "We are currently unable to provide this service"
    */
-  constructor(htmlRef, title, message) {
-    this.htmlRef = htmlRef;
-    this.title = title;
-    this.message = message;
-  }
+  constructor() {}
 
   /**
    * A method that renders the html for a modal.
    */
-  renderHtml() {
-    this.htmlRef.innerHtml = `
-    <div class="modal">
-      <h2 class="modal--title">${this.title}</h2>
-      <p class="modal--message">${this.message}</p>
-    </div>
-    `;
-  }
+
+  // WRITE RENDER HTML METHOD HERE
 
   /**
    * A method that toggles a CSS class to either show or hide the modal.
    */
-  displayModal() {
-    this.htmlRef.classList.toggle("hide");
-  }
+
+  // WRITE DISPLAY MODAL METHOD HERE
 }
 
 /**
@@ -341,18 +302,15 @@ export class BookShelf {
    * A getter that returns the latest book to be added to the book shelf.
    * @return {string} "Learning JavaScript Design Patterns"
    */
-  get latestBook() {
-    const lastIndex = this.booksOnShelf.length - 1;
-    return this.booksOnShelf[lastIndex];
-  }
+
+  // WRITE LATEST BOOK GETTER HERE
 
   /**
    * A setter that adds a new book to the list of books.
    * @param {string} "Eloquent JavaScript"
    */
-  set addBookToShelf(book) {
-    this._booksOnShelf.push(book);
-  }
+
+  // WRITE ADD BOOK TO SHELF SETTER HERE
 }
 
 /**
@@ -378,7 +336,7 @@ export class BookShelf {
  * The first needs to be called deposit().
  * It will need to accempt a parameter which is the amount to deposit.
  * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
- * You will have to handle this in the function. 
+ * You will have to handle this in the function.
  * You will need to handle negative numbers.
  *
  * If it is a positive number it needs to be added to the balance. The updated balance is then returned.
@@ -388,7 +346,7 @@ export class BookShelf {
  * The second needs to be called withdraw().
  * It will need to accempt a parameter which is the amount to withdraw.
  * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
- * You will have to handle this in the function. 
+ * You will have to handle this in the function.
  * You will need to handle negative numbers.
  *
  * If the amount to withdraw is greater then the balance it needs to return "Insufficient funds, unable to withdraw"
@@ -405,19 +363,14 @@ export class BankAccount {
    * @param {string} email
    * @param {number} balance
    */
-  constructor(name, email, balance = 0) {
-    this.name = name;
-    this.email = email;
-    this._balance = balance;
-  }
+  constructor() {}
 
   /**
    * A getter that returns the current balance.
    * @return {number} 20
    */
-  get balance() {
-    return this._balance;
-  }
+
+  // WRITE BALANCE GETTER HERE
 
   /**
    * A method that deposits to the balance.
@@ -427,15 +380,8 @@ export class BankAccount {
    * @param {(number|string)} toDeposit 20 or "Bad Input"
    * @return {(number|string)} 40 or "Invalid input, unable to deposit"
    */
-  deposit(toDeposit) {
-    const convertedToNumber = +toDeposit;
 
-    if (!convertedToNumber || convertedToNumber < 0) return "Invalid input, unable to deposit";
-
-    this._balance += convertedToNumber;
-
-    return this.balance;
-  }
+  // WRITE DEPOSIT METHOD HERE
 
   /**
    * A method that withdraws from the balance.
@@ -447,15 +393,6 @@ export class BankAccount {
    * @return {(number|string)} 40 or "Invalid input, unable to deposit" or "Insufficient funds, unable to withdraw"
    */
 
-  withdraw(toWithdraw) {
-    const convertedToNumber = +toWithdraw;
+  // WRITE WITH DRAW METHOD HERE
 
-    if (!convertedToNumber || convertedToNumber < 0) return "Invalid input, unable to withdraw";
-
-    if (this._balance < +convertedToNumber) return "Insufficient funds, unable to withdraw";
-
-    this._balance -= +convertedToNumber;
-
-    return this.balance;
-  }
 }
