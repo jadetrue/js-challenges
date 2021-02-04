@@ -1,4 +1,4 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 
 const {
   totalScoresArr,
@@ -9,7 +9,7 @@ const {
   checkPrimaryColours,
   checkStringPalindrome,
   totalNestedScoresArr,
-  encryptString,
+  encryptString
 } = challenge;
 
 /**
@@ -182,7 +182,7 @@ xdescribe("Testing checkItemInstock()", () => {
     "lemon",
     "kumquat",
     "blueberry",
-    "melon",
+    "melon"
   ];
 
   const expectedMatchMessage = (item, index) => `${item} is instock, it is on aisle ${index}.`;
@@ -276,7 +276,7 @@ xdescribe("Testing totalNestedScoresArr()", () => {
   const nestedScoreArr = [
     [3, 2, 1],
     [45, 6, 2],
-    [66, 88, 99, 100],
+    [66, 88, 99, 100]
   ];
 
   const totalScoreArr = [6, 53, 353];
