@@ -76,10 +76,10 @@ export class Alert {
  *
  * You will need to complete the two methods.
  *
- * The first is called displaySpinner().
+ * The first is called displayLoader().
  * This will set the innerHtml of the htmlRef to "<div class="loader"></div>".
  *
- * The second is called hideSpinner().
+ * The second is called removeLoader().
  * This will set the innerHtml of the htmlRef to an empty string.
  */
 
@@ -378,7 +378,7 @@ export class BookShelf {
  * The first needs to be called deposit().
  * It will need to accempt a parameter which is the amount to deposit.
  * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
- * You will have to handle this in the function. 
+ * You will have to handle this in the function.
  * You will need to handle negative numbers.
  *
  * If it is a positive number it needs to be added to the balance. The updated balance is then returned.
@@ -388,7 +388,7 @@ export class BookShelf {
  * The second needs to be called withdraw().
  * It will need to accempt a parameter which is the amount to withdraw.
  * This parameter can either be a number (2), a number as a string ("2"), or something else ("cheese")
- * You will have to handle this in the function. 
+ * You will have to handle this in the function.
  * You will need to handle negative numbers.
  *
  * If the amount to withdraw is greater then the balance it needs to return "Insufficient funds, unable to withdraw"

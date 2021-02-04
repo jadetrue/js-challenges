@@ -51,7 +51,7 @@ export class Alert {
   constructor() {}
 
   /**
-   * Returns a string with "!!!! " + " !!!" added to the start and end of the message key.
+   * Returns a string with "!!!! " + " !!!!" added to the start and end of the message key.
    * @return {string} "!!!! Are sure you want to proceed? !!!!"
    */
   printMessage() {
@@ -70,10 +70,10 @@ export class Alert {
  *
  * You will need to complete the two methods.
  *
- * The first is called displaySpinner().
+ * The first is called displayLoader().
  * This will set the innerHtml of the htmlRef to "<div class="loader"></div>".
  *
- * The second is called hideSpinner().
+ * The second is called removeLoader().
  * This will set the innerHtml of the htmlRef to an empty string.
  */
 
@@ -394,5 +394,4 @@ export class BankAccount {
    */
 
   // WRITE WITH DRAW METHOD HERE
-
 }
