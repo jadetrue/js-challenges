@@ -1,4 +1,4 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 import people from "./data";
 
 test("Should return a list of names", () => {
@@ -20,7 +20,7 @@ test("Should return person object with highest fortune", () => {
 });
 
 test("Should return an array of person objects after running the calculateFinancesYearEnd method and incrementing the age", () => {
-  const result = challenge.getEndOfYearFinances(people)
+  const result = challenge.getEndOfYearFinances(people);
   expect(result.length).toBe(3);
   expect(result[0].id).toBe("001");
   expect(result[0].age).toBe(21);

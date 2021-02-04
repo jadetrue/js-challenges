@@ -1,4 +1,4 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 
 const { Coordinate, Alert, Loader, Counter, Engine, Modal, BookShelf, BankAccount } = challenge;
 
@@ -317,8 +317,8 @@ xdescribe("Testing Modal class", () => {
           } else {
             this.list.push(cssClass);
           }
-        },
-      },
+        }
+      }
     };
     modal = new Modal(htmlReference, "Error", "Sorry there has been some sort of error");
   });
@@ -400,7 +400,7 @@ xdescribe("Testing BookShelf class", () => {
     "JavaScript: The Definitive Guide",
     "JavaScript: The Good Parts",
     "The Google story",
-    "React for Dummies",
+    "React for Dummies"
   ];
 
   const newBookArray = bookArray.filter((book) => book.incluxdes("JavaScript"));

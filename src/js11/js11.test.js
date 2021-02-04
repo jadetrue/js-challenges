@@ -1,4 +1,4 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 describe("Rectangle tests", () => {
   let rectangle;
   beforeEach(() => {

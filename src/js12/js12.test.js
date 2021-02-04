@@ -1,11 +1,11 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 import data from "./data";
 
 beforeEach(() => {
   const mockFetch = () => {
     return jest.fn().mockImplementation(() =>
       Promise.resolve({
-        json: () => JSON.parse(data),
+        json: () => JSON.parse(data)
       })
     );
   };
@@ -25,7 +25,7 @@ test("Should return mock data", async () => {
     age: 50,
     height: 150,
     interests: ["reading", "juggling", "knitting"],
-    employed: false,
+    employed: false
   });
 });
 
@@ -41,7 +41,7 @@ describe("Get person tests", () => {
       age: 78,
       height: 140,
       interests: ["knitting", "baking", "MMA"],
-      employed: false,
+      employed: false
     });
   });
 
@@ -56,7 +56,7 @@ describe("Get person tests", () => {
       age: 27,
       height: 160,
       interests: ["baking", "hiking", "shooting"],
-      employed: false,
+      employed: false
     });
   });
 });

@@ -1,4 +1,4 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 
 const {
   removeFalseValues,
@@ -9,7 +9,7 @@ const {
   filterBooksBySearch,
   formatStringArray,
   formatString,
-  encryptString,
+  encryptString
 } = challenge;
 
 /**
@@ -92,7 +92,9 @@ xdescribe("Testing createListOfPoessessions()", () => {
   });
 
   it("Should return an array of Strings", () => {
-    const testForStrings = createListOfPoessessions(possessions, "Matt's").every((string) => typeof string === "string");
+    const testForStrings = createListOfPoessessions(possessions, "Matt's").every(
+      (string) => typeof string === "string"
+    );
     expect(testForStrings).toBe(true);
   });
 
@@ -101,7 +103,7 @@ xdescribe("Testing createListOfPoessessions()", () => {
     expect(createListOfPoessessions(["shoes", "jacket", "belt"], "disco")).toEqual([
       "disco shoes",
       "disco jacket",
-      "disco belt",
+      "disco belt"
     ]);
   });
 
@@ -177,7 +179,9 @@ xdescribe("Testing filterBooksBySearch()", () => {
   });
 
   it("Should return an array of Strings", () => {
-    const testForStrings = filterBooksBySearch(["disco", "disco", "shoes", "disco shoe"], "disco").every((string) => typeof string === "string");
+    const testForStrings = filterBooksBySearch(["disco", "disco", "shoes", "disco shoe"], "disco").every(
+      (string) => typeof string === "string"
+    );
     expect(testForStrings).toBe(true);
   });
 

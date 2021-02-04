@@ -1,4 +1,4 @@
-import challenge from "./index";
+import * as challenge from "./challenge";
 const {
   createRecipeString,
   getFirstAndLastItems,
@@ -8,7 +8,7 @@ const {
   removeEvenNumbers,
   generateHighscores,
   generateAverage,
-  reverseOrder,
+  reverseOrder
 } = challenge;
 
 /**
