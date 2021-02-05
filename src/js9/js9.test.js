@@ -4,15 +4,13 @@ import people from "./mockApi.json";
 const { getData, getNames, getEmployedPeople, findPersonWithId } = challenge;
 
 beforeEach(() => {
-  const mockFetch = () => {
-    return jest.fn().mockImplementation(() =>
-      Promise.resolve({
-        json: () => people
-      })
-    );
-  };
+  const mockFetch = jest.fn().mockImplementation((args) =>
+    Promise.resolve({
+      json: () => require(args)
+    })
+  );
 
-  window.fetch = mockFetch();
+  window.fetch = mockFetch;
 });
 
 describe("getData() tests", () => {
