@@ -49,6 +49,21 @@ export const getEmployedPeople = (url) => {
 
 /* Intermediate Challenges */
 
+/**
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @param {string} id - The ID of the person object to return
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean} | string} A person object OR A string saying "Person not found"
+ */
+export const findPersonWithId = (url, id) => {
+  return fetch(url)
+    .then((response) => response.json())
+    .then((people) => {
+      const foundPerson = people.find((person) => person.id === id);
+      return foundPerson ? foundPerson : "Person not found";
+    });
+};
+
 /* Advanced Challenges */
 
 /* Expert Challenges */
