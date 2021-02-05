@@ -1,34 +1,83 @@
-import * as challenge from "./challenge";
-import people from "./data";
+import * as challenge from "./solution";
+import people from "./mockApi.json";
 
-test("Should return a list of names", () => {
-  expect(challenge.getNames(people)).toMatchObject(["Elizabeth Bennet", "Fitzwilliam Darcy", "Jane Bennet"]);
+const { getData, getNames, getEmployedPeople } = challenge;
+
+beforeEach(() => {
+  const mockFetch = () => {
+    return jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        json: () => people
+      })
+    );
+  };
+
+  window.fetch = mockFetch();
 });
 
-test("Should return an array of people objects with matching eye colours", () => {
-  expect(challenge.getMatchingEyeColour(people, "brown").length).toBe(2);
-  expect(challenge.getMatchingEyeColour(people, "brown")[0].id).toBe("001");
-  expect(challenge.getMatchingEyeColour(people, "brown")[1].id).toBe("002");
-  expect(challenge.getMatchingEyeColour(people, "blue").length).toBe(1);
-  expect(challenge.getMatchingEyeColour(people, "blue")[0].id).toBe("003");
-  expect(challenge.getMatchingEyeColour(people, "green").length).toBe(0);
-  expect(challenge.getMatchingEyeColour(people, "green")[0]).toBe(undefined);
+describe("getData() tests", () => {
+  it("Fetch should have been called once", () => {
+    getData("./mockApi.json");
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should return the data", async () => {
+    const data = await getData("./mockApi.json");
+    expect(data).toStrictEqual(people);
+  });
 });
 
-test("Should return person object with highest fortune", () => {
-  expect(challenge.getLargestFortune(people).id).toBe("002");
+describe("getNames() tests", () => {
+  it("Fetch should have been called once", () => {
+    getNames("./mockApi.json");
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should return an array of names", async () => {
+    const namesArr = await getNames("./mockApi.json");
+    expect(Array.isArray(namesArr)).toBe(true);
+    expect(namesArr).toStrictEqual(["Peter", "Georgia", "Joanna", "Buzz", "Travis", "Paula", "J"]);
+  });
 });
 
-test("Should return an array of person objects after running the calculateFinancesYearEnd method and incrementing the age", () => {
-  const result = challenge.getEndOfYearFinances(people);
-  expect(result.length).toBe(3);
-  expect(result[0].id).toBe("001");
-  expect(result[0].age).toBe(21);
-  expect(result[0].currentFortune).toBe(200);
-  expect(result[1].id).toBe("002");
-  expect(result[1].age).toBe(28);
-  expect(result[1].currentFortune).toBe(35000);
-  expect(result[2].id).toBe("003");
-  expect(result[2].age).toBe(23);
-  expect(result[2].currentFortune).toBe(200);
+describe("getEmployedPeople() tests", () => {
+  const mockApiResponse = [
+    {
+      id: "001",
+      name: "Peter",
+      age: 47,
+      height: 170,
+      interests: ["swimming", "reading", "juggling"],
+      isEmployed: true
+    },
+    {
+      id: "004",
+      name: "Buzz",
+      age: 32,
+      height: 190,
+      interests: ["shooting", "MMA", "writing"],
+      isEmployed: true
+    },
+    {
+      id: "005",
+      name: "Travis",
+      age: 22,
+      height: 160,
+      interests: ["swimming", "watching TV", "knitting"],
+      isEmployed: true
+    }
+  ];
+
+  it("Fetch should have been called once", () => {
+    getEmployedPeople("./mockApi.json");
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it("Should return an array of employed people objects", async () => {
+    const employedPeopleArr = await getEmployedPeople("./mockApi.json");
+
+    expect(Array.isArray(employedPeopleArr)).toBe(true);
+    expect(employedPeopleArr.length).toBe(3);
+    expect(employedPeopleArr).toStrictEqual(mockApiResponse);
+  });
 });
