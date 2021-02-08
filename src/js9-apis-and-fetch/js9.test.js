@@ -161,22 +161,22 @@ describe("getPeopleWithMatchingInterests() tests", () => {
   ];
 
   it("Should return an array if interests are found", async () => {
-    const swimmingInterest = await getPeopleWithMatchingInterests("./mockApi.json", "swimming")
+    const swimmingInterest = await getPeopleWithMatchingInterests("./mockApi.json", "swimming");
     expect(Array.isArray(swimmingInterest)).toBe(true);
-  })
+  });
 
-  it("Should return all people with a matching interest (swimming)", () => {
-    const swimmingInterest = await getPeopleWithMatchingInterests("./mockApi.json", "swimming")
-    expect(swimmingInterest).toStrictEqual(dummySwimming)
-  })
+  it("Should return all people with a matching interest (swimming)", async () => {
+    const swimmingInterest = await getPeopleWithMatchingInterests("./mockApi.json", "swimming");
+    expect(swimmingInterest).toStrictEqual(dummySwimming);
+  });
 
-  it("Should return all people with a matching interest (mma)", () => {
-    const mmaInterests = await getPeopleWithMatchingInterests("./mockApi.json", "MMA")
-    expect(mmaInterests).toStrictEqual(dummyMma)
-  })
+  it("Should return all people with a matching interest (mma)", async () => {
+    const mmaInterests = await getPeopleWithMatchingInterests("./mockApi.json", "MMA");
+    expect(mmaInterests).toStrictEqual(dummyMma);
+  });
 
-  it("Should return 'No people with interest found' if no matching interests on people", () => {
-    const noInterests = await getPeopleWithMatchingInterests("./mockApi.json", "whittling")
-    expect(noInterests).toBe("No people with interest found")
-  })
+  it("Should return 'No people with interest found' if no matching interests on people", async () => {
+    const noInterests = await getPeopleWithMatchingInterests("./mockApi.json", "whittling");
+    expect(noInterests).toBe("No people with interest found");
+  });
 });

@@ -74,7 +74,17 @@ export const findPersonWithId = (url, id) => {
  * @param {string} interest - The interest to match
  * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[] | string} A person object OR A string saying "No people with interest found"
  */
-export const getPeopleWithMatchingInterests = (url, interest) => {};
+export const getPeopleWithMatchingInterests = (url, interest) => {
+  return fetch(url)
+    .then((response) => response.json())
+    .then((people) => {
+      const peopleWithMatchingInterests = people.filter((person) => {
+        return person.interests.includes(interest);
+      });
+
+      return peopleWithMatchingInterests.length ? peopleWithMatchingInterests : "No people with interest found";
+    });
+};
 
 /* Advanced Challenges */
 
