@@ -72,7 +72,7 @@ export const findPersonWithId = (url, id) => {
  *
  * @param {string} url - The url of the API to fetch from
  * @param {string} interest - The interest to match
- * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[] | string} A person object OR A string saying "No people with interest found"
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[] | string} A group of person objects OR A string saying "No people with interest found"
  */
 export const getPeopleWithMatchingInterests = (url, interest) => {
   return fetch(url)
@@ -85,6 +85,26 @@ export const getPeopleWithMatchingInterests = (url, interest) => {
       return peopleWithMatchingInterests.length ? peopleWithMatchingInterests : "No people with interest found";
     });
 };
+
+/**
+ * A function which calls an API from the provided url and adds a description key to each person object.
+ * The description should have the following format:
+ * "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking and MMA. I am not currently employed"
+ * So the full object would look like:
+ * {
+ *   id: "003",
+ *   name: "Joanna",
+ *   age: 78,
+ *   height: 140,
+ *   interests: ["knitting", "baking", "MMA"],
+ *   isEmployed: false,
+ *   description: "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking and MMA. I am not currently employed"
+ * }
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean, decscription: string}[]} A group of person objects with added description key
+ */
+export const setDescription = (url) => {};
 
 /* Advanced Challenges */
 
