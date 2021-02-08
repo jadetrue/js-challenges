@@ -50,6 +50,8 @@ export const getEmployedPeople = (url) => {
 /* Intermediate Challenges */
 
 /**
+ * A function which takes a url and an ID. It will fetch from an API at the url and return a single person object with
+ * a matching ID. If no person with that ID exists, instead return a string saying "Person not found".
  *
  * @param {string} url - The url of the API to fetch from
  * @param {string} id - The ID of the person object to return
@@ -63,6 +65,16 @@ export const findPersonWithId = (url, id) => {
       return foundPerson ? foundPerson : "Person not found";
     });
 };
+
+/**
+ * A function which takes a url and an interest. It will fetch from an API at the url and return people who have a
+ * matching interest.
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @param {string} interest - The interest to match
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[] | string} A person object OR A string saying "No people with interest found"
+ */
+export const getPeopleWithMatchingInterests = (url, interest) => {};
 
 /* Advanced Challenges */
 
