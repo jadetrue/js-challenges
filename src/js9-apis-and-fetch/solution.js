@@ -86,6 +86,8 @@ export const getPeopleWithMatchingInterests = (url, interest) => {
     });
 };
 
+/* Advanced Challenges */
+
 /**
  * A function which calls an API from the provided url and adds a description key to each person object.
  * The description should have the following format:
@@ -98,14 +100,111 @@ export const getPeopleWithMatchingInterests = (url, interest) => {
  *   height: 140,
  *   interests: ["knitting", "baking", "MMA"],
  *   isEmployed: false,
- *   description: "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking and MMA. I am not currently employed"
+ *   description: "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking, and MMA. I am not currently employed"
  * }
+ *
+ * This should NOT modify the original data
  *
  * @param {string} url - The url of the API to fetch from
  * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean, decscription: string}[]} A group of person objects with added description key
  */
-export const setDescription = (url) => {};
+export const setDescriptions = (url) => {
+  return fetch(url)
+    .then((response) => response.json())
+    .then((people) => {
+      const peopleWithDescriptions = people.map((person) => {
+        const newPerson = { ...person };
+        const interests = newPerson.interests.reduce((previous, current, index, arr) => {
+          if (index === arr.length - 1) {
+            return previous + ` and ${current}`;
+          }
 
-/* Advanced Challenges */
+          if (index === 0) {
+            return previous + current;
+          }
+
+          return previous + `, ${current}`;
+        }, "");
+
+        const description = `My name is ${newPerson.name}, I am ${newPerson.age} years old and ${
+          newPerson.height
+        }cm tall. I enjoy ${interests}. ${
+          newPerson.isEmployed ? "I am currently employed" : "I am not currently employed"
+        }`;
+
+        newPerson.description = description;
+        return newPerson;
+      });
+
+      return peopleWithDescriptions;
+    });
+};
 
 /* Expert Challenges */
+
+/**
+ * A function that uses 2 API's to fill information about the interests of each person.
+ * Each person object that's returned should have this structure:
+ * {
+ *   id: "003",
+ *   name: "Joanna",
+ *   age: 78,
+ *   height: 140,
+ *   interests: [
+ *     {
+ *       interest: "knitting",
+ *       costPerAnnum: 400,
+ *       sizeOfCommunity: 10000000,
+ *       isDoneInGroups: false
+ *     },
+ *     {
+ *       interest: "baking",
+ *       costPerAnnum: 400,
+ *       sizeOfCommunity: 20000000,
+ *       isDoneInGroups: false
+ *     },
+ *     {
+ *       interest: "MMA",
+ *       costPerAnnum: 1000,
+ *       sizeOfCommunity: 20000000,
+ *       isDoneInGroups: true
+ *     }
+ *   ],
+ *   isEmployed: false
+ * };
+ *
+ * This should NOT modify the original data
+ *
+ * @param {string} peopleUrl - The url of the people api
+ * @param {string} interestUrl - The url of the interest api
+ * @returns {{
+ *  id: string,
+ *  name: string,
+ *  age: number,
+ *  height: number,
+ *  interests: {interest: string, costPerAnnum: number, sizeOfCommunity: number, isDoneInGroups: boolean}[],
+ *  isEmployed: boolean,
+ * }[]}
+ */
+export const setInterestDetails = (peopleUrl, interestsUrl) => {
+  return fetch(peopleUrl)
+    .then((response) => response.json())
+    .then((people) => {
+      return fetch(interestsUrl)
+        .then((response) => response.json())
+        .then((interests) => {
+          const peopleWithComplexInterets = people.map((person) => {
+            const newPerson = { ...person };
+
+            const newInterests = newPerson.interests.map((personsInterest) => {
+              return interests.find((interest) => interest.interest === personsInterest);
+            });
+
+            newPerson.interests = newInterests;
+            return newPerson;
+          });
+
+          return peopleWithComplexInterets;
+        });
+    });
+};
