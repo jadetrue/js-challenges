@@ -7,6 +7,8 @@
   share it with the group!
 */
 
+/* To see the structure of the "api's" please have a look in mockPeopleApi.json and mockInterestApi.json */
+
 /* Foundation Challenges */
 
 /**
@@ -101,6 +103,18 @@ export const getPeopleWithMatchingInterests = (url, interest) => {
  *   interests: ["knitting", "baking", "MMA"],
  *   isEmployed: false,
  *   description: "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking, and MMA. I am not currently employed"
+ * }
+ *
+ * OR
+ *
+ * {
+ *   id: "005",
+ *   name: "Travis"
+ *   age: 22,
+ *   height: 160,
+ *   interests: ["swimming", "watching TV", "knitting"],
+ *   isEmployed: true,
+ *   description: "My name is Travis, I am 22 years old and 160cm tall. I enjoy swimming, watching TV and knitting. I am currently employed",
  * }
  *
  * This should NOT modify the original data
