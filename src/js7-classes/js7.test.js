@@ -25,11 +25,6 @@ describe("Testing Coordinate class", () => {
     expect(coordTwo).toHaveProperty("yCoord");
   });
 
-  it("Should ONLY have two keys", () => {
-    expect(Object.keys(coordOne).length).toBe(2);
-    expect(Object.keys(coordTwo).length).toBe(2);
-  });
-
   it("Should have the correct value for xCoord key", () => {
     expect(coordOne.xCoord).toBe(5);
     expect(coordTwo.xCoord).toBe(45);
@@ -48,11 +43,6 @@ xdescribe("Testing Alert class", () => {
   it("Should be an object", () => {
     expect(typeof logOutAlert).toBe("object");
     expect(typeof deleteAlert).toBe("object");
-  });
-
-  it("Should ONLY have one key", () => {
-    expect(Object.keys(logOutAlert).length).toBe(1);
-    expect(Object.keys(deleteAlert).length).toBe(1);
   });
 
   it("Should have a message key", () => {
@@ -155,12 +145,6 @@ xdescribe("Testing Counter class", () => {
     expect(noCount.count).toBe(0);
   });
 
-  it("Should ONLY have one key", () => {
-    expect(Object.keys(lowCount).length).toBe(1);
-    expect(Object.keys(highCount).length).toBe(1);
-    expect(Object.keys(noCount).length).toBe(1);
-  });
-
   it("Should have a increment function", () => {
     expect(typeof lowCount.increment).toBe("function");
     expect(typeof highCount.increment).toBe("function");
@@ -237,67 +221,67 @@ xdescribe("Testing Counter class", () => {
 });
 
 xdescribe("Testing Engine class", () => {
-  let bookShelf;
+  let engine;
 
   beforeEach(() => {
-    bookShelf = new Engine();
+    engine = new Engine();
   });
 
   it("Should be an object", () => {
-    expect(typeof bookShelf).toBe("object");
+    expect(typeof engine).toBe("object");
   });
 
   it("Should have a engineIsRunning key", () => {
-    expect(bookShelf).toHaveProperty("engineIsRunning");
+    expect(engine).toHaveProperty("engineIsRunning");
   });
 
   it("Should set engineIsRunning to false by default", () => {
-    expect(bookShelf.engineIsRunning).toBe(false);
+    expect(engine.engineIsRunning).toBe(false);
   });
 
   it("Should have a startEngine function", () => {
-    expect(typeof bookShelf.startEngine).toBe("function");
+    expect(typeof engine.startEngine).toBe("function");
   });
 
   it("Should return a string when the startEngine method is called", () => {
-    expect(typeof bookShelf.startEngine()).toBe("string");
+    expect(typeof engine.startEngine()).toBe("string");
   });
 
   it("Should return the correct string when startEngine() is called and engineIsRunning is false", () => {
-    expect(bookShelf.startEngine()).toBe("Engine has started running");
+    expect(engine.startEngine()).toBe("Engine has started running");
   });
 
   it("Should set engineIsRunning to true after startEngine() has been called", () => {
-    bookShelf.startEngine();
-    expect(bookShelf.engineIsRunning).toBe(true);
+    engine.startEngine();
+    expect(engine.engineIsRunning).toBe(true);
   });
 
   it("Should return the correct string when startEngine() is called and engineIsRunning is true", () => {
-    bookShelf.startEngine();
-    expect(bookShelf.startEngine()).toBe("Engine is already running");
+    engine.startEngine();
+    expect(engine.startEngine()).toBe("Engine is already running");
   });
 
   it("Should have a stopEngine function", () => {
-    expect(typeof bookShelf.stopEngine).toBe("function");
+    expect(typeof engine.stopEngine).toBe("function");
   });
 
   it("Should return a string when the stopEngine method is called", () => {
-    expect(typeof bookShelf.stopEngine()).toBe("string");
+    expect(typeof engine.stopEngine()).toBe("string");
   });
 
   it("Should return the correct string when stopEngine() is called and engineIsRunning is false", () => {
-    expect(bookShelf.stopEngine()).toBe("Engine has already stopped running");
+    expect(engine.stopEngine()).toBe("Engine has already stopped running");
   });
 
   it("Should return the correct string when stopEngine() is called and engineIsRunning is true", () => {
-    bookShelf.startEngine();
-    expect(bookShelf.stopEngine()).toBe("Engine has stopped running");
+    engine.startEngine();
+    expect(engine.stopEngine()).toBe("Engine has stopped running");
   });
 
   it("Should set engineIsRunning to false after startEngine() and stopEngine() have been called", () => {
-    bookShelf.startEngine();
-    bookShelf.stopEngine();
-    expect(bookShelf.engineIsRunning).toBe(false);
+    engine.startEngine();
+    engine.stopEngine();
+    expect(engine.engineIsRunning).toBe(false);
   });
 });
 
@@ -337,10 +321,6 @@ xdescribe("Testing Modal class", () => {
     expect(modal.htmlRef).toEqual(htmlReference);
     expect(modal.title).toBe("Error");
     expect(modal.message).toBe("Sorry there has been some sort of error");
-  });
-
-  it("Should ONLY have three keys", () => {
-    expect(Object.keys(modal).length).toBe(3);
   });
 
   it("Should have renderHtml and toggleModalfunctions", () => {
