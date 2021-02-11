@@ -48,13 +48,6 @@ describe("Testing removeFalseValues()", () => {
     expect(removeFalseValues(Array(60).fill(true)).length).toBe(60);
   });
 
-  it("Should be able to handle an empty array", () => {
-    expect(removeFalseValues([]).length).toBe(0);
-  });
-
-  it("Should return a new array and not modify the old one", () => {
-    expect(removeFalseValues(mixedBooleanArr)).not.toBe(mixedBooleanArr);
-  });
 });
 
 xdescribe("Testing createPercentageList()", () => {
@@ -77,13 +70,6 @@ xdescribe("Testing createPercentageList()", () => {
     expect(createPercentageList(Array(20).fill(1)).length).toBe(20);
   });
 
-  it("Should handle an empty array", () => {
-    expect(createPercentageList([])).toEqual([]);
-  });
-
-  it("Should return a new array and not modify the old one", () => {
-    expect(createPercentageList(toBePercentages)).not.toBe(toBePercentages);
-  });
 });
 
 xdescribe("Testing createListOfPoessessions()", () => {
@@ -112,13 +98,6 @@ xdescribe("Testing createListOfPoessessions()", () => {
     expect(createListOfPoessessions(Array(20).fill("A"), "disco").length).toBe(20);
   });
 
-  it("Should handle an empty array", () => {
-    expect(createListOfPoessessions([], "Matt's")).toEqual([]);
-  });
-
-  it("Should return a new array and not modify the old one", () => {
-    expect(createListOfPoessessions(possessions, "Matt's")).not.toBe(possessions);
-  });
 });
 
 xdescribe("Testing convertStringToNumbersArray()", () => {
@@ -211,9 +190,6 @@ xdescribe("Testing filterBooksBySearch()", () => {
     expect(filterBooksBySearch([])).toEqual([]);
   });
 
-  it("Should return a new array and not modify the old one", () => {
-    expect(filterBooksBySearch(mattsPosessions, "Matt")).not.toBe(mattsPosessions);
-  });
 });
 
 xdescribe("Testing formatStringArray()", () => {

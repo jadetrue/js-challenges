@@ -18,7 +18,7 @@
  * Each ingredient will be joined with a +.
  *
  * @param {string[]} ingredientsArr ["Bacon","Lettuce","Tomato"]
- * @return {string[]} "Bacon+Lettuce+Tomato"
+ * @return {string} "Bacon+Lettuce+Tomato"
  */
 
 export const createRecipeString = (ingredientsArr) => {

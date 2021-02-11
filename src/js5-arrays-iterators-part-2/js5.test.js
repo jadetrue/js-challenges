@@ -9,7 +9,7 @@ const {
   checkPrimaryColours,
   checkStringPalindrome,
   totalNestedScoresArr,
-  encryptString
+  encryptString,
 } = challenge;
 
 /**
@@ -17,32 +17,16 @@ const {
  */
 
 describe("Testing totalScoresArr()", () => {
-  const positiveScoresArr = Array(50).fill(20);
-  const negativeScoresArr = Array(20).fill(-5);
-  const mixedScoresArr = [...positiveScoresArr, ...negativeScoresArr];
+  const scoresArr = Array(50).fill(20);
 
   it("Should return a Number", () => {
-    expect(typeof totalScoresArr(positiveScoresArr)).toBe("number");
+    expect(typeof totalScoresArr(scoresArr)).toBe("number");
     expect(typeof totalScoresArr([1])).toBe("number");
   });
 
-  it("Should total positive numbers", () => {
-    expect(totalScoresArr(positiveScoresArr)).toBe(1000);
+  it("Should total numbers", () => {
+    expect(totalScoresArr(scoresArr)).toBe(1000);
     expect(totalScoresArr([1, 2, 5, 10])).toBe(18);
-  });
-
-  it("Should total negative numbers", () => {
-    expect(totalScoresArr(negativeScoresArr)).toBe(-100);
-    expect(totalScoresArr([-1, -2, -5, -10])).toBe(-18);
-  });
-
-  it("Should total mixed numbers", () => {
-    expect(totalScoresArr(mixedScoresArr)).toBe(900);
-    expect(totalScoresArr([-1, 2, 5, -10])).toBe(-4);
-  });
-
-  it("Should handle empty array", () => {
-    expect(totalScoresArr([])).toBe(0);
   });
 });
 
@@ -67,20 +51,6 @@ xdescribe("Testing reverseString()", () => {
     expect(reverseString("test")).toBe("tset");
   });
 
-  it("Should not remove spaces between words", () => {
-    expect(reverseString(" o l ")).toBe(" l o ");
-    expect(reverseString("coco loco")).toBe("ocol ococ");
-    expect(reverseString("The quick brown fox jumps over the lazy dog")).toBe(
-      "god yzal eht revo spmuj xof nworb kciuq ehT"
-    );
-  });
-
-  it("Should not alter a palindrome", () => {
-    expect(reverseString("madam")).toBe("madam");
-    expect(reverseString("radar")).toBe("radar");
-    expect(reverseString("racecar")).toBe("racecar");
-    expect(reverseString("step on no pets")).toBe("step on no pets");
-  });
 });
 
 xdescribe("Testing sortCharactersAlphabetically()", () => {
@@ -122,9 +92,6 @@ xdescribe("Testing sortCharactersAlphabetically()", () => {
     expect(sortCharactersAlphabetically(["a", "a", "a"]).length).toBe(3);
   });
 
-  it("Should return a new array and not modify the old one", () => {
-    expect(sortCharactersAlphabetically(lowerCaseCharArr)).not.toBe(lowerCaseCharArr);
-  });
 });
 
 xdescribe("Testing sortNumbersHighToLow()", () => {
@@ -164,10 +131,6 @@ xdescribe("Testing sortNumbersHighToLow()", () => {
     expect(sortNumbersHighToLow([40, 7, 20, 53]).length).toBe(4);
   });
 
-  it("Should return a new array and not modify the old one", () => {
-    expect(sortNumbersHighToLow(lowToHigh)).not.toBe(lowToHigh);
-    expect(sortNumbersHighToLow(highToLow)).not.toBe(highToLow);
-  });
 });
 
 xdescribe("Testing checkItemInstock()", () => {
@@ -182,7 +145,7 @@ xdescribe("Testing checkItemInstock()", () => {
     "lemon",
     "kumquat",
     "blueberry",
-    "melon"
+    "melon",
   ];
 
   const expectedMatchMessage = (item, index) => `${item} is instock, it is on aisle ${index}.`;
@@ -235,10 +198,6 @@ xdescribe("Testing checkPrimaryColours()", () => {
     expect(checkPrimaryColours(Array(5000).fill("brown"))).toBe(false);
   });
 
-  it("Should not modify the input", () => {
-    checkPrimaryColours(rainbowColours);
-    expect(rainbowColours).toBe(rainbowColours);
-  });
 });
 
 xdescribe("Testing checkStringPalindrome()", () => {
@@ -276,7 +235,7 @@ xdescribe("Testing totalNestedScoresArr()", () => {
   const nestedScoreArr = [
     [3, 2, 1],
     [45, 6, 2],
-    [66, 88, 99, 100]
+    [66, 88, 99, 100],
   ];
 
   const totalScoreArr = [6, 53, 353];

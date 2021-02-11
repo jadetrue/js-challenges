@@ -8,7 +8,7 @@ const {
   removeEvenNumbers,
   generateHighscores,
   generateAverage,
-  reverseOrder
+  reverseOrder,
 } = challenge;
 
 /**
@@ -37,11 +37,6 @@ describe("Testing createRecipeString()", () => {
     expect(createRecipeString(items)).toEqual(itemString);
   });
 
-  it("Should have correct amount of +'s", () => {
-    expect(createRecipeString(Array(4).fill("a")).match(/\+/g).length).toBe(3);
-    expect(createRecipeString(Array(20).fill("a")).match(/\+/g).length).toBe(19);
-  });
-
   it("Should handle a single item", () => {
     expect(createRecipeString(["hat"])).toBe("hat");
   });
@@ -56,20 +51,9 @@ xdescribe("Testing getFirstAndLastItems()", () => {
     expect(Array.isArray(getFirstAndLastItems(coaches))).toBeTruthy();
   });
 
-  it("Should handle a single input", () => {
-    expect(getFirstAndLastItems(["Charlie"])).toEqual(["Charlie", "Charlie"]);
-    expect(getFirstAndLastItems(["Tony Hawk"])).toEqual(["Tony Hawk", "Tony Hawk"]);
-  });
-
   it("Should handle multiple inputs", () => {
     expect(getFirstAndLastItems(coaches)).toEqual(["Andy", "Sam"]);
     expect(getFirstAndLastItems(items)).toEqual(["Apple", "Pear"]);
-  });
-
-  it("Should only ever return an array with a length of 2", () => {
-    expect(getFirstAndLastItems(Array(100).fill("A")).length).toBe(2);
-    expect(getFirstAndLastItems(Array(1000).fill("A")).length).toBe(2);
-    expect(getFirstAndLastItems(Array(45000).fill("A")).length).toBe(2);
   });
 });
 
@@ -94,10 +78,26 @@ xdescribe("Testing totalScores()", () => {
     expect(totalScores(Array(50).fill(2))).toBe(100);
     expect(totalScores(Array(90).fill(4))).toBe(360);
   });
+});
 
-  it("Should handle a empty array", () => {
-    expect(totalScores([])).toEqual(0);
-    expect(totalScores([0])).toEqual(0);
+xdescribe("Testing totalRange()", () => {
+  it("Should be defined", () => {
+    expect(totalRange(10)).toBeDefined();
+  });
+
+  it("Should return a Number ", () => {
+    expect(typeof totalRange(10)).toBe("number");
+  });
+
+  it("Should Total up the range of numbers", () => {
+    expect(totalRange(5)).toBe(15);
+    expect(totalRange(10)).toBe(55);
+    expect(totalRange(50)).toBe(1275);
+  });
+
+  it("Should Total larger numbers", () => {
+    expect(totalRange(200)).toBe(20100);
+    expect(totalRange(2000)).toBe(2001000);
   });
 });
 
@@ -113,42 +113,6 @@ xdescribe("Testing moveFirstAndLastItems()", () => {
   it("Should handle multiple inputs", () => {
     expect(moveFirstAndLastItems(items)).toEqual(["Pear", "Apple", "Orange"]);
     expect(moveFirstAndLastItems(ingredients)).toEqual(["Tomato", "Bacon", "Lettuce"]);
-  });
-
-  it("Should handle single inputs", () => {
-    expect(moveFirstAndLastItems(["Pear"])).toEqual(["Pear"]);
-    expect(moveFirstAndLastItems(["Charlie"])).toEqual(["Charlie"]);
-  });
-
-  it("Should not remove or add any items", () => {
-    expect(moveFirstAndLastItems(Array(10).fill("A")).length).toBe(10);
-    expect(moveFirstAndLastItems(Array(100).fill("A")).length).toBe(100);
-  });
-});
-
-xdescribe("Testing totalRange()", () => {
-  it("Should be defined", () => {
-    expect(totalRange(10)).toBeDefined();
-  });
-
-  it("Should return a Number ", () => {
-    expect(typeof totalRange(10)).toBe("number");
-    expect(typeof totalRange()).toBe("number");
-  });
-
-  it("Should Total up the range of numbers", () => {
-    expect(totalRange(5)).toBe(15);
-    expect(totalRange(10)).toBe(55);
-    expect(totalRange(50)).toBe(1275);
-  });
-
-  it("Should Total larger numbers", () => {
-    expect(totalRange(200)).toBe(20100);
-    expect(totalRange(2000)).toBe(2001000);
-  });
-
-  it("Should Handle no input", () => {
-    expect(totalRange()).toBe(0);
   });
 });
 
@@ -184,6 +148,31 @@ xdescribe("Testing removeEvenNumbers()", () => {
   });
 });
 
+xdescribe("Testing generateAverage()", () => {
+  it("Should be defined", () => {
+    expect(generateAverage(10)).toBeDefined();
+  });
+
+  it("Should return a Number", () => {
+    expect(typeof generateAverage([10])).toBe("number");
+    expect(typeof generateAverage([])).toBe("number");
+  });
+
+  it("Should calculate the average of different numbers", () => {
+    expect(generateAverage([1, 2, 3, 4, 5, 6])).toBe(4);
+    expect(generateAverage([50, 60, 30, 70])).toBe(53);
+  });
+
+  it("Should calculate the average of same numbers", () => {
+    expect(generateAverage(Array(500).fill(56))).toBe(56);
+    expect(generateAverage(Array(50).fill(1))).toBe(1);
+  });
+
+  it("Should handle an empty array", () => {
+    expect(generateAverage([])).toBe(0);
+  });
+});
+
 xdescribe("Testing reverseOrder()", () => {
   it("Should be defined", () => {
     expect(reverseOrder(items)).toBeDefined();
@@ -209,31 +198,6 @@ xdescribe("Testing reverseOrder()", () => {
   it("Should return a new array", () => {
     expect(reverseOrder(items)).not.toBe(items);
     expect(reverseOrder(ingredients)).not.toBe(ingredients);
-  });
-});
-
-xdescribe("Testing generateAverage()", () => {
-  it("Should be defined", () => {
-    expect(generateAverage(10)).toBeDefined();
-  });
-
-  it("Should return a Number", () => {
-    expect(typeof generateAverage([10])).toBe("number");
-    expect(typeof generateAverage([])).toBe("number");
-  });
-
-  it("Should calculate the average of different numbers", () => {
-    expect(generateAverage([1, 2, 3, 4, 5, 6])).toBe(4);
-    expect(generateAverage([50, 60, 30, 70])).toBe(53);
-  });
-
-  it("Should calculate the average of same numbers", () => {
-    expect(generateAverage(Array(500).fill(56))).toBe(56);
-    expect(generateAverage(Array(50).fill(1))).toBe(1);
-  });
-
-  it("Should handle an empty array", () => {
-    expect(generateAverage([])).toBe(0);
   });
 });
 
