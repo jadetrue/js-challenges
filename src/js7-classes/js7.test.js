@@ -296,7 +296,7 @@ xdescribe("Testing Modal class", () => {
       classList: {
         list: ["hide"],
         toggle(cssClass) {
-          if (this.list.incluxdes(cssClass)) {
+          if (this.list.includes(cssClass)) {
             this.list = this.list.filter((listItem) => listItem !== cssClass);
           } else {
             this.list.push(cssClass);
