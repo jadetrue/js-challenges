@@ -33,11 +33,21 @@ yarn test
 You can run the tests individually. Do this by specifying the folder as an argument, example below.
 
 ```bash
-npm test js1
+npm test js1-types-and-control-flow
 
 OR
 
-yarn test js1
+yarn test js1-types-and-control-flow
+```
+
+You can also ommit the file name after the first -, example below.
+
+```bash
+npm test js1-
+
+OR
+
+yarn test js1-
 ```
 
 ### Run tests on save
@@ -45,11 +55,11 @@ yarn test js1
 You can "watch" the code so that tests run automatically on save the same you run the tests as above.
 
 ```bash
-npm run test-watch js1
+npm run test -watch js1-
 
 OR
 
-yarn test-watch js1
+yarn test -watch js1-
 ```
 
 ### Unskipping tests
