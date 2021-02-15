@@ -55,11 +55,11 @@ yarn test js1-
 You can "watch" the code so that tests run automatically on save the same you run the tests as above.
 
 ```bash
-npm run test -watch js1-
+npm run test-watch js1-
 
 OR
 
-yarn test -watch js1-
+yarn test-watch js1-
 ```
 
 ### Unskipping tests
