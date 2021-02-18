@@ -161,7 +161,7 @@ export const reverseOrder = (toReverseArr) => {
  *
  * @param {string[]} playersArr ["Tony","John","Dave"]
  * @param {number[]} scoresArr [45,55,66]
- * @return {string[]} ["P:1 Dave scored 45","P:2 Tony scored 55","P:3 John scored 66"]
+ * @return {string[]} ["P:1 Tony scored 45","P:2 John scored 55","P:3 Dave scored 66"]
  */
 
 export const generateHighscores = (playersArr, scoresArr) => {
