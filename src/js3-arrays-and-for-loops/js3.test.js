@@ -150,7 +150,7 @@ xdescribe("Testing removeEvenNumbers()", () => {
 
 xdescribe("Testing generateAverage()", () => {
   it("Should be defined", () => {
-    expect(generateAverage(10)).toBeDefined();
+    expect(generateAverage([10])).toBeDefined();
   });
 
   it("Should return a Number", () => {
