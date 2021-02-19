@@ -185,12 +185,8 @@ export const formatString = (string) => {
  */
 
 export const encryptString = (toEncrypt) => {
-  const encrypted = [[], [], []];
-  let arrayIndex = 0;
-  toEncrypt.split("").forEach((letter) => {
-    encrypted[arrayIndex].push(letter);
-    arrayIndex++;
-    arrayIndex > 2 ? (arrayIndex = 0) : null;
-  });
-  return encrypted.flat().join("");
+  return toEncrypt.split('').reduce((acc, letter, index) => {
+    acc[index % 3].push(letter);
+    return acc;
+  }, [[], [], []]).flat().join('');
 };
