@@ -178,10 +178,10 @@ export const formatString = (string) => {
  * If we were given [-1, "disco", "3", 5, "15", 2, 0]
  * We would be left with this ["3", 5, "15", 2]
  *
- * It then needs to create a new array from this clean array based on the conditons below:
+ * It then needs to create a NEW array from this clean array based on the conditons below:
  *
  * For multiples of three replace the number with "Fizz".
- * For the multiples of five replace the number with "Buzz".
+ * For multiples of five replace the number with "Buzz".
  * For numbers which are multiples of both three and five replace the number with "FizzBuzz".
  * All the other numbers need to be strings.
  *
