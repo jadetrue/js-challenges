@@ -9,7 +9,7 @@ const {
   filterBooksBySearch,
   formatStringArray,
   formatString,
-  encryptString
+  encryptString,
 } = challenge;
 
 /**
@@ -47,7 +47,6 @@ describe("Testing removeFalseValues()", () => {
     expect(removeFalseValues(Array(5).fill(true)).length).toBe(5);
     expect(removeFalseValues(Array(60).fill(true)).length).toBe(60);
   });
-
 });
 
 xdescribe("Testing createPercentageList()", () => {
@@ -69,7 +68,6 @@ xdescribe("Testing createPercentageList()", () => {
   it("Should match given array's length", () => {
     expect(createPercentageList(Array(20).fill(1)).length).toBe(20);
   });
-
 });
 
 xdescribe("Testing createListOfPoessessions()", () => {
@@ -89,7 +87,7 @@ xdescribe("Testing createListOfPoessessions()", () => {
     expect(createListOfPoessessions(["shoes", "jacket", "belt"], "disco")).toEqual([
       "disco shoes",
       "disco jacket",
-      "disco belt"
+      "disco belt",
     ]);
   });
 
@@ -97,7 +95,6 @@ xdescribe("Testing createListOfPoessessions()", () => {
     expect(createListOfPoessessions(possessions, "Matt's").length).toBe(4);
     expect(createListOfPoessessions(Array(20).fill("A"), "disco").length).toBe(20);
   });
-
 });
 
 xdescribe("Testing convertStringToNumbersArray()", () => {
@@ -189,7 +186,6 @@ xdescribe("Testing filterBooksBySearch()", () => {
     expect(filterBooksBySearch([], "nothing")).toEqual([]);
     expect(filterBooksBySearch([])).toEqual([]);
   });
-
 });
 
 xdescribe("Testing formatStringArray()", () => {
@@ -268,40 +264,5 @@ xdescribe("Testing formatString()", () => {
 
   it("Should handle empty input", () => {
     expect(formatString("")).toEqual([]);
-  });
-});
-
-xdescribe("Testing encryptString()", () => {
-  it("Should NOT return undefined", () => {
-    expect(encryptString("  defined")).toBeDefined();
-  });
-
-  it("Should return a String", () => {
-    expect(typeof encryptString("  front")).toBe("string");
-  });
-
-  it("Should NOT encrypt three letters", () => {
-    expect(encryptString("hey")).toBe("hey");
-    expect(encryptString("ola")).toBe("ola");
-  });
-
-  it("Should encrypt after three plus letters", () => {
-    expect(encryptString("heya")).toBe("haey");
-    expect(encryptString("disco")).toBe("dcios");
-    expect(encryptString("cellardoor")).toBe("cldreaolro");
-  });
-
-  it("Should encrypt large words", () => {
-    expect(encryptString("antidisestablishmentarianism")).toBe("aistlhnrnmndeaimtiitisbseaas");
-    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe("hpomsosielpbiototsqpdihipponreupaooa");
-  });
-
-  it("Should keep spaces between words", () => {
-    expect(encryptString("keep it secret")).toBe("kpteee  cteisr");
-    expect(encryptString("keep it safe.")).toBe("kpta.e  feise");
-  });
-
-  it("Should handle empty input", () => {
-    expect(encryptString("")).toBe("");
   });
 });

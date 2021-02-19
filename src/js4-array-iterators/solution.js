@@ -57,11 +57,11 @@ export const createListOfPoessessions = (possessionsArr, name) => {
  * Intemediate Challenges
  */
 
- /**
+/**
  * Have a look at the String method split()
- * 
+ *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
- * 
+ *
  * You may need to use it below.
  */
 
@@ -171,34 +171,31 @@ export const formatString = (string) => {
  */
 
 /**
- * A function that takes a string and creates a simple encrypted message.
+ * A function that takes an array and removes anything that is NOT a POSITIVE number.
+ * It then needs to create a new array from this clean array of numbers based on the conditons below:
  *
- * The string will be broken into 3 lists.
- * The first three letters will go into their own list.
- * The next three letters will follow this pattern.
- * Joining the first three letters in each of their list.
- * The rest of the letter's will follow this pattern.
- * Each list will be joined together and returned as an encrypted message.
+ * For multiples of three replace the number with "Fizz".
+ * For the multiples of five replace the number with "Buzz".
+ * For numbers which are multiples of both three and five replace the number with "FizzBuzz".
+ * All the other numbers need to be strings.
  *
- * The word "encrypted" would be broken into:
- *
- * e r t
- * n y e
- * c p d
- *
- * and joined together as ert + nye + cpd
- *
- * @param {string} toEncrypt "encrypted"
- * @return {string} "ertnyecpd"
+ * @param {*[]} mixedArray [-1, "disco", 3, 5, 15, 2]
+ * @return {string[]} [ "Fizz", "Buzz", "FizzBuzz", "2" ]
  */
 
-export const encryptString = (toEncrypt) => {
-  const encrypted = [[], [], []];
-  let arrayIndex = 0;
-  toEncrypt.split("").forEach((letter) => {
-    encrypted[arrayIndex].push(letter);
-    arrayIndex++;
-    arrayIndex > 2 ? (arrayIndex = 0) : null;
+export const fizzBuzz = (mixedArray) => {
+  const positiveNumberArray = mixedArray.filter((item) => item > 0 && Number(item));
+
+  const fizzBuzz = positiveNumberArray.map((number) => {
+    let string = "";
+
+    if (!(number % 3)) string += "Fizz";
+    if (!(number % 5)) string += "Buzz";
+
+    return string || number.toString();
   });
-  return encrypted.flat().join("");
+
+  return fizzBuzz;
 };
+
+console.log(fizzBuzz([-1, "disco", 3, 5, 15, 2]));
