@@ -9,7 +9,7 @@ const {
   filterBooksBySearch,
   formatStringArray,
   formatString,
-  encryptString,
+  fizzBuzz,
 } = challenge;
 
 /**
@@ -26,7 +26,7 @@ const stringsToClean = ["  CaBBage  ", "TuRnIp", "  RADish", "CARroT  "];
 const cleanedStrings = "cabbage+turnip+radish+carrot";
 const formattedStringArr = ["T", "e", "S", "t", "S", "t", "R", "i", "N", "g"];
 
-describe("Testing removeFalseValues()", () => {
+xdescribe("Testing removeFalseValues()", () => {
   it("Should return an array", () => {
     expect(Array.isArray(removeFalseValues([true]))).toBe(true);
     expect(Array.isArray(removeFalseValues([false]))).toBe(true);
@@ -264,5 +264,94 @@ xdescribe("Testing formatString()", () => {
 
   it("Should handle empty input", () => {
     expect(formatString("")).toEqual([]);
+  });
+});
+
+describe("Testing fizzBuzz()", () => {
+  const cleanArray = Array(50)
+    .fill(0)
+    .map((_, index) => index + 1);
+
+  const cleanStringArray = Array(15)
+    .fill(0)
+    .map((_, index) => `${index + 1}`);
+
+  const firstFifteenArray = "1-2-Fizz-4-Buzz-Fizz-7-8-Fizz-Buzz-11-Fizz-13-14-FizzBuzz".split("-");
+
+  const mixedArray = [-1, 5, 6, "disco", 0, 0, 7, "5", 45];
+
+  it("Should NOT return undefined", () => {
+    expect(fizzBuzz(cleanArray)).toBeDefined();
+  });
+
+  it("Should return an array", () => {
+    expect(Array.isArray(fizzBuzz(cleanArray))).toBe(true);
+  });
+
+  it("Should return an array of Strings", () => {
+    const testForStrings = fizzBuzz(cleanArray).every((string) => typeof string === "string");
+    expect(testForStrings).toBe(true);
+  });
+
+  it("Should have the correct amount of Fizz", () => {
+    const fizzMatch = fizzBuzz(cleanArray).filter((el) => el === "Fizz");
+
+    expect(fizzMatch.length).toBe(13);
+  });
+
+  it("Should have Fizz in the correct index", () => {
+    const fizzMatch = fizzBuzz(cleanArray);
+
+    expect(fizzMatch[2]).toBe("Fizz");
+    expect(fizzMatch[47]).toBe("Fizz");
+    expect(fizzMatch[35]).toBe("Fizz");
+  });
+
+  it("Should have the correct amount of Buzz", () => {
+    const buzzMatch = fizzBuzz(cleanArray).filter((el) => el === "Buzz");
+
+    expect(buzzMatch.length).toBe(7);
+  });
+
+  it("Should have Buzz in the correct index", () => {
+    const BuzzMatch = fizzBuzz(cleanArray);
+
+    expect(BuzzMatch[4]).toBe("Buzz");
+    expect(BuzzMatch[19]).toBe("Buzz");
+    expect(BuzzMatch[39]).toBe("Buzz");
+  });
+
+  it("Should have the correct amount of FizzBuzz", () => {
+    const FizzBuzzMatch = fizzBuzz(cleanArray).filter((el) => el === "FizzBuzz");
+
+    expect(FizzBuzzMatch.length).toBe(3);
+  });
+
+  it("Should have FizzBuzz in the correct index", () => {
+    const FizzBuzzMatch = fizzBuzz(cleanArray);
+
+    expect(FizzBuzzMatch[14]).toBe("FizzBuzz");
+    expect(FizzBuzzMatch[29]).toBe("FizzBuzz");
+    expect(FizzBuzzMatch[44]).toBe("FizzBuzz");
+  });
+
+  it("Should NOT alter the length of a clean input", () => {
+    expect(fizzBuzz(cleanArray).length).toBe(50);
+  });
+
+  it("Should fizzBuzz a a clean array of numbers as strings as expected", () => {
+    expect(fizzBuzz(cleanStringArray)).toEqual(firstFifteenArray);
+  });
+
+  it("Should  NOT alter the length of a clean array of numbers as strings", () => {
+    expect(fizzBuzz(cleanStringArray).length).toEqual(15);
+  });
+
+  it("Should fizzBuzz a mixed input as expected", () => {
+    expect(fizzBuzz(mixedArray)).toEqual(["Buzz", "Fizz", "7", "Buzz", "FizzBuzz"]);
+  });
+
+  it("Should alter the length of a mixed input", () => {
+    expect(fizzBuzz(mixedArray).length).toBe(5);
   });
 });

@@ -149,3 +149,37 @@ export const formatString = (string) => {
 /**
  * Expert Challenge
  */
+
+/**
+ * A function that takes an array and FizzBuzzes it.
+ *
+ * It should remove anything from the given array that is NOT a POSITIVE number or a POSITIVE number as a STRING.
+ *
+ * If we were given [-1, "disco", "3", 5, "15", 2, 0]
+ * We would be left with this ["3", 5, "15", 2]
+ *
+ * It then needs to create a new array from this clean array based on the conditons below:
+ *
+ * For multiples of three replace the number with "Fizz".
+ * For the multiples of five replace the number with "Buzz".
+ * For numbers which are multiples of both three and five replace the number with "FizzBuzz".
+ * All the other numbers need to be strings.
+ *
+ * @param {*[]} mixedArray [-1, "disco", "3", 5, "15", 2, 0]
+ * @return {string[]} [ "Fizz", "Buzz", "FizzBuzz", "2" ]
+ */
+
+export const fizzBuzz = (mixedArray = []) => {
+  const positiveNumberArray = mixedArray.filter((item) => item > 0 && Number(item));
+
+  const fizzBuzz = positiveNumberArray.map((number) => {
+    let string = "";
+
+    if (!(number % 3)) string += "Fizz";
+    if (!(number % 5)) string += "Buzz";
+
+    return string || number.toString();
+  });
+
+  return fizzBuzz;
+};
