@@ -56,9 +56,9 @@ export const createListOfPoessessions = (possessionsArr, name) => {
 
 /**
  * Have a look at the String method split()
- * 
+ *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split
- * 
+ *
  * You may need to use it below.
  */
 
@@ -151,27 +151,24 @@ export const formatString = (string) => {
  */
 
 /**
- * A function that takes a string and creates a simple encrypted message.
+ * A function that takes an array and FizzBuzzes it.
  *
- * The string will be broken into 3 lists.
- * The first three letters will go into their own list.
- * The next three letters will follow this pattern.
- * Joining the first three letters in each of their list.
- * The rest of the letter's will follow this pattern.
- * Each list will be joined together and returned as an encrypted message.
+ * It should remove anything from the given array that is NOT a POSITIVE number or a POSITIVE number as a STRING.
  *
- * The word "encrypted" would be broken into:
+ * If we were given [-1, "disco", "3", 5, "15", 2, 0]
+ * We would be left with this ["3", 5, "15", 2]
  *
- * e r t
- * n y e
- * c p d
+ * It then needs to create a NEW array from this clean array based on the conditons below:
  *
- * and joined together as ert + nye + cpd
+ * For multiples of three replace the number with "Fizz".
+ * For multiples of five replace the number with "Buzz".
+ * For numbers which are multiples of both three and five replace the number with "FizzBuzz".
+ * All the other numbers need to be strings.
  *
- * @param {string} toEncrypt "encrypted"
- * @return {string} "ertnyecpd"
+ * @param {*[]} mixedArray [-1, "disco", "3", 5, "15", 2, 0]
+ * @return {string[]} [ "Fizz", "Buzz", "FizzBuzz", "2" ]
  */
 
-export const encryptString = (toEncrypt) => {
+export const fizzBuzz = (mixedArray) => {
   return;
 };

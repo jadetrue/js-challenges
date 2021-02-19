@@ -9,6 +9,7 @@ const {
   generateHighscores,
   generateAverage,
   reverseOrder,
+  encryptString,
 } = challenge;
 
 /**
@@ -244,5 +245,40 @@ xdescribe("Testing generateHighscores()", () => {
   it("Should return a new Array", () => {
     expect(generateHighscores(players, playerScores)).not.toBe(players);
     expect(generateHighscores(players, playerScores)).not.toBe(playerScores);
+  });
+});
+
+xdescribe("Testing encryptString()", () => {
+  it("Should NOT return undefined", () => {
+    expect(encryptString("  defined")).toBeDefined();
+  });
+
+  it("Should return a String", () => {
+    expect(typeof encryptString("  front")).toBe("string");
+  });
+
+  it("Should NOT encrypt three letters", () => {
+    expect(encryptString("hey")).toBe("hey");
+    expect(encryptString("ola")).toBe("ola");
+  });
+
+  it("Should encrypt after three plus letters", () => {
+    expect(encryptString("heya")).toBe("haey");
+    expect(encryptString("disco")).toBe("dcios");
+    expect(encryptString("cellardoor")).toBe("cldreaolro");
+  });
+
+  it("Should encrypt large words", () => {
+    expect(encryptString("antidisestablishmentarianism")).toBe("aistlhnrnmndeaimtiitisbseaas");
+    expect(encryptString("hippopotomonstrosesquippedaliophobia")).toBe("hpomsosielpbiototsqpdihipponreupaooa");
+  });
+
+  it("Should keep spaces between words", () => {
+    expect(encryptString("keep it secret")).toBe("kpteee  cteisr");
+    expect(encryptString("keep it safe.")).toBe("kpta.e  feise");
+  });
+
+  it("Should handle empty input", () => {
+    expect(encryptString("")).toBe("");
   });
 });
