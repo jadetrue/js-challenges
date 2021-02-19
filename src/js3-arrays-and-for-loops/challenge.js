@@ -140,3 +140,33 @@ export const reverseOrder = (toReverseArr) => {
 export const generateHighscores = (playersArr, scoresArr) => {
   return;
 };
+
+/**
+ * A function that takes a string and creates a simple encrypted message.
+ *
+ * The string will be broken into 3 lists.
+ * The first three letters will go into their own list.
+ * The next three letters will follow this pattern.
+ * Joining the first three letters in each of their list.
+ * The rest of the letter's will follow this pattern.
+ * Each list will be joined together and returned as an encrypted message.
+ *
+ * The word "encrypted" would be broken into:
+ *
+ * e r t
+ * n y e
+ * c p d
+ *
+ * and joined together as ert + nye + cpd
+ *
+ * @param {string} toEncrypt "encrypted"
+ * @return {string} "ertnyecpd"
+ */
+
+// export const encryptString = (toEncrypt) => {
+//   return;
+// };
+
+export const encryptString = (toEncrypt) => {
+  return;
+};
