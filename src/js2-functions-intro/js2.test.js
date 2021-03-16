@@ -5,7 +5,7 @@ const {
   findSmallestNumber,
   multiplyNumbers,
   checkIfNewHighScore,
-  celsiusToFarenheit,
+  celsiusToFahrenheit,
   calculateLifetimeSupply,
   getGrade,
   calculateAreaOfCirlce,
@@ -73,17 +73,17 @@ xdescribe("checkIfNewHighScore() tests", () => {
   });
 });
 
-xdescribe("celsiusToFarenheit() tests", () => {
+xdescribe("celsiusToFahrenheit() tests", () => {
   it("Should have a return", () => {
-    expect(celsiusToFarenheit(15)).toBeDefined();
+    expect(celsiusToFahrenheit(15)).toBeDefined();
   });
 
   it("Should return a string", () => {
-    expect(typeof celsiusToFarenheit(15)).toBe("string");
+    expect(typeof celsiusToFahrenheit(15)).toBe("string");
   });
 
   it("Should convert 15 C to 59 F", () => {
-    expect(celsiusToFarenheit(15)).toBe("15 degrees celsius is 59 degrees farenheit");
+    expect(celsiusToFahrenheit(15)).toBe("15 degrees celsius is 59 degrees fahrenheit");
   });
 });
 

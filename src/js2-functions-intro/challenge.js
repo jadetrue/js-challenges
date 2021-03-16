@@ -61,12 +61,12 @@ export const checkIfNewHighScore = (score, highScore) => {
 };
 
 /**
- * A function that converts a temperature a in celsuis to farenheit and outputs it in a string format -> "15 degrees celsius is 59 degrees farenheit".
+ * A function that converts a temperature a in celsuis to fahrenheit and outputs it in a string format -> "15 degrees celsius is 59 degrees fahrenheit".
  *
  * @param {number} tempInCelsius 15
- * @returns {string} "15 degrees celsius is 59 degrees farenheit"
+ * @returns {string} "15 degrees celsius is 59 degrees fahrenheit"
  */
-export const celsiusToFarenheit = (tempInCelsius) => {
+export const celsiusToFahrenheit = (tempInCelsius) => {
   /* Write your code here */
 };
 
