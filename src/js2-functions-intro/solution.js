@@ -57,7 +57,8 @@ export const multiplyNumbers = (number1, number2) => {
 /**
  * A function that tells the user whether or not they've achieved a new high score.
  * If they new score is larger than the current high score then return "You got a new high score!"
- * Other return "Better luck next Time"
+ * If the scores are the same return "So close!"
+ * Otherwise return "Better luck next Time"
  *
  * @param {number} score 300
  * @param {number} highScore 325
