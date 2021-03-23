@@ -64,34 +64,34 @@ export class Alert {
  *
  * You will need to complete the constructor.
  * It needs to accept a parameter called htmlRef.
- * htmlRef will be a mock html element and will have an innerHtml key.
+ * htmlRef will be a mock html element and will have an innerHTML key.
  *
  * The key on the class will need to be called htmlRef.
  *
  * You will need to complete the two methods.
  *
  * The first is called displayLoader().
- * This will set the innerHtml of the htmlRef to "<div class="loader"></div>".
+ * This will set the innerHTML of the htmlRef to "<div class="loader"></div>".
  *
  * The second is called removeLoader().
- * This will set the innerHtml of the htmlRef to an empty string.
+ * This will set the innerHTML of the htmlRef to an empty string.
  */
 
 /** Class representing a loader. */
 export class Loader {
   /**
    * Create a loader.
-   * @param {{innerHtml:string}} htmlRef - {innerHtml:""}
+   * @param {{innerHTML:string}} htmlRef - {innerHTML:""}
    */
   constructor() {}
 
   /**
-   * Updates the htmlRef.innerHtml to display the loader's html.
+   * Updates the htmlRef.innerHTML to display the loader's html.
    */
   displayLoader() {}
 
   /**
-   * Updates the htmlRef.innerHtml to remove the loader's html.
+   * Updates the htmlRef.innerHTML to remove the loader's html.
    */
   removeLoader() {}
 }
@@ -194,13 +194,13 @@ export class Engine {
  * The keys will need to be called htmlRef, title and message.
  *
  * htmlRef will be a mock html element.
- * It will have an innerHtml and classList key.
+ * It will have an innerHTML and classList key.
  * Inside classList it will have the list key and the toggle() method.
  *
  * You will need to write two methods on the instance of the Modal class.
  *
  * The first will need to be called renderHtml().
- * This method will set the htmlRef's innerHtml property to match the format below.
+ * This method will set the htmlRef's innerHTML property to match the format below.
  *
  * <div class="modal">
  *    <h2 class="modal--title">MODAL-TITLE</h2>
@@ -220,7 +220,7 @@ export class Engine {
 export class Modal {
   /**
    * Create a modal.
-   * @param {HTMLElement} htmlRef - { innerHtml:"", classList:{ list: [], toggle()}}
+   * @param {HTMLElement} htmlRef - { innerHTML:"", classList:{ list: [], toggle()}}
    * @param {string} title - "Error"
    * @param {string} message - "We are currently unable to provide this service"
    */

@@ -3,7 +3,7 @@ import * as challenge from "./challenge";
 const { Coordinate, Alert, Loader, Counter, Engine, Modal, BookShelf, BankAccount } = challenge;
 
 /**
- * REMOVE X FROM DESCRIBE FUNCTION TO STOP SKIPPING TEST BLOCKS
+ * REMOVE X FROM xdescribe FUNCTION TO STOP SKIPPING TEST BLOCKS
  */
 
 describe("Testing Coordinate class", () => {
@@ -77,7 +77,7 @@ xdescribe("Testing Alert class", () => {
 });
 
 xdescribe("Testing Loader class", () => {
-  const htmlReference = { innerHtml: "" };
+  const htmlReference = { innerHTML: "" };
   const loader = new Loader(htmlReference);
 
   it("Should be an object", () => {
@@ -95,7 +95,7 @@ xdescribe("Testing Loader class", () => {
 
   it("Should add the correct html to the html reference when displayLoader() is called", () => {
     loader.displayLoader();
-    expect(htmlReference.innerHtml).toBe('<div class="loader"></div>');
+    expect(htmlReference.innerHTML).toBe('<div class="loader"></div>');
   });
 
   it("Should add the correct html to the html reference when displayLoader() is called multiple times", () => {
@@ -103,18 +103,18 @@ xdescribe("Testing Loader class", () => {
     loader.displayLoader();
     loader.displayLoader();
     loader.displayLoader();
-    expect(htmlReference.innerHtml).toBe('<div class="loader"></div>');
+    expect(htmlReference.innerHTML).toBe('<div class="loader"></div>');
   });
 
-  it("Should set innerHtml of html reference to an empty string removeLoader() is called", () => {
+  it("Should set innerHTML of html reference to an empty string removeLoader() is called", () => {
     loader.removeLoader();
-    expect(htmlReference.innerHtml).toBe("");
+    expect(htmlReference.innerHTML).toBe("");
   });
 
   it("Should remove html from the html reference when displayLoader() and then removeLoader() is called", () => {
     loader.displayLoader();
     loader.removeLoader();
-    expect(htmlReference.innerHtml).toBe("");
+    expect(htmlReference.innerHTML).toBe("");
   });
 });
 
@@ -292,7 +292,7 @@ xdescribe("Testing Modal class", () => {
 
   beforeEach(() => {
     htmlReference = {
-      innerHtml: "",
+      innerHTML: "",
       classList: {
         list: ["hide"],
         toggle(cssClass) {
@@ -328,7 +328,7 @@ xdescribe("Testing Modal class", () => {
     expect(typeof modal.displayModal).toBe("function");
   });
 
-  it("Should update the innerHtml of the htmlRefernce after renderHtml() has been called", () => {
+  it("Should update the innerHTML of the htmlRefernce after renderHtml() has been called", () => {
     const expectedHtml = `
     <div class="modal">
       <h2 class="modal--title">Error</h2>
@@ -337,10 +337,10 @@ xdescribe("Testing Modal class", () => {
     `;
 
     modal.renderHtml();
-    expect(htmlReference.innerHtml).toBe(expectedHtml);
+    expect(htmlReference.innerHTML).toBe(expectedHtml);
   });
 
-  it("Should update the innerHtml of the htmlRefernce dynamically after renderHtml() has been called", () => {
+  it("Should update the innerHTML of the htmlRefernce dynamically after renderHtml() has been called", () => {
     modal = new Modal(htmlReference, "Good Morning", "Have a great day!");
 
     const expectedHtml = `
@@ -351,7 +351,7 @@ xdescribe("Testing Modal class", () => {
     `;
 
     modal.renderHtml();
-    expect(htmlReference.innerHtml).toBe(expectedHtml);
+    expect(htmlReference.innerHTML).toBe(expectedHtml);
   });
 
   it("Should update the classList of the htmlRefernce - remove hide", () => {
@@ -383,7 +383,7 @@ xdescribe("Testing BookShelf class", () => {
     "React for Dummies"
   ];
 
-  const newBookArray = bookArray.filter((book) => book.incluxdes("JavaScript"));
+  const newBookArray = bookArray.filter((book) => book.includes("JavaScript"));
 
   beforeEach(() => {
     bookShelf = new BookShelf("aa0200a01", bookArray);
