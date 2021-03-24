@@ -216,7 +216,7 @@ describe("Intermediate level challenges", () => {
   });
 });
 
-xdescribe("getImportantKeys() tests", () => {
+describe("getImportantKeys() tests", () => {
   const mealsArr = [
     {
       id: 10,
@@ -249,7 +249,7 @@ xdescribe("getImportantKeys() tests", () => {
   });
 
   it("Should remove unneeded keys from the objects", () => {
-    expect(getImportantKeys(mealsArr)[0]).not.toStrictEqual({
+    expect(getImportantKeys(mealsArr)[0]).toStrictEqual({
       id: 10,
       name: "Tikka Masala",
       ingredients: ["rice", "tomato", "chicken", "curry powder"],

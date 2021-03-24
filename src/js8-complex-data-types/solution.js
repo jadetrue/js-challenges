@@ -117,7 +117,7 @@ export const totalShoppingBasket = (shoppingBasketArr) => {
  */
 export const getImportantKeys = (mealsArr) => {
   const cleanedMealArr = mealsArr.map((meal) => {
-    const newMeal = { ...meal.id, ...meal.name, ...meal.ingredients, ...meal.country };
+    const newMeal = { id: meal.id, name: meal.name, ingredients: meal.ingredients, country: meal.country };
     return newMeal;
   });
 
