@@ -261,7 +261,7 @@ xdescribe("Testing totalNestedScoresArr()", () => {
   });
 
   it("Should return a new array and not modify the old one", () => {
-    expect(sortNumbersHighToLow(nestedScoreArr)).not.toBe(nestedScoreArr);
+    expect(totalNestedScoresArr(nestedScoreArr)).not.toBe(nestedScoreArr);
   });
 });
 
