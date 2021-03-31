@@ -1,53 +1,156 @@
-/* Arrays of objects - see the data.js file for the array of objects used in the tests */
+/* This challenge build upon previous knowledge and introduces the concept of complex data types (arrays of objects) */
+
+/* 
+  All challenges in this repository are seperated into four levels: Foundation, Intermediate, Advanced and Expert.
+  The expectation is to complete all Foundation level challenges, with Intermediate and upwards pushing your knowledge
+  and may require you to google things in order to solve them. If you find an answer online somewhere, be kind and
+  share it with the group!
+*/
+
+/* To see the structure of the "api's" please have a look in mockPeopleApi.json and mockInterestApi.json */
+
+/* Foundation Challenges */
 
 /**
- * The function will take an array of person objects.
- * It will add the names of each person to an array adn return it.
- * @param {array} people - an array of people objects
- * @return {array} A list of all people names
+ * A function which takes a url and returns the JSONified response
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[]} The data from the API
  */
-export const getNames = (people) => {
-  // your code here
+ export const getData = (url) => {
+  // Your code here
 };
 
 /**
- * The function will take two aguments, an array of person objects and an eye colour
- * then return a new array of people who match that eye colour
- * @param {array} people - an array of person objects
- * @param {string} eyeColour
- * @return {array} an array of person objects who match the eye colour provided
+ * A function which calls the API from the provided URL and returns just the list of names from each object.
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @returns {string[]} The list of names from the API
  */
-export const getMatchingEyeColour = (people, eyeColour) => {
-  // your code here
+export const getNames = (url) => {
+  // Your code here
 };
 
 /**
- * The function will take an array of person objects and return the person with the hoghest current fortune
- * @param {array} people - an array of person objects
- * @returns {object} person object with highest currentFortune
+ * A function which calls the API from the provided URL but only returns the employed people from the API.
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @return {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[]} The employed people from the API
  */
-export const getLargestFortune = (people) => {
-  // your code here
+export const getEmployedPeople = (url) => {
+  // Your code here
+};
+
+/* Intermediate Challenges */
+
+/**
+ * A function which takes a url and an ID. It will fetch from an API at the url and return a single person object with
+ * a matching ID. If no person with that ID exists, instead return a string saying "Person not found".
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @param {string} id - The ID of the person object to return
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean} | string} A person object OR A string saying "Person not found"
+ */
+export const findPersonWithId = (url, id) => {
+  // Your code here
 };
 
 /**
- * The function will take an arrat of person objects and return a new array of person objects
- * which have had the calculateFinancesYearEnd() method and the age incremented
- * @param {array} people - an array of person objects
- * @return {array} people - an array of modified person objects e.g.
- *   {
-    id: "001",
-    age: 21,
-    isMarried: false,
-    eyeColour: "brown",
-    name: "Elizabeth Bennet",
-    currentFortune: 200,
-    incomePerAnnum: 50,
-    address: "Longbourn, near Meryton, Hertfordshire",
-    calculateFinancesYearEnd: function () {
-      this.currentFortune += this.incomePerAnnum;
-    }
+ * A function which takes a url and an interest. It will fetch from an API at the url and return people who have a
+ * matching interest.
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @param {string} interest - The interest to match
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean}[] | string} A group of person objects OR A string saying "No people with interest found"
  */
-export const getEndOfYearFinances = (people) => {
-  // your code here
+export const getPeopleWithMatchingInterests = (url, interest) => {
+  // Your code here
+};
+
+/* Advanced Challenges */
+
+/**
+ * A function which calls an API from the provided url and adds a description key to each person object.
+ * The description should have the following format:
+ * "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking and MMA. I am not currently employed"
+ * So the full object would look like:
+ * {
+ *   id: "003",
+ *   name: "Joanna",
+ *   age: 78,
+ *   height: 140,
+ *   interests: ["knitting", "baking", "MMA"],
+ *   isEmployed: false,
+ *   description: "My name is Joanna, I am 78 years old and 140cm tall. I enjoy knitting, baking, and MMA. I am not currently employed"
+ * }
+ *
+ * OR
+ *
+ * {
+ *   id: "005",
+ *   name: "Travis"
+ *   age: 22,
+ *   height: 160,
+ *   interests: ["swimming", "watching TV", "knitting"],
+ *   isEmployed: true,
+ *   description: "My name is Travis, I am 22 years old and 160cm tall. I enjoy swimming, watching TV and knitting. I am currently employed",
+ * }
+ *
+ * This should NOT modify the original data
+ *
+ * @param {string} url - The url of the API to fetch from
+ * @returns {{id: string, name: string, age: number, height: number, interests: string[], isEmployed: boolean, decscription: string}[]} A group of person objects with added description key
+ */
+export const setDescriptions = (url) => {
+  // Your code here
+};
+
+/* Expert Challenges */
+
+/**
+ * A function that uses 2 API's to fill information about the interests of each person.
+ * Each person object that's returned should have this structure:
+ * {
+ *   id: "003",
+ *   name: "Joanna",
+ *   age: 78,
+ *   height: 140,
+ *   interests: [
+ *     {
+ *       interest: "knitting",
+ *       costPerAnnum: 400,
+ *       sizeOfCommunity: 10000000,
+ *       isDoneInGroups: false
+ *     },
+ *     {
+ *       interest: "baking",
+ *       costPerAnnum: 400,
+ *       sizeOfCommunity: 20000000,
+ *       isDoneInGroups: false
+ *     },
+ *     {
+ *       interest: "MMA",
+ *       costPerAnnum: 1000,
+ *       sizeOfCommunity: 20000000,
+ *       isDoneInGroups: true
+ *     }
+ *   ],
+ *   isEmployed: false
+ * };
+ *
+ * This should NOT modify the original data
+ *
+ * @param {string} peopleUrl - The url of the people api
+ * @param {string} interestUrl - The url of the interest api
+ * @returns {{
+ *  id: string,
+ *  name: string,
+ *  age: number,
+ *  height: number,
+ *  interests: {interest: string, costPerAnnum: number, sizeOfCommunity: number, isDoneInGroups: boolean}[],
+ *  isEmployed: boolean,
+ * }[]}
+ */
+export const setInterestDetails = (peopleUrl, interestsUrl) => {
+  // Your code here
 };
