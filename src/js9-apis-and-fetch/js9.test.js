@@ -1,4 +1,4 @@
-import * as challenge from "./solution";
+import * as challenge from "./challenge";
 import people from "./mockPersonApi.json";
 
 const {
